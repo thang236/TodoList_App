@@ -16,6 +16,7 @@
 		BF5D1EF02C68A1DD00D84AAA /* TodoList_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D1EEF2C68A1DD00D84AAA /* TodoList_AppTests.swift */; };
 		BF5D1EFA2C68A1DD00D84AAA /* TodoList_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D1EF92C68A1DD00D84AAA /* TodoList_AppUITests.swift */; };
 		BF5D1EFC2C68A1DD00D84AAA /* TodoList_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D1EFB2C68A1DD00D84AAA /* TodoList_AppUITestsLaunchTests.swift */; };
+		BFC9ABB02C6C9E4000DED4F7 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9ABAF2C6C9E4000DED4F7 /* EntryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		BF5D1EF52C68A1DD00D84AAA /* TodoList_AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoList_AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5D1EF92C68A1DD00D84AAA /* TodoList_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoList_AppUITests.swift; sourceTree = "<group>"; };
 		BF5D1EFB2C68A1DD00D84AAA /* TodoList_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoList_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BFC9ABAF2C6C9E4000DED4F7 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		BF5D1ED72C68A1DB00D84AAA /* TodoList_App */ = {
 			isa = PBXGroup;
 			children = (
+				BFC9ABAE2C6C9E2600DED4F7 /* ViewController */,
 				BF5D1ED82C68A1DB00D84AAA /* AppDelegate.swift */,
 				BF5D1EDA2C68A1DB00D84AAA /* SceneDelegate.swift */,
 				BF5D1EDC2C68A1DB00D84AAA /* ViewController.swift */,
@@ -125,6 +128,14 @@
 				BF5D1EFB2C68A1DD00D84AAA /* TodoList_AppUITestsLaunchTests.swift */,
 			);
 			path = TodoList_AppUITests;
+			sourceTree = "<group>";
+		};
+		BFC9ABAE2C6C9E2600DED4F7 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BFC9ABAF2C6C9E4000DED4F7 /* EntryViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF5D1EDD2C68A1DB00D84AAA /* ViewController.swift in Sources */,
+				BFC9ABB02C6C9E4000DED4F7 /* EntryViewController.swift in Sources */,
 				BF5D1ED92C68A1DB00D84AAA /* AppDelegate.swift in Sources */,
 				BF5D1EDB2C68A1DB00D84AAA /* SceneDelegate.swift in Sources */,
 			);
