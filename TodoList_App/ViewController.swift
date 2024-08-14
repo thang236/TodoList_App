@@ -23,18 +23,18 @@ class ViewController: UIViewController {
     
     
     @IBAction func didTapAddButton(_ sender: Any) {
-        guard let vc = storyboard?.instantiateViewController(identifier: "entry") as? EntryViewController else{
-            fatalError()
-        }
+        let vc = EntryViewController(nibName: "EntryViewController", bundle: nil)
         vc.title = "New Task"
         navigationController?.pushViewController(vc, animated: true)
+        
         
     }
     
     func setupTableView(){
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        tableView.registerCell(cellType: UITableViewCell.self)
     }
     
     
@@ -53,11 +53,26 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-        cell.textLabel?.text = tasks[indexPath.row]
+        let cell = tableView.dequeueReusableCell(for: indexPath, with: tasks[indexPath.row])
         return cell
         
+    }
+    
+}
+
+extension UITableView{
+    func registerCell<T: UITableViewCell>(cellType: T.Type) {
+        let identifier = String(describing: cellType)
+        self.register(cellType, forCellReuseIdentifier: identifier)
+    }
+    
+    func dequeueReusableCell<T: UITableViewCell>(for indexPath: IndexPath,with taskName : String) -> T {
+        let identifier = String(describing: T.self)
+        guard let cell = dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? T else {
+            fatalError("Error: could not dequeue cell with identifier: \(identifier)")
+        }
+        cell.textLabel?.text = taskName
+        return cell
     }
     
 }

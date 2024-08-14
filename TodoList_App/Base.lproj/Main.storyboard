@@ -55,22 +55,6 @@
             </objects>
             <point key="canvasLocation" x="939.69465648854953" y="3.5211267605633805"/>
         </scene>
-        <!--Entry View Controller-->
-        <scene sceneID="ne3-HI-Ev3">
-            <objects>
-                <viewController storyboardIdentifier="entry" id="7De-Lh-Tev" customClass="EntryViewController" customModule="TodoList_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ion-mT-MYg">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="p2a-KM-7xs"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Ayx-iT-czX"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dHA-bs-YYv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1892.3664122137404" y="48.591549295774648"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="UVn-Lt-SjW">
             <objects>
