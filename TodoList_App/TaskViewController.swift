@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TaskViewController.swift
 //  TodoList_App
 //
 //  Created by Louis Macbook on 11/08/2024.
@@ -10,7 +10,7 @@ import UIKit
 class TaskViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
-    var tasks = ["thanwg", "hoang"]
+    private var tasks = ["thanwg", "hoang"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,22 +18,18 @@ class TaskViewController: UIViewController {
         self.title = "List"
         
         setupTableView()
-        
     }
     
     
-    @IBAction func didTapAddButton(_ sender: Any) {
+    @IBAction private func didTapAddButton(_ sender: Any) {
         let vc = EntryViewController(nibName: "EntryViewController", bundle: nil)
         vc.title = "New Task"
         navigationController?.pushViewController(vc, animated: true)
-        
-        
     }
     
-    func setupTableView(){
+    private func setupTableView(){
         tableView.delegate = self
         tableView.dataSource = self
-        
         tableView.registerCell(cellType: UITableViewCell.self)
     }
     
@@ -53,7 +49,7 @@ extension TaskViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-          let cell = tableView.dequeueReusableCell(for: indexPath, with: tasks[indexPath.row])
+        let cell = tableView.dequeueReusableCell(for: indexPath, with: tasks[indexPath.row])
         return cell
     }
     

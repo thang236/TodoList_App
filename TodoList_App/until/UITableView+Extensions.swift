@@ -1,5 +1,5 @@
 //
-//  TaskUITableView.swift
+//  UITableView+Extensions.swift
 //  TodoList_App
 //
 //  Created by Louis Macbook on 15/08/2024.

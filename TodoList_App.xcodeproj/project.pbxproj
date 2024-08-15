@@ -18,7 +18,7 @@
 		BF5D1EFC2C68A1DD00D84AAA /* TodoList_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D1EFB2C68A1DD00D84AAA /* TodoList_AppUITestsLaunchTests.swift */; };
 		BFC9ABB32C6CBCD700DED4F7 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9ABB12C6CBCD700DED4F7 /* EntryViewController.swift */; };
 		BFC9ABB42C6CBCD700DED4F7 /* EntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFC9ABB22C6CBCD700DED4F7 /* EntryViewController.xib */; };
-		BFC9ABB72C6DDED200DED4F7 /* ExtensionUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9ABB62C6DDED200DED4F7 /* ExtensionUITableView.swift */; };
+		BFC9ABB72C6DDED200DED4F7 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9ABB62C6DDED200DED4F7 /* UITableView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +54,7 @@
 		BF5D1EFB2C68A1DD00D84AAA /* TodoList_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoList_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BFC9ABB12C6CBCD700DED4F7 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		BFC9ABB22C6CBCD700DED4F7 /* EntryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EntryViewController.xib; sourceTree = "<group>"; };
-		BFC9ABB62C6DDED200DED4F7 /* ExtensionUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUITableView.swift; sourceTree = "<group>"; };
+		BFC9ABB62C6DDED200DED4F7 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +147,7 @@
 		BFC9ABB52C6DDE9E00DED4F7 /* until */ = {
 			isa = PBXGroup;
 			children = (
-				BFC9ABB62C6DDED200DED4F7 /* ExtensionUITableView.swift */,
+				BFC9ABB62C6DDED200DED4F7 /* UITableView+Extensions.swift */,
 			);
 			path = until;
 			sourceTree = "<group>";
@@ -287,7 +287,7 @@
 				BF5D1EDD2C68A1DB00D84AAA /* TaskViewController.swift in Sources */,
 				BFC9ABB32C6CBCD700DED4F7 /* EntryViewController.swift in Sources */,
 				BF5D1ED92C68A1DB00D84AAA /* AppDelegate.swift in Sources */,
-				BFC9ABB72C6DDED200DED4F7 /* ExtensionUITableView.swift in Sources */,
+				BFC9ABB72C6DDED200DED4F7 /* UITableView+Extensions.swift in Sources */,
 				BF5D1EDB2C68A1DB00D84AAA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
