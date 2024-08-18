@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet private weak var passwordTextField: UITextField!
     private var isSecure = true
+    private let imageIcon = UIImageView()
     
     
     
@@ -21,6 +22,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         self.view.setBackgroundImageWithGradient(imageName: "background", topHexColor: "#7D39CB", bottomHexColor: "#3A87F3")
         setupPasswordField()
+        
     }
     
     
@@ -40,24 +42,38 @@ class LoginViewController: UIViewController {
     }
     
     private func setupPasswordField() {
-        // Tạo nút để hiện/ẩn mật khẩu
-        let toggleButton = UIButton(type: .custom)
+        imageIcon.image = UIImage(systemName: "eye.slash")
+        let contentView = UIView()
+        contentView.addSubview(imageIcon)
         
-        toggleButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
-        toggleButton.setImage(UIImage(systemName: "eye"), for: .selected)
-        toggleButton.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
-        toggleButton.frame = CGRect(x: 40, y: 0, width: 30, height: 20)
+        contentView.frame = CGRect(x: 0, y: 0, width: UIImage(systemName: "eye.slash")!.size.width, height: UIImage(systemName: "eye.slash")!.size.height)
         
-        passwordTextField.rightView = toggleButton
+        imageIcon.frame = CGRect(x: -10, y: 0, width: UIImage(systemName: "eye.slash")!.size.width, height: UIImage(systemName: "eye.slash")!.size.height)
+        
+        passwordTextField.rightView = contentView
         passwordTextField.rightViewMode = .always
-        passwordTextField.isSecureTextEntry = isSecure
+        
+        let tapGestureRecongnizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        
+        imageIcon.isUserInteractionEnabled = true
+        imageIcon.addGestureRecognizer(tapGestureRecongnizer)
+        
     }
     
-    @objc private func togglePasswordVisibility(_ sender: UIButton) {
-        isSecure.toggle()
-        passwordTextField.isSecureTextEntry = isSecure
-        sender.isSelected = isSecure
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+        if isSecure {
+            isSecure = false
+            tappedImage.image = UIImage(systemName: "eye")
+            passwordTextField.isSecureTextEntry = isSecure
+        } else{
+            isSecure = true
+            tappedImage.image = UIImage(systemName: "eye.slash")
+            passwordTextField.isSecureTextEntry = isSecure
+        }
     }
+    
+    
     
     
     
@@ -73,6 +89,8 @@ class LoginViewController: UIViewController {
                     if account.password == password {
                         let vc = HomeViewController(nibName: "HomeViewController", bundle: nil)
                         self.navigationController?.pushViewController(vc, animated: true)
+                    } else {
+                        self.showAlert(title: "Alert", message: "username or password wrong")
                     }
                     
                 }
