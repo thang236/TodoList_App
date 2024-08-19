@@ -87,8 +87,10 @@ class LoginViewController: UIViewController {
             case .success(let accounts):
                 for account in accounts {
                     if account.password == password {
+                        
                         let vc = HomeViewController(nibName: "HomeViewController", bundle: nil)
                         self.navigationController?.pushViewController(vc, animated: true)
+                        print("132")
                     } else {
                         self.showAlert(title: "Alert", message: "username or password wrong")
                     }
