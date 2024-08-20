@@ -16,7 +16,16 @@ class LoginViewController: UIViewController {
     private var isSecure = true
     private let imageIcon = UIImageView()
     
-    private let authService = AuthService()
+    private let authService: AuthService
+    
+    init(authService: AuthService) {
+        self.authService = authService
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init\(coder) has not been implemented")
+    }
     
     
     
@@ -97,15 +106,6 @@ class LoginViewController: UIViewController {
             
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 }
 
