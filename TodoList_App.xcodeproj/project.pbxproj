@@ -169,7 +169,7 @@
 			children = (
 				BFC9ABC12C6F619800DED4F7 /* Controller */,
 				BFC9ABBE2C6F59C200DED4F7 /* Model */,
-				BFC9ABB92C6F366200DED4F7 /* untils */,
+				BFC9ABB92C6F366200DED4F7 /* utility  */,
 				BFC9ABB82C6F337200DED4F7 /* view */,
 				BF5D1ED82C68A1DB00D84AAA /* AppDelegate.swift */,
 				BF5D1EE12C68A1DD00D84AAA /* Assets.xcassets */,
@@ -205,13 +205,13 @@
 			path = view;
 			sourceTree = "<group>";
 		};
-		BFC9ABB92C6F366200DED4F7 /* untils */ = {
+		BFC9ABB92C6F366200DED4F7 /* utility  */ = {
 			isa = PBXGroup;
 			children = (
 				BF3CCD0B2C7477A60082B7AB /* Extensions */,
 				BF3CCD0A2C74779F0082B7AB /* Networking */,
 			);
-			path = untils;
+			path = "utility ";
 			sourceTree = "<group>";
 		};
 		BFC9ABBE2C6F59C200DED4F7 /* Model */ = {

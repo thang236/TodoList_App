@@ -27,6 +27,12 @@ class LoginViewController: UIViewController {
         fatalError("init\(coder) has not been implemented")
     }
     
+    static func create () -> LoginViewController {
+        let authService = AuthServiceImpl()
+        let loginVc = LoginViewController(authService: authService)
+        
+        return loginVc
+    }
     
     
     override func viewDidLoad() {
@@ -40,7 +46,7 @@ class LoginViewController: UIViewController {
     @IBAction func didTapLogin(_ sender: Any) {
         guard let username = usernameTextField.text, !username.isEmpty,
               let password = passwordTextField.text, !password.isEmpty else {
-            showAlert(title: "Lỗi", message: "Vui lòng nhập tên người dùng và mật khẩu.")
+            showAlert(title: "Alert", message: "Please fill username and passwrod.")
             return
         }
         handleLogin(username: username, password: password)
