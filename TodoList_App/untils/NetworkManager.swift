@@ -32,10 +32,6 @@ class NetworkManager {
             }
     }
     
-    func login(username: String, completion: @escaping (Result<[AccountModel], AFError>) -> Void) {
-        request(endpoint: .login(username: username), completion: completion)
-        
-    }
     
 }
 

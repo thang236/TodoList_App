@@ -16,6 +16,8 @@ class LoginViewController: UIViewController {
     private var isSecure = true
     private let imageIcon = UIImageView()
     
+    private let authService = AuthService()
+    
     
     
     override func viewDidLoad() {
@@ -64,7 +66,6 @@ class LoginViewController: UIViewController {
     }
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        //        print( APIEndpoint.login(username: "thang").url)
         guard let tappedImage = tapGestureRecognizer.view as? UIImageView else{
             return
         }
@@ -80,18 +81,20 @@ class LoginViewController: UIViewController {
     }
     
     func handleLogin(username: String, password: String) {
-        NetworkManager.shared.login(username: username) { result in
+        authService.login(username: username) { result in
             switch result {
             case .success(let accounts):
-                if let account = accounts.first(where: { $0.password == password }) {
+                if accounts.first(where: {$0.password == password}) != nil {
                     let vc = HomeViewController(nibName: "HomeViewController", bundle: nil)
                     self.navigationController?.pushViewController(vc, animated: true)
-                } else {
-                    self.showAlert(title: "Lỗi", message: "Tên người dùng hoặc mật khẩu không đúng.")
+                }else{
+                    self.showAlert(title: "Alert", message: "Username or password wrong")
                 }
             case .failure(let error):
                 print("Request Error: \(error.localizedDescription)")
+                
             }
+            
         }
     }
     

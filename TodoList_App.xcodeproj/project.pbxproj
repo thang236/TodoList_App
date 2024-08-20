@@ -14,6 +14,7 @@
 		BF3CCD032C7352340082B7AB /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3CCD022C7352340082B7AB /* APIEndpoint.swift */; };
 		BF3CCD052C743FAD0082B7AB /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3CCD042C743FAD0082B7AB /* APIConfig.swift */; };
 		BF3CCD072C744BB80082B7AB /* AccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3CCD062C744BB80082B7AB /* AccountResponse.swift */; };
+		BF3CCD092C7473470082B7AB /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3CCD082C7473470082B7AB /* AuthService.swift */; };
 		BF5D1ED92C68A1DB00D84AAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D1ED82C68A1DB00D84AAA /* AppDelegate.swift */; };
 		BF5D1EDD2C68A1DB00D84AAA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D1EDC2C68A1DB00D84AAA /* LoginViewController.swift */; };
 		BF5D1EE22C68A1DD00D84AAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF5D1EE12C68A1DD00D84AAA /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		BF3CCD022C7352340082B7AB /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
 		BF3CCD042C743FAD0082B7AB /* APIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfig.swift; sourceTree = "<group>"; };
 		BF3CCD062C744BB80082B7AB /* AccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountResponse.swift; sourceTree = "<group>"; };
+		BF3CCD082C7473470082B7AB /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		BF421C251D4961942BFA35C0 /* Pods-TodoList_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoList_App.debug.xcconfig"; path = "Target Support Files/Pods-TodoList_App/Pods-TodoList_App.debug.xcconfig"; sourceTree = "<group>"; };
 		BF5D1ED52C68A1DB00D84AAA /* TodoList_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5D1ED82C68A1DB00D84AAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				BF3CCD002C7351370082B7AB /* NetworkManager.swift */,
 				BF3CCD022C7352340082B7AB /* APIEndpoint.swift */,
 				BF3CCD042C743FAD0082B7AB /* APIConfig.swift */,
+				BF3CCD082C7473470082B7AB /* AuthService.swift */,
 			);
 			path = untils;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				BF3CCD072C744BB80082B7AB /* AccountResponse.swift in Sources */,
 				BF5D1ED92C68A1DB00D84AAA /* AppDelegate.swift in Sources */,
 				BF3CCD012C7351370082B7AB /* NetworkManager.swift in Sources */,
+				BF3CCD092C7473470082B7AB /* AuthService.swift in Sources */,
 				BF3CCD032C7352340082B7AB /* APIEndpoint.swift in Sources */,
 				BF3CCD052C743FAD0082B7AB /* APIConfig.swift in Sources */,
 				BFC9ABBD2C6F398D00DED4F7 /* UIView+Extension.swift in Sources */,
