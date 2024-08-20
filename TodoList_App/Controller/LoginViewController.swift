@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  LoginViewController.swift
 //  TodoList_App
 //
 //  Created by Louis Macbook on 11/08/2024.
@@ -46,9 +46,12 @@ class LoginViewController: UIViewController {
         let contentView = UIView()
         contentView.addSubview(imageIcon)
         
-        contentView.frame = CGRect(x: 0, y: 0, width: UIImage(systemName: "eye.slash")!.size.width, height: UIImage(systemName: "eye.slash")!.size.height)
+        guard let icon = UIImage(systemName: "eye.slash") else {
+            return
+        }
         
-        imageIcon.frame = CGRect(x: -10, y: 0, width: UIImage(systemName: "eye.slash")!.size.width, height: UIImage(systemName: "eye.slash")!.size.height)
+        contentView.frame = CGRect(x: 0, y: 0, width: icon.size.width, height: icon.size.height)
+        imageIcon.frame = CGRect(x: -10, y: 0, width: icon.size.width, height: icon.size.height)
         
         passwordTextField.rightView = contentView
         passwordTextField.rightViewMode = .always
@@ -61,7 +64,10 @@ class LoginViewController: UIViewController {
     }
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        let tappedImage = tapGestureRecognizer.view as! UIImageView
+        //        print( APIEndpoint.login(username: "thang").url)
+        guard let tappedImage = tapGestureRecognizer.view as? UIImageView else{
+            return
+        }
         if isSecure {
             isSecure = false
             tappedImage.image = UIImage(systemName: "eye")
@@ -73,31 +79,18 @@ class LoginViewController: UIViewController {
         }
     }
     
-    
-    
-    
-    
-    
-    
     func handleLogin(username: String, password: String) {
-        let url = "http://localhost:3000/accounts?username=\(username)"
-        
-        AF.request(url, method: .get).responseDecodable(of: [AccountModel].self) { response in
-            switch response.result {
+        NetworkManager.shared.login(username: username) { result in
+            switch result {
             case .success(let accounts):
-                for account in accounts {
-                    if account.password == password {
-                        
-                        let vc = HomeViewController(nibName: "HomeViewController", bundle: nil)
-                        self.navigationController?.pushViewController(vc, animated: true)
-                        print("132")
-                    } else {
-                        self.showAlert(title: "Alert", message: "username or password wrong")
-                    }
-                    
+                if let account = accounts.first(where: { $0.password == password }) {
+                    let vc = HomeViewController(nibName: "HomeViewController", bundle: nil)
+                    self.navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    self.showAlert(title: "Lỗi", message: "Tên người dùng hoặc mật khẩu không đúng.")
                 }
             case .failure(let error):
-                print("Lỗi: \(error)")
+                print("Request Error: \(error.localizedDescription)")
             }
         }
     }

@@ -14,6 +14,4 @@ struct AccountModel: Codable {
     var name: String
 }
 
-struct AccountResponse: Codable {
-    let account: [AccountModel]
-}
+
