@@ -8,27 +8,24 @@
 import Alamofire
 
 class NetworkManager {
-    
     init() {}
-    
+
     func request<T: Decodable>(
         endpoint: APIEndpoint,
         method: HTTPMethod = .get,
         parameters: Parameters? = nil,
         headers: HTTPHeaders? = nil,
-        completion: @escaping (Result<T, AFError>) -> Void) {
-        AF.request(endpoint.url, method: method, parameters: parameters,encoding: JSONEncoding.default, headers: headers)
+        completion: @escaping (Result<T, AFError>) -> Void
+    ) {
+        AF.request(endpoint.url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .validate()
             .responseDecodable(of: T.self) { response in
                 switch response.result {
-                case .success(let decodedData):
+                case let .success(decodedData):
                     completion(.success(decodedData))
-                case .failure(let error):
+                case let .failure(error):
                     completion(.failure(error))
                 }
             }
     }
-    
-    
 }
-

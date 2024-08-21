@@ -13,5 +13,3 @@ struct AccountModel: Codable {
     var password: String
     var name: String
 }
-
-

@@ -8,23 +8,22 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    
-    
     private let authService: AuthService
-    
+
     init(authService: AuthService) {
         self.authService = authService
         super.init(nibName: nil, bundle: nil)
     }
-    
+
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init\(coder) has not been implemented")
     }
-    
-    static func create () -> HomeViewController {
+
+    static func create() -> HomeViewController {
         let authService = AuthServiceImpl()
         let homeVC = HomeViewController(authService: authService)
-        
+
         return homeVC
     }
 
@@ -33,8 +32,4 @@ class HomeViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-
-
-   
-
 }
