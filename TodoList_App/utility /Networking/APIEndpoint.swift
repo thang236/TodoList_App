@@ -9,12 +9,14 @@ import Foundation
 
 enum APIEndpoint {
     case login(username: String)
+    case register
     
     var path: String {
         switch self {
         case .login(let username):
             return "/accounts/?username=\(username)"
-            
+        case .register:
+            return "/accounts"
         }
     }
     

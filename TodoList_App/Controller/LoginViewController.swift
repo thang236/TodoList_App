@@ -34,6 +34,12 @@ class LoginViewController: UIViewController {
         return loginVc
     }
     
+    @IBAction func didTapRegister(_ sender: Any) {
+        let vc = RegisterViewController.create()
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +106,7 @@ class LoginViewController: UIViewController {
             switch result {
             case .success(let accounts):
                 if accounts.first(where: {$0.password == password}) != nil {
-                    let vc = HomeViewController(nibName: "HomeViewController", bundle: nil)
+                    let vc = HomeViewController.create()
                     self.navigationController?.pushViewController(vc, animated: true)
                 }else{
                     self.showAlert(title: "Alert", message: "Username or password wrong")

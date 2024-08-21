@@ -18,7 +18,7 @@ class NetworkManager {
         headers: HTTPHeaders? = nil,
         completion: @escaping (Result<T, AFError>) -> Void
     ) {
-        AF.request(endpoint.url, method: method, parameters: parameters, headers: headers)
+        AF.request(endpoint.url, method: method, parameters: parameters,encoding: JSONEncoding.default, headers: headers)
             .validate()
             .responseDecodable(of: T.self) { response in
                 switch response.result {
