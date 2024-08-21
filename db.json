@@ -1,10 +1,16 @@
 {
-    "accounts": [
-        {
-            "id": "1",
-            "username": "admin",
-            "password": "admin",
-            "name": "Admin"
-        }
-    ]
+  "accounts": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "admin",
+      "name": "Admin"
+    },
+    {
+      "id": "de08",
+      "username": "hoang",
+      "password": "123",
+      "name": "default"
+    }
+  ]
 }

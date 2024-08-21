@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct APIConfig {
+enum APIConfig {
     static let baseURL = "http://localhost:3000"
 }

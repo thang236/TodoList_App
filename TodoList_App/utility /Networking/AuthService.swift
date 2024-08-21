@@ -5,9 +5,10 @@
 //  Created by Louis Macbook on 20/08/2024.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
 protocol AuthService {
-    func login(username: String, completion: @escaping (Result<[AccountModel], AFError>) -> Void) 
+    func login(username: String, completion: @escaping (Result<[AccountModel], AFError>) -> Void)
+    func register(account: AccountModel, completion: @escaping (Result<AccountModel, AFError>) -> Void)
 }
