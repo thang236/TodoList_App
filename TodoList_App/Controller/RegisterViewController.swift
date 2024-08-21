@@ -8,7 +8,6 @@
 import UIKit
 
 class RegisterViewController: UIViewController {
-    
     @IBOutlet private weak var confirmPasswordTexField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var emailTextField: UITextField!
@@ -32,9 +31,8 @@ class RegisterViewController: UIViewController {
     
     static func create () -> RegisterViewController {
         let authService = AuthServiceImpl()
-        let regiterVC = RegisterViewController(authService: authService)
-        
-        return regiterVC
+        let registerVC = RegisterViewController(authService: authService)
+        return registerVC
     }
     
     
@@ -52,12 +50,11 @@ class RegisterViewController: UIViewController {
         }
         if password == confirmPassword {
             registerAccount(email: email, password: password)
-        }else{
+        } else {
             showAlert(title: "Alert", message: "Password and confirm password are not the same")
         }
-        
-        
     }
+    
     func registerAccount(email: String, password: String){
         let newAccount = AccountModel(id: "", username: email, password: password, name: "default")
         authService.register(account: newAccount) { result in
@@ -99,7 +96,6 @@ class RegisterViewController: UIViewController {
         guard let icon = UIImage(systemName: "eye.slash") else {
             return
         }
-        
         contentView.frame = CGRect(x: 0, y: 0, width: icon.size.width, height: icon.size.height)
         imageIcon.frame = CGRect(x: -10, y: 0, width: icon.size.width, height: icon.size.height)
         
