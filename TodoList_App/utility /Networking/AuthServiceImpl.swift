@@ -9,6 +9,14 @@ import Alamofire
 import Foundation
 
 class AuthServiceImpl: AuthService {
+    func deleteTask(id: String, completion: @escaping (Result<TaskModel, Alamofire.AFError>) -> Void) {
+        networkManager.request(endpoint: APIEndpoint.deleteTask(id: id), method: .delete, completion: completion)
+    }
+
+    func fetchTask(isImportance: String, dateSearch: String, completion: @escaping (Result<[TaskModel], Alamofire.AFError>) -> Void) {
+        networkManager.request(endpoint: APIEndpoint.fetchTask(isImportance: isImportance, dateSearch: dateSearch), completion: completion)
+    }
+
     func register(account: AccountModel, completion: @escaping (Result<AccountModel, Alamofire.AFError>) -> Void) {
         let parameters: Parameters = [
             "username": account.username,

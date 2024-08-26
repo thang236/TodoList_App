@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DateCollectionViewCell" customModule="TodoList_App" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DateCollectionViewCell" id="gTV-IL-0wX" customClass="DateCollectionViewCell" customModule="TodoList_App" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="198" height="113"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="198" height="113"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ab2-rN-a1p">
+                        <rect key="frame" x="0.0" y="0.0" width="198" height="113"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pi1-1K-4PD">
+                                <rect key="frame" x="75.666666666666671" y="20" width="47" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGm-SU-ENa">
+                                <rect key="frame" x="79.666666666666671" y="49" width="39" height="20.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UGm-SU-ENa" firstAttribute="centerX" secondItem="Pi1-1K-4PD" secondAttribute="centerX" id="4Sv-ID-KYd"/>
+                            <constraint firstItem="Pi1-1K-4PD" firstAttribute="centerX" secondItem="ab2-rN-a1p" secondAttribute="centerX" id="V5I-Rf-Q4a"/>
+                            <constraint firstItem="UGm-SU-ENa" firstAttribute="top" secondItem="Pi1-1K-4PD" secondAttribute="bottom" constant="8" symbolic="YES" id="oIH-Zm-ncx"/>
+                            <constraint firstItem="Pi1-1K-4PD" firstAttribute="top" secondItem="ab2-rN-a1p" secondAttribute="top" constant="20" symbolic="YES" id="xOl-zO-cqQ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="ab2-rN-a1p" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Bec-uB-xMj"/>
+                <constraint firstItem="ab2-rN-a1p" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="IFM-eK-doS"/>
+                <constraint firstAttribute="bottom" secondItem="ab2-rN-a1p" secondAttribute="bottom" id="cFd-KB-fc5"/>
+                <constraint firstAttribute="trailing" secondItem="ab2-rN-a1p" secondAttribute="trailing" id="jS2-oJ-Lgv"/>
+            </constraints>
+            <size key="customSize" width="198" height="113"/>
+            <connections>
+                <outlet property="dateLabel" destination="Pi1-1K-4PD" id="3Zv-Hf-FCQ"/>
+                <outlet property="dateOfWeekLabel" destination="UGm-SU-ENa" id="2d7-h9-m9Q"/>
+            </connections>
+            <point key="canvasLocation" x="88.549618320610676" y="41.901408450704224"/>
+        </collectionViewCell>
+    </objects>
+</document>
