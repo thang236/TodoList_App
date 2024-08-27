@@ -31,6 +31,11 @@
 		BF87F29A2C77A7E8005B87C0 /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF87F2982C77A7E8005B87C0 /* TaskTableViewCell.xib */; };
 		BF87F29C2C7865BD005B87C0 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF87F29B2C7865BD005B87C0 /* TaskModel.swift */; };
 		BF87F29E2C78665D005B87C0 /* TaskResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF87F29D2C78665D005B87C0 /* TaskResponse.swift */; };
+		BF87F2A42C7DAC6B005B87C0 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF87F2A32C7DAC6B005B87C0 /* String+Extension.swift */; };
+		BF87F2A82C7DB2F0005B87C0 /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF87F2A72C7DB2EF005B87C0 /* TaskService.swift */; };
+		BF87F2AA2C7DB32B005B87C0 /* TaskServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF87F2A92C7DB32B005B87C0 /* TaskServiceImpl.swift */; };
+		BF87F2AC2C7DB7B4005B87C0 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF87F2AB2C7DB7B4005B87C0 /* UITableView+Extension.swift */; };
+		BF87F2AE2C7DC24E005B87C0 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF87F2AD2C7DC24E005B87C0 /* Date+Extension.swift */; };
 		BFA5B8F32C749B660085F632 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5B8F12C749B660085F632 /* RegisterViewController.swift */; };
 		BFA5B8F42C749B660085F632 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFA5B8F22C749B660085F632 /* RegisterViewController.xib */; };
 		BFC9ABBB2C6F367700DED4F7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9ABBA2C6F367700DED4F7 /* UIColor+Extension.swift */; };
@@ -91,6 +96,11 @@
 		BF87F2982C77A7E8005B87C0 /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
 		BF87F29B2C7865BD005B87C0 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		BF87F29D2C78665D005B87C0 /* TaskResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskResponse.swift; sourceTree = "<group>"; };
+		BF87F2A32C7DAC6B005B87C0 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		BF87F2A72C7DB2EF005B87C0 /* TaskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskService.swift; sourceTree = "<group>"; };
+		BF87F2A92C7DB32B005B87C0 /* TaskServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskServiceImpl.swift; sourceTree = "<group>"; };
+		BF87F2AB2C7DB7B4005B87C0 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		BF87F2AD2C7DC24E005B87C0 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		BFA5B8F12C749B660085F632 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		BFA5B8F22C749B660085F632 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		BFC9ABBA2C6F367700DED4F7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -142,11 +152,11 @@
 		BF3CCD0A2C74779F0082B7AB /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				BF87F2A62C7DB2D8005B87C0 /* TaskService */,
+				BF87F2A52C7DB2C1005B87C0 /* AuthService */,
 				BF3CCD002C7351370082B7AB /* NetworkManager.swift */,
 				BF3CCD022C7352340082B7AB /* APIEndpoint.swift */,
 				BF3CCD042C743FAD0082B7AB /* APIConfig.swift */,
-				BF3CCD082C7473470082B7AB /* AuthService.swift */,
-				BF3CCD0C2C7479090082B7AB /* AuthServiceImpl.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -157,6 +167,9 @@
 				BFC9ABBA2C6F367700DED4F7 /* UIColor+Extension.swift */,
 				BFC9ABBC2C6F398D00DED4F7 /* UIView+Extension.swift */,
 				BF2242892C771C57004E95D8 /* UICollectionView+Extension.swift */,
+				BF87F2A32C7DAC6B005B87C0 /* String+Extension.swift */,
+				BF87F2AB2C7DB7B4005B87C0 /* UITableView+Extension.swift */,
+				BF87F2AD2C7DC24E005B87C0 /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -213,6 +226,24 @@
 				BF5D1EFB2C68A1DD00D84AAA /* TodoList_AppUITestsLaunchTests.swift */,
 			);
 			path = TodoList_AppUITests;
+			sourceTree = "<group>";
+		};
+		BF87F2A52C7DB2C1005B87C0 /* AuthService */ = {
+			isa = PBXGroup;
+			children = (
+				BF3CCD082C7473470082B7AB /* AuthService.swift */,
+				BF3CCD0C2C7479090082B7AB /* AuthServiceImpl.swift */,
+			);
+			path = AuthService;
+			sourceTree = "<group>";
+		};
+		BF87F2A62C7DB2D8005B87C0 /* TaskService */ = {
+			isa = PBXGroup;
+			children = (
+				BF87F2A72C7DB2EF005B87C0 /* TaskService.swift */,
+				BF87F2A92C7DB32B005B87C0 /* TaskServiceImpl.swift */,
+			);
+			path = TaskService;
 			sourceTree = "<group>";
 		};
 		BFC9ABB82C6F337200DED4F7 /* view */ = {
@@ -531,14 +562,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF87F2A82C7DB2F0005B87C0 /* TaskService.swift in Sources */,
 				BF5D1EDD2C68A1DB00D84AAA /* LoginViewController.swift in Sources */,
 				BF3CCD0D2C7479090082B7AB /* AuthServiceImpl.swift in Sources */,
 				BFC9ABC02C6F59DB00DED4F7 /* AccountModel.swift in Sources */,
+				BF87F2A42C7DAC6B005B87C0 /* String+Extension.swift in Sources */,
 				BF3CCD072C744BB80082B7AB /* AccountResponse.swift in Sources */,
+				BF87F2AE2C7DC24E005B87C0 /* Date+Extension.swift in Sources */,
 				BF5D1ED92C68A1DB00D84AAA /* AppDelegate.swift in Sources */,
+				BF87F2AA2C7DB32B005B87C0 /* TaskServiceImpl.swift in Sources */,
 				BF87F29E2C78665D005B87C0 /* TaskResponse.swift in Sources */,
 				BF3CCD012C7351370082B7AB /* NetworkManager.swift in Sources */,
 				BF22428A2C771C57004E95D8 /* UICollectionView+Extension.swift in Sources */,
+				BF87F2AC2C7DB7B4005B87C0 /* UITableView+Extension.swift in Sources */,
 				BF87F29C2C7865BD005B87C0 /* TaskModel.swift in Sources */,
 				BF2242872C7716EA004E95D8 /* DateCollectionViewCell.swift in Sources */,
 				BF87F2992C77A7E8005B87C0 /* TaskTableViewCell.swift in Sources */,

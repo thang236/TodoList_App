@@ -11,7 +11,7 @@ struct TaskModel: Codable {
     let id: String
     var title: String
     var description: String
-    var importance: Bool
+    var important: Bool
     var date: String
     var time: String
     var isGroup: Bool

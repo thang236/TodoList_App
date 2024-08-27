@@ -15,12 +15,13 @@ class HomeViewController: UIViewController {
     @IBOutlet var taskTableView: UITableView!
     @IBOutlet var allButton: UIButton!
     private var centerItem = -1
-    private let authService: AuthService
+    private let taskService: TaskService
     private var arrayDates = [String]()
-    private var isImportance: Bool = false
+    private var isImportant: Bool = false
     private var tasks = [TaskModel]()
-    init(authService: AuthService) {
-        self.authService = authService
+
+    init(taskService: TaskService) {
+        self.taskService = taskService
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -30,8 +31,8 @@ class HomeViewController: UIViewController {
     }
 
     static func create() -> HomeViewController {
-        let authService = AuthServiceImpl()
-        let homeVC = HomeViewController(authService: authService)
+        let taskService = TaskServiceImpl()
+        let homeVC = HomeViewController(taskService: taskService)
         return homeVC
     }
 
@@ -43,16 +44,17 @@ class HomeViewController: UIViewController {
     }
 
     private func getTaskFromAPI() {
-        let components = arrayDates[centerItem].components(separatedBy: "-")
-        let date = "\(components[0])-\(components[1])-\(components[2])"
-        print(date)
-        let importance = isImportance ? "true" : ""
-        authService.fetchTask(isImportance: importance, dateSearch: date) { result in
+        let dateString = arrayDates[centerItem]
+        guard let date = dateString.formattedDate() else {
+            return
+        }
+        let important = isImportant ? "true" : ""
+        taskService.fetchTask(isImportant: important, dateSearch: date) { result in
             switch result {
             case let .success(data):
+                self.tasks.removeAll()
                 self.tasks = data
                 self.taskTableView.reloadData()
-                print(self.tasks.count)
             case let .failure(error):
                 self.showAlert(with: "Error", message: "Failed to fetch tasks: \(error.localizedDescription)")
                 print("error to fetch task : \(error)")
@@ -63,29 +65,14 @@ class HomeViewController: UIViewController {
     func setupTableView() {
         taskTableView.delegate = self
         taskTableView.dataSource = self
-        let nib = UINib(nibName: "TaskTableViewCell", bundle: nil)
-        taskTableView.register(nib, forCellReuseIdentifier: "TaskTableViewCell")
+        taskTableView.registerCell(cellType: TaskTableViewCell.self)
     }
 
     func generateDatesForCurrentYear() {
         let calendar = Calendar.current
-        let currentYear = calendar.component(.year, from: Date())
-        let currentMonth = calendar.component(.month, from: Date())
         let currentDay = calendar.component(.day, from: Date())
         centerItem = currentDay - 1
-
-        var dateComponents = DateComponents(year: currentYear, month: currentMonth, day: 1)
-        let range = calendar.range(of: .day, in: .month, for: calendar.date(from: dateComponents)!)!
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy-EEE"
-
-        for day in range {
-            dateComponents.day = day
-            if let date = calendar.date(from: dateComponents) {
-                arrayDates.append(dateFormatter.string(from: date))
-            }
-        }
-
+        arrayDates = Date.generateDatesForCurrentMonth()
         setupCollectionView()
     }
 
@@ -133,12 +120,12 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func didTapImportanceButton(_: Any) {
-        isImportance = true
+        isImportant = true
         toggleUnderLine(for: importanceButton, otherButton: allButton)
     }
 
     @IBAction func didTapAllButton(_: Any) {
-        isImportance = false
+        isImportant = false
         toggleUnderLine(for: allButton, otherButton: importanceButton)
     }
 
@@ -149,7 +136,7 @@ class HomeViewController: UIViewController {
     }
 
     private func deleteTask(id: String) {
-        authService.deleteTask(id: id) { result in
+        taskService.deleteTask(id: id) { result in
             switch result {
             case .success:
                 self.tasks.removeAll { $0.id == id }
@@ -259,11 +246,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as? TaskTableViewCell else {
-            return UITableViewCell()
-        }
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as? TaskTableViewCell else {
+//            return UITableViewCell()
+//        }
 
-        cell.setupTableView(task: tasks[indexPath.section])
+        let cell = tableView.configure(cellType: TaskTableViewCell.self, at: indexPath, with: tasks[indexPath.row])
+//        cell.setupTableView(task: tasks[indexPath.section])
         return cell
     }
 

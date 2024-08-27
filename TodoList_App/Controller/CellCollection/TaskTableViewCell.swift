@@ -12,7 +12,7 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet private var dateLabel: UILabel!
     @IBOutlet private var timeLabel: UILabel!
     @IBOutlet private var descriptionLabel: UILabel!
-    @IBOutlet private var importanceImage: UIImageView!
+    @IBOutlet var importantImage: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,10 +33,10 @@ class TaskTableViewCell: UITableViewCell {
         descriptionLabel.text = task.description
         timeLabel.text = "\(task.time)"
         dateLabel.text = task.date
-        if task.importance {
-            importanceImage.isHidden = false
+        if task.important {
+            importantImage.isHidden = false
         } else {
-            importanceImage.isHidden = true
+            importantImage.isHidden = true
         }
     }
 }

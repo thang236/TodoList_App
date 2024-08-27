@@ -94,7 +94,7 @@
             <connections>
                 <outlet property="dateLabel" destination="AFw-Tm-jIC" id="B12-SF-jAi"/>
                 <outlet property="descriptionLabel" destination="eOJ-8u-IAQ" id="Rjq-A4-XuL"/>
-                <outlet property="importanceImage" destination="NN5-vG-9xF" id="Bsh-N4-8Cd"/>
+                <outlet property="importantImage" destination="NN5-vG-9xF" id="3nJ-U8-k6G"/>
                 <outlet property="timeLabel" destination="fnY-E9-cCi" id="RzW-bT-ooP"/>
                 <outlet property="titleLabel" destination="ka7-U9-WSf" id="ADB-mx-4aD"/>
             </connections>

@@ -10,7 +10,7 @@ import Foundation
 enum APIEndpoint {
     case login(username: String)
     case register
-    case fetchTask(isImportance: String, dateSearch: String)
+    case fetchTask(isImportant: String, dateSearch: String)
     case deleteTask(id: String)
 
     var path: String {
@@ -19,8 +19,8 @@ enum APIEndpoint {
             return "/accounts/?username=\(username)"
         case .register:
             return "/accounts"
-        case let .fetchTask(isImportance, dateSearch):
-            return"/task?importance=\(isImportance)&date=\(dateSearch)"
+        case let .fetchTask(isImportant, dateSearch):
+            return"/task?importance=\(isImportant)&date=\(dateSearch)"
         case let .deleteTask(id):
             return "/task/\(id)"
         }
