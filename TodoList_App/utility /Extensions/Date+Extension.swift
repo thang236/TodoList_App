@@ -14,7 +14,7 @@ extension Date {
         let currentYear = calendar.component(.year, from: currentDate)
         let currentMonth = calendar.component(.month, from: currentDate)
 
-        var dateComponents = DateComponents(year: currentYear, month: currentMonth, day: 1)
+        let dateComponents = DateComponents(year: currentYear, month: currentMonth, day: 1)
         guard let startOfMonth = calendar.date(from: dateComponents) else {
             return []
         }

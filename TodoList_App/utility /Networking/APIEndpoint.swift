@@ -20,7 +20,7 @@ enum APIEndpoint {
         case .register:
             return "/accounts"
         case let .fetchTask(isImportant, dateSearch):
-            return"/task?importance=\(isImportant)&date=\(dateSearch)"
+            return"/task?important=\(isImportant)&date=\(dateSearch)"
         case let .deleteTask(id):
             return "/task/\(id)"
         }
