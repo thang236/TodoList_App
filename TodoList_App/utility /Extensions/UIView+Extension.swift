@@ -31,4 +31,20 @@ extension UIView {
 
         backgroundImageView.layer.addSublayer(gradientLayer)
     }
+
+    func addTopBorder(color: UIColor, thickness: CGFloat) {
+        let borderLayer = CALayer()
+        borderLayer.name = "topBorder"
+        borderLayer.backgroundColor = color.cgColor
+        borderLayer.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: thickness)
+        layer.addSublayer(borderLayer)
+    }
+
+    func addBottomBorder(color: UIColor, thickness: CGFloat) {
+        let borderLayer = CALayer()
+        borderLayer.name = "bottomBorder"
+        borderLayer.backgroundColor = color.cgColor
+        borderLayer.frame = CGRect(x: 0, y: frame.size.height - thickness, width: frame.size.width, height: thickness)
+        layer.addSublayer(borderLayer)
+    }
 }
