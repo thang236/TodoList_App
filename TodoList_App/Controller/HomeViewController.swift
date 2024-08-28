@@ -8,7 +8,11 @@
 import Alamofire
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, AddTaskViewControllerDelegate {
+    func didCreateTask(_: TaskModel) {
+        getTaskFromAPI()
+    }
+
     @IBOutlet var dateCollectionView: UICollectionView!
     @IBOutlet var importanceButton: UIButton!
 
@@ -52,7 +56,7 @@ class HomeViewController: UIViewController {
         taskService.fetchTask(isImportant: important, dateSearch: date) { result in
             switch result {
             case let .success(data):
-                self.tasks.removeAll()
+                print(data)
                 self.tasks = data
                 self.taskTableView.reloadData()
             case let .failure(error):
@@ -74,6 +78,14 @@ class HomeViewController: UIViewController {
         centerItem = currentDay - 1
         arrayDates = Date.generateDatesForCurrentMonth()
         setupCollectionView()
+    }
+
+    @IBAction func didTapAddButton(_: Any) {
+        let addTaskVC = AddTaskViewController.create()
+        addTaskVC.modalPresentationStyle = .custom
+        addTaskVC.transitioningDelegate = self
+        addTaskVC.delegate = self
+        present(addTaskVC, animated: true, completion: nil)
     }
 
     func setupCollectionView() {
@@ -246,7 +258,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.configure(cellType: TaskTableViewCell.self, at: indexPath, with: tasks[indexPath.row])
+        let cell = tableView.configure(cellType: TaskTableViewCell.self, at: indexPath, with: tasks[indexPath.section])
         return cell
     }
 
@@ -277,7 +289,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         let deleteImage = UIImage(systemName: "trash.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal)
         let redCircle = createCircleWithIcon(icon: deleteImage, circleColor: .red, diameter: 30)
         deleteAction.image = redCircle
-//        deleteAction.backgroundColor = UIColor.init(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.0)
+        //        deleteAction.backgroundColor = UIColor.init(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.0)
         deleteAction.backgroundColor = .white
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
         return configuration
@@ -305,5 +317,11 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         UIGraphicsEndImageContext()
 
         return circleWithIcon
+    }
+}
+
+extension HomeViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source _: UIViewController) -> UIPresentationController? {
+        return HalfSizePresentationController(presentedViewController: presented, presenting: presenting)
     }
 }

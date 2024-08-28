@@ -5,6 +5,7 @@
 //  Created by Louis Macbook on 11/08/2024.
 //
 
+import IQKeyboardManagerSwift
 import UIKit
 
 @main
@@ -12,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         // DI
 //        let loginVC = LoginViewController.create()
         let loginVC = HomeViewController.create()
@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
 
+        // LibraryIQKeyboardManager
+        IQKeyboardManager.shared.enable = true
         return true
     }
 }
