@@ -8,7 +8,7 @@
 import Alamofire
 import UIKit
 
-class HomeViewController: UIViewController, AddTaskViewControllerDelegate, TaskTableViewCellDelegate {
+class HomeViewController: UIViewController, AddTaskViewControllerDelegate, TaskTableViewCellDelegate, UpdateTaskViewControllerDelegate {
     @IBOutlet private var dateCollectionView: UICollectionView!
     @IBOutlet private var importanceButton: UIButton!
     @IBOutlet private var taskTableView: UITableView!
@@ -54,11 +54,11 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate, TaskT
     func didEditTask(cell: TaskTableViewCell) {
         if let indexPath = taskTableView.indexPath(for: cell) {
             print("Button in row \(tasks[indexPath.section]) was tapped")
-            let addTaskVC = AddUpdateTaskViewController.create(taskEdit: tasks[indexPath.section])
-            addTaskVC.modalPresentationStyle = .custom
-            addTaskVC.transitioningDelegate = self
-            addTaskVC.delegate = self
-            present(addTaskVC, animated: true, completion: nil)
+            let updateTaskVC = UpdateTaskViewController.create(taskEdit: tasks[indexPath.section])
+            updateTaskVC.modalPresentationStyle = .custom
+            updateTaskVC.transitioningDelegate = self
+            updateTaskVC.delegate = self
+            present(updateTaskVC, animated: true, completion: nil)
         }
     }
 
@@ -95,7 +95,7 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate, TaskT
     }
 
     @IBAction private func didTapAddButton(_: Any) {
-        let addTaskVC = AddUpdateTaskViewController.create(taskEdit: nil)
+        let addTaskVC = AddTaskViewController.create()
         addTaskVC.modalPresentationStyle = .custom
         addTaskVC.transitioningDelegate = self
         addTaskVC.delegate = self

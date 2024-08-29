@@ -1,5 +1,5 @@
 //
-//  AddUpdateTaskViewController.swift
+//  AddTaskViewController.swift
 //  TodoList_App
 //
 //  Created by Louis Macbook on 27/08/2024.
@@ -9,10 +9,9 @@ import UIKit
 
 protocol AddTaskViewControllerDelegate {
     func didCreateTask()
-    func didUpdateTask()
 }
 
-class AddUpdateTaskViewController: UIViewController {
+class AddTaskViewController: UIViewController {
     var delegate: AddTaskViewControllerDelegate?
     @IBOutlet private var descriptionTextField: UITextView!
     @IBOutlet private var timeTextField: UITextField!
@@ -33,10 +32,8 @@ class AddUpdateTaskViewController: UIViewController {
     private let timePicker = UIDatePicker()
 
     private let taskService: TaskService
-    private let dataEdit: TaskModel?
-    init(taskService: TaskService, dataEdit: TaskModel?) {
+    init(taskService: TaskService) {
         self.taskService = taskService
-        self.dataEdit = dataEdit
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -45,9 +42,9 @@ class AddUpdateTaskViewController: UIViewController {
         fatalError("init\(coder) has not been implemented")
     }
 
-    static func create(taskEdit: TaskModel?) -> AddUpdateTaskViewController {
+    static func create() -> AddTaskViewController {
         let taskService = TaskServiceImpl()
-        let addTaskVC = AddUpdateTaskViewController(taskService: taskService, dataEdit: taskEdit)
+        let addTaskVC = AddTaskViewController(taskService: taskService)
         return addTaskVC
     }
 
@@ -57,19 +54,6 @@ class AddUpdateTaskViewController: UIViewController {
         setupLayout()
         showTimePicker()
         showDatePicker()
-        setupData()
-    }
-
-    func setupData() {
-        guard let taskEdit = dataEdit else {
-            return
-        }
-        nameTaskTextField.text = taskEdit.title
-        descriptionTextField.text = taskEdit.description
-        isGroup = taskEdit.isGroup
-        isImportant = taskEdit.important
-        createButton.setTitle("Submit", for: .normal)
-        headerLabel.text = "Update task"
     }
 
     override func viewDidAppear(_: Bool) {
@@ -91,12 +75,7 @@ class AddUpdateTaskViewController: UIViewController {
         timePicker.preferredDatePickerStyle = .wheels
         timeTextField.inputView = timePicker
         timePicker.locale = Locale(identifier: "en_GB")
-        timeTextField.text = dataEdit?.time ?? currentDate.formatTimeToString()
-        if let currentTimeText = timeTextField.text,
-           let currentTime = currentTimeText.toTime()
-        {
-            timePicker.date = currentTime
-        }
+        timeTextField.text = currentDate.formatTimeToString()
     }
 
     @objc private func timeChanger(timePicker: UIDatePicker) {
@@ -109,12 +88,7 @@ class AddUpdateTaskViewController: UIViewController {
         datePicker.frame.size = CGSize(width: 0, height: 300)
         datePicker.preferredDatePickerStyle = .wheels
         dateTextField.inputView = datePicker
-        dateTextField.text = dataEdit?.date ?? currentDate.formatDateToString()
-        if let currentDateText = dateTextField.text,
-           let currentDate = currentDateText.toDate()
-        {
-            datePicker.date = currentDate
-        }
+        dateTextField.text = currentDate.formatDateToString()
     }
 
     @objc private func dateChange(datePicker: UIDatePicker) {
@@ -195,35 +169,12 @@ class AddUpdateTaskViewController: UIViewController {
             return
         }
 
-        let taskID = dataEdit?.id ?? ""
-        let newTask = TaskModel(id: taskID, title: title, description: description, important: isImportant, date: date, time: time, isGroup: isGroup)
-        submitTask(newTask: newTask)
+        let newTask = TaskModel(id: "", title: title, description: description, important: isImportant, date: date, time: time, isGroup: isGroup)
+        addTask(newTask: newTask)
     }
 
-    private func submitTask(newTask: TaskModel) {
+    private func addTask(newTask: TaskModel) {
         guard let delegate = delegate else { return }
-        if newTask.id.isEmpty {
-            addTask(newTask: newTask, delegate: delegate)
-        } else {
-            updateTask(newTask: newTask, delegate: delegate)
-        }
-    }
-
-    private func updateTask(newTask: TaskModel, delegate: AddTaskViewControllerDelegate) {
-        taskService.updateTask(task: newTask) { result in
-            switch result {
-            case .success:
-                delegate.didUpdateTask()
-                self.dismiss(animated: true)
-
-            case let .failure(error):
-                print(error)
-                self.showAlert(title: "Error", message: "Some thing is wrong: \(error)")
-            }
-        }
-    }
-
-    private func addTask(newTask: TaskModel, delegate: AddTaskViewControllerDelegate) {
         taskService.addTask(task: newTask) { result in
             switch result {
             case .success:
@@ -244,7 +195,7 @@ class AddUpdateTaskViewController: UIViewController {
     }
 }
 
-extension AddUpdateTaskViewController: UITextFieldDelegate, UITextViewDelegate {
+extension AddTaskViewController: UITextFieldDelegate, UITextViewDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
