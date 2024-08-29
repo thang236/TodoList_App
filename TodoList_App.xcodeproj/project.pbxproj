@@ -39,8 +39,8 @@
 		BF87F2AA2C7DB32B005B87C0 /* TaskServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF87F2A92C7DB32B005B87C0 /* TaskServiceImpl.swift */; };
 		BF87F2AC2C7DB7B4005B87C0 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF87F2AB2C7DB7B4005B87C0 /* UITableView+Extension.swift */; };
 		BF87F2AE2C7DC24E005B87C0 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF87F2AD2C7DC24E005B87C0 /* Date+Extension.swift */; };
-		BF87F2B32C7DD1A0005B87C0 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF87F2B12C7DD1A0005B87C0 /* AddTaskViewController.swift */; };
-		BF87F2B42C7DD1A0005B87C0 /* AddTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF87F2B22C7DD1A0005B87C0 /* AddTaskViewController.xib */; };
+		BF87F2B32C7DD1A0005B87C0 /* AddUpdateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF87F2B12C7DD1A0005B87C0 /* AddUpdateTaskViewController.swift */; };
+		BF87F2B42C7DD1A0005B87C0 /* AddUpdateTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF87F2B22C7DD1A0005B87C0 /* AddUpdateTaskViewController.xib */; };
 		BFA5B8F32C749B660085F632 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5B8F12C749B660085F632 /* RegisterViewController.swift */; };
 		BFA5B8F42C749B660085F632 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFA5B8F22C749B660085F632 /* RegisterViewController.xib */; };
 		BFC9ABBB2C6F367700DED4F7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9ABBA2C6F367700DED4F7 /* UIColor+Extension.swift */; };
@@ -109,8 +109,8 @@
 		BF87F2A92C7DB32B005B87C0 /* TaskServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskServiceImpl.swift; sourceTree = "<group>"; };
 		BF87F2AB2C7DB7B4005B87C0 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		BF87F2AD2C7DC24E005B87C0 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
-		BF87F2B12C7DD1A0005B87C0 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
-		BF87F2B22C7DD1A0005B87C0 /* AddTaskViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTaskViewController.xib; sourceTree = "<group>"; };
+		BF87F2B12C7DD1A0005B87C0 /* AddUpdateTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUpdateTaskViewController.swift; sourceTree = "<group>"; };
+		BF87F2B22C7DD1A0005B87C0 /* AddUpdateTaskViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddUpdateTaskViewController.xib; sourceTree = "<group>"; };
 		BFA5B8F12C749B660085F632 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		BFA5B8F22C749B660085F632 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		BFC9ABBA2C6F367700DED4F7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -265,6 +265,7 @@
 				BFA5B8F22C749B660085F632 /* RegisterViewController.xib */,
 				BFC9ABC32C6F61F300DED4F7 /* HomeViewController.xib */,
 				BF7FFDDD2C73384C00D0539F /* LoginViewController.xib */,
+				BF87F2B22C7DD1A0005B87C0 /* AddUpdateTaskViewController.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -297,8 +298,7 @@
 				BF5D1EDC2C68A1DB00D84AAA /* LoginViewController.swift */,
 				BFC9ABC22C6F61F300DED4F7 /* HomeViewController.swift */,
 				BFA5B8F12C749B660085F632 /* RegisterViewController.swift */,
-				BF87F2B12C7DD1A0005B87C0 /* AddTaskViewController.swift */,
-				BF87F2B22C7DD1A0005B87C0 /* AddTaskViewController.xib */,
+				BF87F2B12C7DD1A0005B87C0 /* AddUpdateTaskViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -448,7 +448,7 @@
 				BFA5B8F42C749B660085F632 /* RegisterViewController.xib in Resources */,
 				BF5D1EE52C68A1DD00D84AAA /* LaunchScreen.storyboard in Resources */,
 				BF5D1EE22C68A1DD00D84AAA /* Assets.xcassets in Resources */,
-				BF87F2B42C7DD1A0005B87C0 /* AddTaskViewController.xib in Resources */,
+				BF87F2B42C7DD1A0005B87C0 /* AddUpdateTaskViewController.xib in Resources */,
 				BFC9ABC52C6F61F300DED4F7 /* HomeViewController.xib in Resources */,
 				BF87F29A2C77A7E8005B87C0 /* TaskTableViewCell.xib in Resources */,
 			);
@@ -579,7 +579,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF87F2A82C7DB2F0005B87C0 /* TaskService.swift in Sources */,
-				BF87F2B32C7DD1A0005B87C0 /* AddTaskViewController.swift in Sources */,
+				BF87F2B32C7DD1A0005B87C0 /* AddUpdateTaskViewController.swift in Sources */,
 				BF5D1EDD2C68A1DB00D84AAA /* LoginViewController.swift in Sources */,
 				BF3CCD0D2C7479090082B7AB /* AuthServiceImpl.swift in Sources */,
 				BFC9ABC02C6F59DB00DED4F7 /* AccountModel.swift in Sources */,
