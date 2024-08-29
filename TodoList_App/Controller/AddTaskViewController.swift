@@ -108,8 +108,8 @@ class AddTaskViewController: UIViewController {
 
     func setupLayout() {
         cancelButton.applyOutletButton(cornerRadius: 16, borderWidth: 1, borderColor: UIColor(hex: "#456ADD"))
-        guard let dateImage = UIImage(named: "calender") else { return }
-        guard let timeImage = UIImage(named: "Time") else { return }
+        guard let dateImage = UIImage(named: "calender"),
+              let timeImage = UIImage(named: "Time") else { return }
         dateTextField.addIconToLeft(image: dateImage, padding: 10)
         timeTextField.addIconToLeft(image: timeImage, padding: 10)
     }
@@ -125,8 +125,8 @@ class AddTaskViewController: UIViewController {
     }
 
     func setImageImportant(isImportant: Bool) {
-        guard let check = UIImage(named: "check_done") else { return }
-        guard let unCheck = UIImage(named: "check") else { return }
+        guard let check = UIImage(named: "check_done"),
+              let unCheck = UIImage(named: "check") else { return }
         if isImportant {
             importantButton.setImage(check, for: .normal)
             notImportantButton.setImage(unCheck, for: .normal)
@@ -147,10 +147,10 @@ class AddTaskViewController: UIViewController {
     }
 
     func setColorCategory(category: Bool) {
-        guard let personFill = UIImage(systemName: "person.fill") else { return }
-        guard let person = UIImage(systemName: "person") else { return }
-        guard let groupFill = UIImage(systemName: "person.3.fill") else { return }
-        guard let group = UIImage(systemName: "person.3") else { return }
+        guard let personFill = UIImage(systemName: "person.fill"),
+              let person = UIImage(systemName: "person"),
+              let groupFill = UIImage(systemName: "person.3.fill"),
+              let group = UIImage(systemName: "person.3") else { return }
 
         if category {
             personButton.setImage(personFill, for: .normal)

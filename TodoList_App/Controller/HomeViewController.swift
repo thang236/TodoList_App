@@ -56,7 +56,6 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate {
         taskService.fetchTask(isImportant: important, dateSearch: date) { result in
             switch result {
             case let .success(data):
-                print(data)
                 self.tasks = data
                 self.taskTableView.reloadData()
             case let .failure(error):
