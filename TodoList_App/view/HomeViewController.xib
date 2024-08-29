@@ -109,6 +109,9 @@
                     <buttonConfiguration key="configuration" style="filled" imagePlacement="trailing" title="Add new task" imagePadding="10">
                         <imageReference key="image" image="plus" catalog="system" variableValue="1"/>
                     </buttonConfiguration>
+                    <connections>
+                        <action selector="didTapAddButton:" destination="-1" eventType="touchUpInside" id="jst-LW-pxc"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

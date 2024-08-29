@@ -11,4 +11,5 @@ import Foundation
 protocol TaskService {
     func fetchTask(isImportant: String, dateSearch: String, completion: @escaping (Result<[TaskModel], AFError>) -> Void)
     func deleteTask(id: String, completion: @escaping (Result<TaskModel, AFError>) -> Void)
+    func addTask(task: TaskModel, completion: @escaping (Result<TaskModel, AFError>) -> Void)
 }

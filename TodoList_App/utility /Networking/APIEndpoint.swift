@@ -12,6 +12,7 @@ enum APIEndpoint {
     case register
     case fetchTask(isImportant: String, dateSearch: String)
     case deleteTask(id: String)
+    case addTask
 
     var path: String {
         switch self {
@@ -23,6 +24,8 @@ enum APIEndpoint {
             return"/task?important=\(isImportant)&date=\(dateSearch)"
         case let .deleteTask(id):
             return "/task/\(id)"
+        case .addTask:
+            return "/task"
         }
     }
 
