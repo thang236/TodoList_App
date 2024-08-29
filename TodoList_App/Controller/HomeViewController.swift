@@ -9,15 +9,11 @@ import Alamofire
 import UIKit
 
 class HomeViewController: UIViewController, AddTaskViewControllerDelegate {
-    func didCreateTask(_: TaskModel) {
-        getTaskFromAPI()
-    }
-
-    @IBOutlet var dateCollectionView: UICollectionView!
-    @IBOutlet var importanceButton: UIButton!
-
-    @IBOutlet var taskTableView: UITableView!
-    @IBOutlet var allButton: UIButton!
+    @IBOutlet private var dateCollectionView: UICollectionView!
+    @IBOutlet private var importanceButton: UIButton!
+    @IBOutlet private var taskTableView: UITableView!
+    @IBOutlet private var allButton: UIButton!
+    
     private var centerItem = -1
     private let taskService: TaskService
     private var arrayDates = [String]()
@@ -39,13 +35,20 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate {
         let homeVC = HomeViewController(taskService: taskService)
         return homeVC
     }
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
-        generateDatesForCurrentYear()
+        generateDatesForCurrentMonth()
         setupTableView()
     }
+    
+    func didCreateTask(newTask: TaskModel) {
+        tasks.append(newTask)
+        taskTableView.reloadData()
+    }
+
 
     private func getTaskFromAPI() {
         let dateString = arrayDates[centerItem]
@@ -65,13 +68,13 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate {
         }
     }
 
-    func setupTableView() {
+    private func setupTableView() {
         taskTableView.delegate = self
         taskTableView.dataSource = self
         taskTableView.registerCell(cellType: TaskTableViewCell.self)
     }
 
-    func generateDatesForCurrentYear() {
+    private func generateDatesForCurrentMonth() {
         let calendar = Calendar.current
         let currentDay = calendar.component(.day, from: Date())
         centerItem = currentDay - 1
@@ -79,7 +82,7 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate {
         setupCollectionView()
     }
 
-    @IBAction func didTapAddButton(_: Any) {
+    @IBAction private func didTapAddButton(_: Any) {
         let addTaskVC = AddTaskViewController.create()
         addTaskVC.modalPresentationStyle = .custom
         addTaskVC.transitioningDelegate = self
@@ -87,7 +90,7 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate {
         present(addTaskVC, animated: true, completion: nil)
     }
 
-    func setupCollectionView() {
+    private func setupCollectionView() {
         dateCollectionView.delegate = self
         dateCollectionView.dataSource = self
         dateCollectionView.registerCell(cellType: DateCollectionViewCell.self, nibName: "DateCollectionViewCell")
@@ -100,9 +103,8 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate {
         centerCurrentItem()
     }
 
-    func setupNavigation() {
+    private func setupNavigation() {
         navigationItem.hidesBackButton = true
-
         let magnifyingGlassButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(searchButtonTapped))
         magnifyingGlassButton.tintColor = .white
 
@@ -115,9 +117,7 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate {
         let leftButton = UIBarButtonItem(image: UIImage(named: "dashboard"), style: .plain, target: self, action: #selector(searchButtonTapped))
         leftButton.tintColor = .white
         navigationItem.leftBarButtonItem = leftButton
-
         let image = UIImage(named: "checked")
-
         let imageView = UIImageView(image: image)
         let titleLabel = UILabel()
         titleLabel.text = "To-do"
@@ -130,17 +130,17 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate {
         navigationItem.titleView = stackView
     }
 
-    @IBAction func didTapImportanceButton(_: Any) {
+    @IBAction private func didTapImportanceButton(_: Any) {
         isImportant = true
         toggleUnderLine(for: importanceButton, otherButton: allButton)
     }
 
-    @IBAction func didTapAllButton(_: Any) {
+    @IBAction private func didTapAllButton(_: Any) {
         isImportant = false
         toggleUnderLine(for: allButton, otherButton: importanceButton)
     }
 
-    func toggleUnderLine(for button: UIButton, otherButton: UIButton) {
+    private func toggleUnderLine(for button: UIButton, otherButton: UIButton) {
         getTaskFromAPI()
         updateButtonTitle(button: button, isUnderlined: true)
         updateButtonTitle(button: otherButton, isUnderlined: false)
@@ -152,14 +152,13 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate {
             case .success:
                 self.tasks.removeAll { $0.id == id }
                 self.taskTableView.reloadData()
-
             case let .failure(error):
                 print("delete error ay \(error)")
             }
         }
     }
 
-    func updateButtonTitle(button: UIButton, isUnderlined: Bool) {
+    private func updateButtonTitle(button: UIButton, isUnderlined: Bool) {
         guard let title = button.titleLabel?.text else {
             return
         }
@@ -171,10 +170,9 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate {
     }
 
     @objc func searchButtonTapped() {
-        print(generateDatesForCurrentYear())
     }
 
-    func centerCurrentItem() {
+    private func centerCurrentItem() {
         let centerIndex = IndexPath(item: centerItem, section: 0)
         dateCollectionView.scrollToItem(at: centerIndex, at: .centeredHorizontally, animated: false)
 
@@ -232,7 +230,7 @@ extension HomeViewController: UIScrollViewDelegate {
             if let cell = dateCollectionView.cellForItem(at: indexPath) as? DateCollectionViewCell {
                 let positionDifference = abs(indexPath.row - centerIndexPath.row)
                 let maxAlpha: CGFloat = 1.0
-                let minAlpha: CGFloat = 0.0 // Mức giảm mạnh hơn
+                let minAlpha: CGFloat = 0.0
                 let alpha = max(maxAlpha - CGFloat(positionDifference) * 0.3, minAlpha)
 
                 if indexPath == centerIndexPath {
@@ -288,8 +286,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         let deleteImage = UIImage(systemName: "trash.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal)
         let redCircle = createCircleWithIcon(icon: deleteImage, circleColor: .red, diameter: 30)
         deleteAction.image = redCircle
-        //        deleteAction.backgroundColor = UIColor.init(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.0)
-        deleteAction.backgroundColor = .white
+        deleteAction.backgroundColor = UIColor.init(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.0)
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
         return configuration
     }
@@ -297,7 +294,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func createCircleWithIcon(icon: UIImage?, circleColor: UIColor, diameter: CGFloat) -> UIImage? {
         let size = CGSize(width: diameter, height: diameter)
         UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
-
         guard let context = UIGraphicsGetCurrentContext(), let icon = icon else { return nil }
 
         context.setFillColor(circleColor.cgColor)
@@ -311,7 +307,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         )
 
         icon.draw(in: iconRect)
-
         let circleWithIcon = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
 
