@@ -15,49 +15,22 @@
   ],
   "task": [
     {
-      "id": "sah21",
-      "title": "title00",
-      "description": "description1",
       "important": true,
-      "date": "27-08-2024",
-      "time": "12:00",
-      "isGroup": false
+      "date": "30-08-2024",
+      "isGroup": true,
+      "time": "04:33",
+      "description": "123",
+      "title": "1234444",
+      "id": "145b"
     },
     {
-      "id": "6820",
-      "time": "12",
       "description": "123",
       "important": false,
-      "title": "123",
+      "time": "17:35",
       "date": "30-08-2024",
-      "isGroup": true
-    },
-    {
-      "id": "c9e5",
-      "time": "05:45",
-      "isGroup": true,
-      "title": "thang",
-      "description": "Thang",
-      "date": "26-08-2024",
-      "important": false
-    },
-    {
-      "id": "22b4",
-      "time": "05:46",
-      "important": true,
       "isGroup": false,
-      "date": "28-08-2024",
-      "title": "1",
-      "description": "1"
-    },
-    {
-      "id": "e601",
-      "description": "12",
-      "isGroup": true,
-      "date": "28-08-2024",
-      "time": "05:51",
-      "important": false,
-      "title": "12"
+      "title": "clean",
+      "id": "8871"
     }
   ]
 }

@@ -24,4 +24,16 @@ extension String {
         }
         return nil
     }
+
+    func toDate(format: String = "dd-MM-yyyy") -> Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.date(from: self)
+    }
+
+    func toTime(format: String = "HH:mm") -> Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.date(from: self)
+    }
 }

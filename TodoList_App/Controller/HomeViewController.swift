@@ -8,12 +8,12 @@
 import Alamofire
 import UIKit
 
-class HomeViewController: UIViewController, AddTaskViewControllerDelegate {
+class HomeViewController: UIViewController, AddTaskViewControllerDelegate, TaskTableViewCellDelegate, UpdateTaskViewControllerDelegate {
     @IBOutlet private var dateCollectionView: UICollectionView!
     @IBOutlet private var importanceButton: UIButton!
     @IBOutlet private var taskTableView: UITableView!
     @IBOutlet private var allButton: UIButton!
-    
+
     private var centerItem = -1
     private let taskService: TaskService
     private var arrayDates = [String]()
@@ -35,7 +35,6 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate {
         let homeVC = HomeViewController(taskService: taskService)
         return homeVC
     }
-   
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,12 +42,25 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate {
         generateDatesForCurrentMonth()
         setupTableView()
     }
-    
-    func didCreateTask(newTask: TaskModel) {
-        tasks.append(newTask)
-        taskTableView.reloadData()
+
+    func didCreateTask() {
+        getTaskFromAPI()
     }
 
+    func didUpdateTask() {
+        getTaskFromAPI()
+    }
+
+    func didEditTask(cell: TaskTableViewCell) {
+        if let indexPath = taskTableView.indexPath(for: cell) {
+            print("Button in row \(tasks[indexPath.section]) was tapped")
+            let updateTaskVC = UpdateTaskViewController.create(taskEdit: tasks[indexPath.section])
+            updateTaskVC.modalPresentationStyle = .custom
+            updateTaskVC.transitioningDelegate = self
+            updateTaskVC.delegate = self
+            present(updateTaskVC, animated: true, completion: nil)
+        }
+    }
 
     private func getTaskFromAPI() {
         let dateString = arrayDates[centerItem]
@@ -169,8 +181,7 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate {
         button.setAttributedTitle(attributedTitle, for: .normal)
     }
 
-    @objc func searchButtonTapped() {
-    }
+    @objc func searchButtonTapped() {}
 
     private func centerCurrentItem() {
         let centerIndex = IndexPath(item: centerItem, section: 0)
@@ -256,6 +267,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.configure(cellType: TaskTableViewCell.self, at: indexPath, with: tasks[indexPath.section])
+        cell.taskDelegate = self
         return cell
     }
 
@@ -286,7 +298,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         let deleteImage = UIImage(systemName: "trash.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal)
         let redCircle = createCircleWithIcon(icon: deleteImage, circleColor: .red, diameter: 30)
         deleteAction.image = redCircle
-        deleteAction.backgroundColor = UIColor.init(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.0)
+        deleteAction.backgroundColor = UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 0 / 255.0, alpha: 0.0)
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
         return configuration
     }

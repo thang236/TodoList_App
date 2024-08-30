@@ -13,6 +13,7 @@ enum APIEndpoint {
     case fetchTask(isImportant: String, dateSearch: String)
     case deleteTask(id: String)
     case addTask
+    case updateTask(id: String)
 
     var path: String {
         switch self {
@@ -26,6 +27,8 @@ enum APIEndpoint {
             return "/task/\(id)"
         case .addTask:
             return "/task"
+        case let .updateTask(id):
+            return "/task/\(id)"
         }
     }
 

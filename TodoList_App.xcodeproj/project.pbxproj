@@ -29,6 +29,8 @@
 		BF5D1EF02C68A1DD00D84AAA /* TodoList_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D1EEF2C68A1DD00D84AAA /* TodoList_AppTests.swift */; };
 		BF5D1EFA2C68A1DD00D84AAA /* TodoList_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D1EF92C68A1DD00D84AAA /* TodoList_AppUITests.swift */; };
 		BF5D1EFC2C68A1DD00D84AAA /* TodoList_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D1EFB2C68A1DD00D84AAA /* TodoList_AppUITestsLaunchTests.swift */; };
+		BF5DA6952C80C12500056FE5 /* UpdateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5DA6932C80C12500056FE5 /* UpdateTaskViewController.swift */; };
+		BF5DA6962C80C12500056FE5 /* UpdateTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF5DA6942C80C12500056FE5 /* UpdateTaskViewController.xib */; };
 		BF7FFDDE2C73384C00D0539F /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF7FFDDD2C73384C00D0539F /* LoginViewController.xib */; };
 		BF87F2992C77A7E8005B87C0 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF87F2972C77A7E8005B87C0 /* TaskTableViewCell.swift */; };
 		BF87F29A2C77A7E8005B87C0 /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF87F2982C77A7E8005B87C0 /* TaskTableViewCell.xib */; };
@@ -99,6 +101,8 @@
 		BF5D1EF52C68A1DD00D84AAA /* TodoList_AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoList_AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5D1EF92C68A1DD00D84AAA /* TodoList_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoList_AppUITests.swift; sourceTree = "<group>"; };
 		BF5D1EFB2C68A1DD00D84AAA /* TodoList_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoList_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BF5DA6932C80C12500056FE5 /* UpdateTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTaskViewController.swift; sourceTree = "<group>"; };
+		BF5DA6942C80C12500056FE5 /* UpdateTaskViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateTaskViewController.xib; sourceTree = "<group>"; };
 		BF7FFDDD2C73384C00D0539F /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		BF87F2972C77A7E8005B87C0 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		BF87F2982C77A7E8005B87C0 /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
@@ -261,10 +265,12 @@
 		BFC9ABB82C6F337200DED4F7 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				BF5DA6942C80C12500056FE5 /* UpdateTaskViewController.xib */,
 				BFCCC9782C77146700BF84D0 /* Cell */,
 				BFA5B8F22C749B660085F632 /* RegisterViewController.xib */,
 				BFC9ABC32C6F61F300DED4F7 /* HomeViewController.xib */,
 				BF7FFDDD2C73384C00D0539F /* LoginViewController.xib */,
+				BF87F2B22C7DD1A0005B87C0 /* AddTaskViewController.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -298,7 +304,7 @@
 				BFC9ABC22C6F61F300DED4F7 /* HomeViewController.swift */,
 				BFA5B8F12C749B660085F632 /* RegisterViewController.swift */,
 				BF87F2B12C7DD1A0005B87C0 /* AddTaskViewController.swift */,
-				BF87F2B22C7DD1A0005B87C0 /* AddTaskViewController.xib */,
+				BF5DA6932C80C12500056FE5 /* UpdateTaskViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -445,6 +451,7 @@
 			files = (
 				BF2242882C7716EA004E95D8 /* DateCollectionViewCell.xib in Resources */,
 				BF7FFDDE2C73384C00D0539F /* LoginViewController.xib in Resources */,
+				BF5DA6962C80C12500056FE5 /* UpdateTaskViewController.xib in Resources */,
 				BFA5B8F42C749B660085F632 /* RegisterViewController.xib in Resources */,
 				BF5D1EE52C68A1DD00D84AAA /* LaunchScreen.storyboard in Resources */,
 				BF5D1EE22C68A1DD00D84AAA /* Assets.xcassets in Resources */,
@@ -588,6 +595,7 @@
 				BF87F2AE2C7DC24E005B87C0 /* Date+Extension.swift in Sources */,
 				BF5D1ED92C68A1DB00D84AAA /* AppDelegate.swift in Sources */,
 				BF87F2AA2C7DB32B005B87C0 /* TaskServiceImpl.swift in Sources */,
+				BF5DA6952C80C12500056FE5 /* UpdateTaskViewController.swift in Sources */,
 				BF87F29E2C78665D005B87C0 /* TaskResponse.swift in Sources */,
 				BF3CCD012C7351370082B7AB /* NetworkManager.swift in Sources */,
 				BF22428A2C771C57004E95D8 /* UICollectionView+Extension.swift in Sources */,

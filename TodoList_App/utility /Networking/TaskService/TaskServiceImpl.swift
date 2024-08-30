@@ -22,6 +22,21 @@ class TaskServiceImpl: TaskService {
         networkManager.request(endpoint: APIEndpoint.fetchTask(isImportant: isImportant, dateSearch: dateSearch), completion: completion)
     }
 
+    func updateTask(task: TaskModel, completion: @escaping (Result<TaskModel, Alamofire.AFError>) -> Void) {
+        let parameters: Parameters = [
+            "title": task.title,
+            "description": task.description,
+            "important": task.important,
+            "date": task.date,
+            "time": task.time,
+            "isGroup": task.isGroup,
+        ]
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+        ]
+        networkManager.request(endpoint: APIEndpoint.updateTask(id: task.id), method: .put, parameters: parameters, headers: headers, completion: completion)
+    }
+
     func addTask(task: TaskModel, completion: @escaping (Result<TaskModel, Alamofire.AFError>) -> Void) {
         let parameters: Parameters = [
             "title": task.title,

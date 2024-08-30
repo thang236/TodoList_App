@@ -7,7 +7,12 @@
 
 import UIKit
 
+protocol TaskTableViewCellDelegate {
+    func didEditTask(cell: TaskTableViewCell)
+}
+
 class TaskTableViewCell: UITableViewCell {
+    var taskDelegate: TaskTableViewCellDelegate?
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var dateLabel: UILabel!
     @IBOutlet private var timeLabel: UILabel!
@@ -38,5 +43,12 @@ class TaskTableViewCell: UITableViewCell {
         } else {
             importantImage.isHidden = true
         }
+    }
+
+    @IBAction func didTapEditButton(_: Any) {
+        guard let delegate = taskDelegate else {
+            return
+        }
+        delegate.didEditTask(cell: self)
     }
 }

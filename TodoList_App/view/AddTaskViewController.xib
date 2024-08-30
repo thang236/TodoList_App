@@ -17,6 +17,7 @@
                 <outlet property="dateTextField" destination="9Ra-qm-OcW" id="ete-wj-WBt"/>
                 <outlet property="descriptionTextField" destination="UVE-LF-wbk" id="X8p-wX-eGs"/>
                 <outlet property="groupButton" destination="K2G-yf-pQM" id="RDZ-4p-D2h"/>
+                <outlet property="headerLabel" destination="EpH-1q-Z55" id="wEg-Ky-hOL"/>
                 <outlet property="importantButton" destination="6wO-4b-7wr" id="hdn-e6-reo"/>
                 <outlet property="nameTaskTextField" destination="aMY-My-7uH" id="P7e-fh-VwO"/>
                 <outlet property="notImportantButton" destination="TkL-G0-gp2" id="9c8-qR-aKW"/>
@@ -170,6 +171,7 @@
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVE-LF-wbk">
                             <rect key="frame" x="0.0" y="28.333333333333307" width="353" height="117.33333333333331"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                     </subviews>
