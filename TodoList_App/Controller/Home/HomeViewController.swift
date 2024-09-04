@@ -140,6 +140,9 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate, TaskT
         stackView.spacing = 8
         stackView.alignment = .center
         navigationItem.titleView = stackView
+
+        leftButton.target = revealViewController()
+        leftButton.action = #selector(revealViewController()?.revealSideMenu)
     }
 
     @IBAction private func didTapImportanceButton(_: Any) {
@@ -266,8 +269,11 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.configure(cellType: TaskTableViewCell.self, at: indexPath, with: tasks[indexPath.section])
-        cell.taskDelegate = self
+
+        let cell = tableView.configure(cellType: TaskTableViewCell.self, at: indexPath, with: tasks[indexPath.section]){ cell in
+            cell.taskDelegate = self
+            cell.setupTableView(task: tasks[indexPath.section])
+        }
         return cell
     }
 

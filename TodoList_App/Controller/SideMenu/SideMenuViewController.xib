@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SideMenuViewController" customModule="TodoList_App" customModuleProvider="target">
+            <connections>
+                <outlet property="avatarImageView" destination="kOW-IP-YFy" id="qNd-Jt-Z7Q"/>
+                <outlet property="emailLabel" destination="mGw-Um-VdG" id="Fig-cV-Dwv"/>
+                <outlet property="headerTitleLabel" destination="dfb-mC-AYY" id="5K3-AY-VTk"/>
+                <outlet property="sideMenuTableView" destination="GpZ-Pt-ubQ" id="m1A-W3-ZL7"/>
+                <outlet property="view" destination="C7L-yi-73k" id="Bis-Su-hko"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="C7L-yi-73k">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xsv-rc-px1">
+                    <rect key="frame" x="20.000000000000004" y="59" width="46.333333333333343" height="46.333333333333343"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="xsv-rc-px1" secondAttribute="height" multiplier="1:1" id="evG-7E-QzW"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
+                    <connections>
+                        <action selector="didTapCloseButton:" destination="-1" eventType="touchUpInside" id="PDw-GB-o2F"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello Thăng Hoàng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfb-mC-AYY">
+                    <rect key="frame" x="20" y="125.33333333333331" width="172" height="23"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GpZ-Pt-ubQ">
+                    <rect key="frame" x="0.0" y="285" width="393" height="533"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avt" translatesAutoresizingMaskIntoConstraints="NO" id="kOW-IP-YFy">
+                    <rect key="frame" x="20" y="169" width="86" height="86"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="kOW-IP-YFy" secondAttribute="height" multiplier="1:1" id="c8W-b2-c6b"/>
+                    </constraints>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="top" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="IOy-cP-C2A">
+                    <rect key="frame" x="114.00000000000001" y="173.33333333333334" width="137.33333333333337" height="77.333333333333343"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="thang@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGw-Um-VdG">
+                            <rect key="frame" x="0.0" y="0.0" width="137.33333333333334" height="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYZ-l5-7Oh">
+                            <rect key="frame" x="0.0" y="43" width="106" height="34.333333333333343"/>
+                            <color key="tintColor" red="0.47450977560000002" green="0.55686277149999996" blue="0.87450981139999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="filled" title="Edit Profile"/>
+                            <connections>
+                                <action selector="didTapEditProfileButton:" destination="-1" eventType="touchUpInside" id="seX-BF-xX4"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="RKE-v0-maX"/>
+            <color key="backgroundColor" red="0.30196079609999998" green="0.41176474089999998" blue="0.8392156959" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstItem="kOW-IP-YFy" firstAttribute="height" secondItem="C7L-yi-73k" secondAttribute="height" multiplier="94:932" id="Ame-yn-VkW"/>
+                <constraint firstItem="IOy-cP-C2A" firstAttribute="leading" secondItem="kOW-IP-YFy" secondAttribute="trailing" constant="8" symbolic="YES" id="Es0-HW-niM"/>
+                <constraint firstItem="xsv-rc-px1" firstAttribute="leading" secondItem="RKE-v0-maX" secondAttribute="leading" constant="20" id="F3x-9r-UAV"/>
+                <constraint firstItem="IOy-cP-C2A" firstAttribute="centerY" secondItem="kOW-IP-YFy" secondAttribute="centerY" id="FdF-cw-1jj"/>
+                <constraint firstItem="kOW-IP-YFy" firstAttribute="top" secondItem="dfb-mC-AYY" secondAttribute="bottom" constant="20.666666666666657" id="I0M-jg-6Rp"/>
+                <constraint firstItem="kOW-IP-YFy" firstAttribute="leading" secondItem="xsv-rc-px1" secondAttribute="leading" id="JlH-H0-uxS"/>
+                <constraint firstItem="RKE-v0-maX" firstAttribute="trailing" secondItem="GpZ-Pt-ubQ" secondAttribute="trailing" id="LbK-Ib-ylI"/>
+                <constraint firstItem="dfb-mC-AYY" firstAttribute="top" secondItem="xsv-rc-px1" secondAttribute="bottom" constant="20" id="SQG-5z-hwa"/>
+                <constraint firstItem="GpZ-Pt-ubQ" firstAttribute="top" secondItem="kOW-IP-YFy" secondAttribute="bottom" constant="30" id="fBi-8R-WzW"/>
+                <constraint firstItem="xsv-rc-px1" firstAttribute="top" secondItem="RKE-v0-maX" secondAttribute="top" id="gUq-il-QMS"/>
+                <constraint firstItem="IOy-cP-C2A" firstAttribute="height" secondItem="kOW-IP-YFy" secondAttribute="height" multiplier="0.9" id="jKL-fn-jxD"/>
+                <constraint firstItem="dfb-mC-AYY" firstAttribute="leading" secondItem="xsv-rc-px1" secondAttribute="leading" id="pPF-Id-Upj"/>
+                <constraint firstItem="RKE-v0-maX" firstAttribute="bottom" secondItem="GpZ-Pt-ubQ" secondAttribute="bottom" id="qju-9F-2yM"/>
+                <constraint firstItem="GpZ-Pt-ubQ" firstAttribute="leading" secondItem="RKE-v0-maX" secondAttribute="leading" id="r9y-mi-7fq"/>
+            </constraints>
+            <point key="canvasLocation" x="113.74045801526717" y="-11.267605633802818"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="avt" width="40" height="40"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
