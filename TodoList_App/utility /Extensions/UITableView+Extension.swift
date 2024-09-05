@@ -15,16 +15,13 @@ extension UITableView {
         register(nib, forCellReuseIdentifier: identifier)
     }
 
-    func configure<T: UITableViewCell>(cellType: T.Type, at indexPath: IndexPath, with item: Any) -> T {
+    func configure<T: UITableViewCell>(cellType: T.Type, at indexPath: IndexPath, with _: Any, configure: (T) -> Void) -> T {
         let identifier = String(describing: cellType)
         guard let cell = dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? T else {
+            print("Error: Cell with identifier \(identifier) could not be dequeued.")
             return UITableViewCell() as! T
         }
-
-        if let taskCell = cell as? TaskTableViewCell, let data = item as? TaskModel {
-            taskCell.setupTableView(task: data)
-        }
-
+        configure(cell)
         return cell
     }
 }

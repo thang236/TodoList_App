@@ -103,8 +103,10 @@ class LoginViewController: UIViewController {
             switch result {
             case let .success(accounts):
                 if accounts.first(where: { $0.password == password }) != nil {
-                    let vc = HomeViewController.create()
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    let mainVC = MainViewController(account: accounts[0])
+                    self.usernameTextField.text = ""
+                    self.passwordTextField.text = ""
+                    self.navigationController?.pushViewController(mainVC, animated: true)
                 } else {
                     self.showAlert(title: "Alert", message: "Username or password wrong")
                 }
