@@ -11,4 +11,5 @@ import Foundation
 protocol AuthService {
     func login(username: String, completion: @escaping (Result<[AccountModel], AFError>) -> Void)
     func register(account: AccountModel, completion: @escaping (Result<AccountModel, AFError>) -> Void)
+    func editProfile(account: AccountModel, completion: @escaping (Result<AccountModel, AFError>) -> Void)
 }

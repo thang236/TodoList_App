@@ -4,12 +4,16 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditProfileViewController" customModule="TodoList_App" customModuleProvider="target">
             <connections>
+                <outlet property="emailTextField" destination="uqJ-Y5-vhh" id="NRN-hV-OG7"/>
+                <outlet property="nameTextField" destination="x5E-hL-CHq" id="9pd-gh-6zD"/>
+                <outlet property="urlTextField" destination="rqi-yj-Za7" id="Ges-hH-fmk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,15 +29,88 @@
                         <constraint firstAttribute="height" constant="1" id="mgy-2R-A0B"/>
                     </constraints>
                 </view>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qsf-Pa-uTh">
+                    <rect key="frame" x="20" y="295" width="353" height="74"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nss-nW-Uok">
+                            <rect key="frame" x="0.0" y="0.0" width="353" height="20.333333333333332"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uqJ-Y5-vhh">
+                            <rect key="frame" x="0.0" y="28.333333333333311" width="353" height="45.666666666666657"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="uqJ-Y5-vhh" firstAttribute="leading" secondItem="qsf-Pa-uTh" secondAttribute="leading" id="7NS-AT-Adc"/>
+                        <constraint firstAttribute="trailing" secondItem="uqJ-Y5-vhh" secondAttribute="trailing" id="EEO-l4-IJT"/>
+                    </constraints>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Wtg-td-HO4">
+                    <rect key="frame" x="20" y="389" width="353" height="74"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3o-qW-1lx">
+                            <rect key="frame" x="0.0" y="0.0" width="353" height="20.333333333333332"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x5E-hL-CHq">
+                            <rect key="frame" x="0.0" y="28.333333333333311" width="353" height="45.666666666666657"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="x5E-hL-CHq" secondAttribute="trailing" id="Fsd-Wr-cC7"/>
+                        <constraint firstItem="x5E-hL-CHq" firstAttribute="leading" secondItem="Wtg-td-HO4" secondAttribute="leading" id="LPz-s0-WhM"/>
+                    </constraints>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tbJ-v7-TEP">
+                    <rect key="frame" x="20" y="483" width="353" height="74"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URL Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2W-Px-Tho">
+                            <rect key="frame" x="0.0" y="0.0" width="353" height="20.333333333333332"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your url image" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rqi-yj-Za7">
+                            <rect key="frame" x="0.0" y="28.333333333333311" width="353" height="45.666666666666657"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="rqi-yj-Za7" secondAttribute="trailing" id="af8-3v-7TG"/>
+                        <constraint firstItem="rqi-yj-Za7" firstAttribute="leading" secondItem="tbJ-v7-TEP" secondAttribute="leading" id="fZs-c4-aaI"/>
+                    </constraints>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.050980389119999997" green="0.13725490870000001" blue="0.46666666870000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
+                <constraint firstItem="qsf-Pa-uTh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="4F4-cU-cST"/>
+                <constraint firstItem="tbJ-v7-TEP" firstAttribute="top" secondItem="Wtg-td-HO4" secondAttribute="bottom" constant="20" id="5DG-kW-Z8W"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xzk-rY-GJE" secondAttribute="trailing" id="705-jQ-QnN"/>
+                <constraint firstItem="rqi-yj-Za7" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="50:932" id="83C-at-eh2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qsf-Pa-uTh" secondAttribute="trailing" constant="20" id="9C1-SG-bj2"/>
+                <constraint firstItem="Wtg-td-HO4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="BDa-XR-8CW"/>
                 <constraint firstItem="xzk-rY-GJE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Hvp-LH-QLW"/>
+                <constraint firstItem="Wtg-td-HO4" firstAttribute="trailing" secondItem="qsf-Pa-uTh" secondAttribute="trailing" id="KhE-dP-vUz"/>
+                <constraint firstItem="tbJ-v7-TEP" firstAttribute="trailing" secondItem="Wtg-td-HO4" secondAttribute="trailing" id="LbQ-5y-yqv"/>
+                <constraint firstItem="x5E-hL-CHq" firstAttribute="height" secondItem="uqJ-Y5-vhh" secondAttribute="height" id="Rze-L1-NQw"/>
+                <constraint firstItem="Wtg-td-HO4" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="WNu-XJ-v71"/>
+                <constraint firstItem="tbJ-v7-TEP" firstAttribute="leading" secondItem="Wtg-td-HO4" secondAttribute="leading" id="fnx-8B-LiR"/>
                 <constraint firstItem="xzk-rY-GJE" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="ihn-4k-L4r"/>
+                <constraint firstItem="Wtg-td-HO4" firstAttribute="leading" secondItem="qsf-Pa-uTh" secondAttribute="leading" id="jJJ-bk-7Mr"/>
+                <constraint firstItem="rqi-yj-Za7" firstAttribute="height" secondItem="x5E-hL-CHq" secondAttribute="height" id="nsV-ou-Cq5"/>
+                <constraint firstItem="Wtg-td-HO4" firstAttribute="top" secondItem="qsf-Pa-uTh" secondAttribute="bottom" constant="20" id="wp5-kk-MM2"/>
             </constraints>
-            <point key="canvasLocation" x="98" y="20"/>
+            <point key="canvasLocation" x="96.946564885496173" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>

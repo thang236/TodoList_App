@@ -5,6 +5,7 @@
 //  Created by Louis Macbook on 04/09/2024.
 //
 
+import Kingfisher
 import UIKit
 
 protocol SideMenuViewControllerDelegate {
@@ -19,7 +20,7 @@ class SideMenuViewController: UIViewController {
     @IBOutlet private var headerTitleLabel: UILabel!
     @IBOutlet private var avatarImageView: UIImageView!
     @IBOutlet private var sideMenuTableView: UITableView!
-    
+
     var account: AccountModel
     init(account: AccountModel) {
         self.account = account
@@ -38,7 +39,6 @@ class SideMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMenu()
-        print(account)
 
         // TableView
         sideMenuTableView.delegate = self
@@ -52,14 +52,14 @@ class SideMenuViewController: UIViewController {
 
         sideMenuTableView.registerCell(cellType: SideTableViewCell.self)
     }
-    
-    @IBAction func didTapLogoutButton(_ sender: Any) {
+
+    @IBAction func didTapLogoutButton(_: Any) {
         guard let delegate = delegate else {
             return
         }
         delegate.logout()
     }
-    
+
     @IBAction func didTapCloseButton(_: Any) {
         guard let delegate = delegate else {
             return
@@ -77,6 +77,11 @@ class SideMenuViewController: UIViewController {
     func setupMenu() {
         headerTitleLabel.text = "Hello \(account.name)"
         emailLabel.text = account.username
+        if account.image != "" {
+            let url = URL(string: account.image)
+            avatarImageView.kf.setImage(with: url)
+        }
+        avatarImageView.layer.cornerRadius = 14
         guard let house = UIImage(systemName: "house"),
               let gear = UIImage(systemName: "gear"),
               let moon = UIImage(systemName: "moon")
@@ -115,5 +120,13 @@ extension SideMenuViewController: UITableViewDataSource {
 extension SideMenuViewController: UITableViewDelegate {
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         return 44
+    }
+}
+
+extension SideMenuViewController: EditProfileViewControllerDelegate {
+    func onClickSubmit(accountNew: AccountModel) {
+        account = accountNew
+        print("setuptomenu")
+        setupMenu()
     }
 }

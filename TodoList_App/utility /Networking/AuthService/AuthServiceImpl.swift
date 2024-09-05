@@ -9,11 +9,25 @@ import Alamofire
 import Foundation
 
 class AuthServiceImpl: AuthService {
+    func editProfile(account: AccountModel, completion: @escaping (Result<AccountModel, Alamofire.AFError>) -> Void) {
+        let parameters: Parameters = [
+            "username": account.username,
+            "password": account.password,
+            "name": account.name,
+            "image": account.image,
+        ]
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+        ]
+        networkManager.request(endpoint: APIEndpoint.editProfile(id: account.id), method: .put, parameters: parameters, headers: headers, completion: completion)
+    }
+
     func register(account: AccountModel, completion: @escaping (Result<AccountModel, Alamofire.AFError>) -> Void) {
         let parameters: Parameters = [
             "username": account.username,
             "password": account.password,
             "name": "default",
+            "image": "",
         ]
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
