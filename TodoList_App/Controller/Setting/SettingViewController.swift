@@ -8,12 +8,11 @@
 import UIKit
 
 class SettingViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupNavigation()
-    
+
         // Do any additional setup after loading the view.
     }
 
@@ -45,12 +44,7 @@ class SettingViewController: UIViewController {
 
         leftButton.target = revealViewController()
         leftButton.action = #selector(revealViewController()?.revealSideMenu)
-        
     }
-    
-    @objc func searchButtonTapped() {
-        
-    }
-    
 
+    @objc func searchButtonTapped() {}
 }

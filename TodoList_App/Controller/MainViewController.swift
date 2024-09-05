@@ -8,7 +8,6 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    
     private var sideMenuViewController: SideMenuViewController!
     private var sideMenuRevealWidth: CGFloat = 270
     private let paddingForRotation: CGFloat = 150
@@ -19,25 +18,35 @@ class MainViewController: UIViewController {
     private var revealSideMenuOnTop: Bool = true
 
     private var sideMenuShadowView: UIView!
-    private var account : AccountModel
-    
+    private var account: AccountModel
+
     init(account: AccountModel) {
         self.account = account
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init\(coder) has not been implemented")
     }
 
     @IBAction open func revealSideMenu() {
-        sideMenuState(expanded: isExpanded ? false : true)
+        toggleSideMenu(expanded: isExpanded ? false : true)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        setupNavigationBar()
+        setupSideMenuShadowView()
+        setupSideMenu()
+        setupInitialViewController()
+    }
+
+    private func setupNavigationBar() {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+
+    private func setupSideMenuShadowView() {
         sideMenuShadowView = UIView(frame: view.bounds)
         sideMenuShadowView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         sideMenuShadowView.backgroundColor = .black
@@ -45,13 +54,19 @@ class MainViewController: UIViewController {
         if revealSideMenuOnTop {
             view.insertSubview(sideMenuShadowView, at: 1)
         }
+    }
 
+    private func setupSideMenu() {
         sideMenuViewController = SideMenuViewController(account: account)
         sideMenuViewController.delegate = self
         view.insertSubview(sideMenuViewController!.view, at: revealSideMenuOnTop ? 2 : 0)
         addChild(sideMenuViewController!)
         sideMenuViewController!.didMove(toParent: self)
 
+        setupSideMenuConstraints()
+    }
+
+    private func setupSideMenuConstraints() {
         sideMenuViewController.view.translatesAutoresizingMaskIntoConstraints = false
 
         if revealSideMenuOnTop {
@@ -63,38 +78,35 @@ class MainViewController: UIViewController {
             sideMenuViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             sideMenuViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
         ])
+    }
 
-        let homeVc = HomeViewController.create()
-        let nav = UINavigationController(rootViewController: homeVc)
+    private func setupInitialViewController() {
+        let homeVC = HomeViewController.create()
+        let nav = UINavigationController(rootViewController: homeVC)
         showViewController(viewController: nav)
-
     }
 
     func showViewController(viewController: UIViewController) {
-        // Remove the previous View
         for subview in view.subviews {
             if subview.tag == 99 {
                 subview.removeFromSuperview()
             }
         }
-
         viewController.view.tag = 99
-        view.insertSubview(viewController.view, at: self.revealSideMenuOnTop ? 0 : 1)
+        view.insertSubview(viewController.view, at: revealSideMenuOnTop ? 0 : 1)
         addChild(viewController)
-
-        if !self.revealSideMenuOnTop {
+        if !revealSideMenuOnTop {
             if isExpanded {
-                viewController.view.frame.origin.x = self.sideMenuRevealWidth
+                viewController.view.frame.origin.x = sideMenuRevealWidth
             }
-            if self.sideMenuShadowView != nil {
-                viewController.view.addSubview(self.sideMenuShadowView)
+            if sideMenuShadowView != nil {
+                viewController.view.addSubview(sideMenuShadowView)
             }
         }
-
         viewController.didMove(toParent: self)
     }
 
-    func sideMenuState(expanded: Bool) {
+    func toggleSideMenu(expanded: Bool) {
         if expanded {
             animateSideMenu(targetPosition: revealSideMenuOnTop ? 0 : sideMenuRevealWidth) { _ in
                 self.isExpanded = true
@@ -114,33 +126,30 @@ extension MainViewController: SideMenuViewControllerDelegate {
         let edit = EditProfileViewController()
         let nav = UINavigationController(rootViewController: edit)
         showViewController(viewController: nav)
-        
-        DispatchQueue.main.async { self.sideMenuState(expanded: false) }
 
+        DispatchQueue.main.async { self.toggleSideMenu(expanded: false) }
     }
-    
+
     func closeSideMenu() {
-        DispatchQueue.main.async { self.sideMenuState(expanded: false) }
+        DispatchQueue.main.async { self.toggleSideMenu(expanded: false) }
     }
-    
+
     func selectedCell(_ row: Int) {
-        switch row {
-        case 0:
+        guard let option = MenuOption(rawValue: row) else { return }
+        switch option {
+        case .home:
             // Home
             let home = HomeViewController.create()
             let nav = UINavigationController(rootViewController: home)
             showViewController(viewController: nav)
 
-        case 1:
-            //Setting
+        case .setting:
+            // Setting
             let setting = SettingViewController()
             let nav = UINavigationController(rootViewController: setting)
             showViewController(viewController: nav)
-            
-        default:
-            break
         }
-        DispatchQueue.main.async { self.sideMenuState(expanded: false) }
+        DispatchQueue.main.async { self.toggleSideMenu(expanded: false) }
     }
 
     func animateSideMenu(targetPosition: CGFloat, completion: @escaping (Bool) -> Void) {

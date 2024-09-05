@@ -21,6 +21,7 @@
 		BF0119112C8849F300E32A66 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF01190F2C8849F300E32A66 /* SettingViewController.xib */; };
 		BF0119142C884A0400E32A66 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0119122C884A0400E32A66 /* EditProfileViewController.swift */; };
 		BF0119152C884A0400E32A66 /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF0119132C884A0400E32A66 /* EditProfileViewController.xib */; };
+		BF01191B2C896B2500E32A66 /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01191A2C896B2500E32A66 /* MenuOption.swift */; };
 		BF1388302C7EFEAE00F18DA8 /* HalfSizePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF13882F2C7EFEAE00F18DA8 /* HalfSizePresentationController.swift */; };
 		BF1388322C7F0EAA00F18DA8 /* ButtonView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1388312C7F0EAA00F18DA8 /* ButtonView+Extension.swift */; };
 		BF1388342C7F177500F18DA8 /* TextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1388332C7F177500F18DA8 /* TextField+Extension.swift */; };
@@ -99,6 +100,7 @@
 		BF01190F2C8849F300E32A66 /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		BF0119122C884A0400E32A66 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		BF0119132C884A0400E32A66 /* EditProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
+		BF01191A2C896B2500E32A66 /* MenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
 		BF13882F2C7EFEAE00F18DA8 /* HalfSizePresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSizePresentationController.swift; sourceTree = "<group>"; };
 		BF1388312C7F0EAA00F18DA8 /* ButtonView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ButtonView+Extension.swift"; sourceTree = "<group>"; };
 		BF1388332C7F177500F18DA8 /* TextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+Extension.swift"; sourceTree = "<group>"; };
@@ -249,6 +251,14 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		BF0119192C896B1600E32A66 /* enum */ = {
+			isa = PBXGroup;
+			children = (
+				BF01191A2C896B2500E32A66 /* MenuOption.swift */,
+			);
+			path = enum;
+			sourceTree = "<group>";
+		};
 		BF3CCD0A2C74779F0082B7AB /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,6 +385,7 @@
 		BFC9ABBE2C6F59C200DED4F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BF0119192C896B1600E32A66 /* enum */,
 				BFC9ABBF2C6F59DB00DED4F7 /* AccountModel.swift */,
 				BF3CCD062C744BB80082B7AB /* AccountResponse.swift */,
 				BF87F29B2C7865BD005B87C0 /* TaskModel.swift */,
@@ -691,6 +702,7 @@
 				BF5D1ED92C68A1DB00D84AAA /* AppDelegate.swift in Sources */,
 				BF87F2AA2C7DB32B005B87C0 /* TaskServiceImpl.swift in Sources */,
 				BF5DA6952C80C12500056FE5 /* UpdateTaskViewController.swift in Sources */,
+				BF01191B2C896B2500E32A66 /* MenuOption.swift in Sources */,
 				BF0119072C883D4800E32A66 /* UIViewController+Extension.swift in Sources */,
 				BF87F29E2C78665D005B87C0 /* TaskResponse.swift in Sources */,
 				BF3CCD012C7351370082B7AB /* NetworkManager.swift in Sources */,

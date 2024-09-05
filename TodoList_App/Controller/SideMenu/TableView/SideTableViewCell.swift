@@ -18,28 +18,25 @@ class SideTableViewCell: UITableViewCell {
         titleLabel.textColor = .white
         let myCustomSelectionColorView = UIView()
         myCustomSelectionColorView.backgroundColor = UIColor(hex: "#D9D9D9", alpha: 0.2)
-        self.selectedBackgroundView = myCustomSelectionColorView
+        selectedBackgroundView = myCustomSelectionColorView
     }
-    func setupTableViewCell(sideMenu: SideMenuModel){
+
+    func setupTableViewCell(sideMenu: SideMenuModel) {
         iconImageView.image = sideMenu.icon
         titleLabel.text = sideMenu.title
         if sideMenu.title == "Switch Theme" {
-               let themeSwitch = UISwitch()
-               themeSwitch.isOn = traitCollection.userInterfaceStyle == .dark
-               themeSwitch.addTarget(self, action: #selector(switchThemeToggled(_:)), for: .valueChanged)
-               self.accessoryView = themeSwitch
-           } else {
-               self.accessoryView = nil
-           }
+            let themeSwitch = UISwitch()
+            themeSwitch.isOn = traitCollection.userInterfaceStyle == .dark
+            themeSwitch.addTarget(self, action: #selector(switchThemeToggled(_:)), for: .valueChanged)
+            accessoryView = themeSwitch
+        } else {
+            accessoryView = nil
+        }
     }
-    @objc func switchThemeToggled(_ sender: UISwitch) {
-        
-    }
+
+    @objc func switchThemeToggled(_: UISwitch) {}
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-
-
     }
 }

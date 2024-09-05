@@ -14,7 +14,6 @@ protocol SideMenuViewControllerDelegate {
 }
 
 class SideMenuViewController: UIViewController {
-    
     @IBOutlet private var emailLabel: UILabel!
     @IBOutlet private var headerTitleLabel: UILabel!
     @IBOutlet private var avatarImageView: UIImageView!
@@ -24,15 +23,16 @@ class SideMenuViewController: UIViewController {
         self.account = account
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init\(coder) has not been implemented")
     }
+
     var delegate: SideMenuViewControllerDelegate?
     private var defaultHighlightedCell: Int = 0
     private var menu = [SideMenuModel]()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMenu()
@@ -50,22 +50,21 @@ class SideMenuViewController: UIViewController {
 
         sideMenuTableView.registerCell(cellType: SideTableViewCell.self)
     }
-    
-    @IBAction func didTapCloseButton(_ sender: Any) {
-        guard let delegate = self.delegate else {
+
+    @IBAction func didTapCloseButton(_: Any) {
+        guard let delegate = delegate else {
             return
         }
         delegate.closeSideMenu()
     }
-    
-    @IBAction func didTapEditProfileButton(_ sender: Any) {
-        guard let delegate = self.delegate else {
+
+    @IBAction func didTapEditProfileButton(_: Any) {
+        guard let delegate = delegate else {
             return
         }
         delegate.selectedEditProfile()
     }
-    
-    
+
     func setupMenu() {
         headerTitleLabel.text = "Hello \(account.name)"
         emailLabel.text = account.username
@@ -92,8 +91,7 @@ extension SideMenuViewController: UITableViewDataSource {
         let cell = tableView.configure(cellType: SideTableViewCell.self, at: indexPath, with: menu[indexPath.row]) { cell in
             cell.setupTableViewCell(sideMenu: menu[indexPath.row])
         }
-        
-       
+
         return cell
     }
 
@@ -102,7 +100,6 @@ extension SideMenuViewController: UITableViewDataSource {
             tableView.deselectRow(at: indexPath, animated: true)
         }
         delegate?.selectedCell(indexPath.row)
-        
     }
 }
 

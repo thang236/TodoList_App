@@ -8,13 +8,13 @@
 import UIKit
 
 class EditProfileViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupNavigation()
         // Do any additional setup after loading the view.
     }
+
     private func setupNavigation() {
         navigationItem.hidesBackButton = true
         let magnifyingGlassButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(searchButtonTapped))
@@ -43,13 +43,7 @@ class EditProfileViewController: UIViewController {
 
         leftButton.target = revealViewController()
         leftButton.action = #selector(revealViewController()?.revealSideMenu)
-        
-    }
-    
-    @objc func searchButtonTapped() {
-        
     }
 
-
-
+    @objc func searchButtonTapped() {}
 }

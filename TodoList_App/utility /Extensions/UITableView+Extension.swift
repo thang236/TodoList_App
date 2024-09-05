@@ -14,14 +14,14 @@ extension UITableView {
         let nib = UINib(nibName: identifier, bundle: nil)
         register(nib, forCellReuseIdentifier: identifier)
     }
-    
-    func configure<T: UITableViewCell>(cellType: T.Type, at indexPath: IndexPath, with item: Any, configure: (T) -> Void) -> T {
-            let identifier = String(describing: cellType)
-            guard let cell = dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? T else {
-                print("Error: Cell with identifier \(identifier) could not be dequeued.")
-                return UITableViewCell() as! T
-            }
-            configure(cell)
-            return cell
+
+    func configure<T: UITableViewCell>(cellType: T.Type, at indexPath: IndexPath, with _: Any, configure: (T) -> Void) -> T {
+        let identifier = String(describing: cellType)
+        guard let cell = dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? T else {
+            print("Error: Cell with identifier \(identifier) could not be dequeued.")
+            return UITableViewCell() as! T
         }
+        configure(cell)
+        return cell
+    }
 }
