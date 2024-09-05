@@ -61,9 +61,11 @@ class RegisterViewController: UIViewController {
         authService.register(account: newAccount) { result in
             switch result {
             case let .success(account):
-                print("account: \(account)")
-                let homeVC = HomeViewController.create()
-                self.navigationController?.pushViewController(homeVC, animated: true)
+                let mainVC = MainViewController(account: account)
+                self.emailTextField.text = ""
+                self.passwordTextField.text = ""
+                self.confirmPasswordTexField.text = ""
+                self.navigationController?.pushViewController(mainVC, animated: true)
             case let .failure(error):
                 print("Đăng ký thất bại: \(error)")
                 self.showAlert(title: "Alert", message: "something is wrong please try again")

@@ -12,11 +12,9 @@ class MainViewController: UIViewController {
     private var sideMenuRevealWidth: CGFloat = 270
     private let paddingForRotation: CGFloat = 150
     private var isExpanded: Bool = false
-
     private var sideMenuTrailingConstraint: NSLayoutConstraint!
-
     private var revealSideMenuOnTop: Bool = true
-
+    private var currentViewController: UIViewController?
     private var sideMenuShadowView: UIView!
     private var account: AccountModel
 
@@ -68,7 +66,6 @@ class MainViewController: UIViewController {
 
     private func setupSideMenuConstraints() {
         sideMenuViewController.view.translatesAutoresizingMaskIntoConstraints = false
-
         if revealSideMenuOnTop {
             sideMenuTrailingConstraint = sideMenuViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -sideMenuRevealWidth - paddingForRotation)
             sideMenuTrailingConstraint.isActive = true
@@ -87,12 +84,9 @@ class MainViewController: UIViewController {
     }
 
     func showViewController(viewController: UIViewController) {
-        for subview in view.subviews {
-            if subview.tag == 99 {
-                subview.removeFromSuperview()
-            }
-        }
-        viewController.view.tag = 99
+        currentViewController?.view.removeFromSuperview()
+        currentViewController?.removeFromParent()
+
         view.insertSubview(viewController.view, at: revealSideMenuOnTop ? 0 : 1)
         addChild(viewController)
         if !revealSideMenuOnTop {
@@ -104,6 +98,7 @@ class MainViewController: UIViewController {
             }
         }
         viewController.didMove(toParent: self)
+        currentViewController = viewController
     }
 
     func toggleSideMenu(expanded: Bool) {
@@ -122,11 +117,14 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: SideMenuViewControllerDelegate {
+    func logout() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     func selectedEditProfile() {
         let edit = EditProfileViewController()
         let nav = UINavigationController(rootViewController: edit)
         showViewController(viewController: nav)
-
         DispatchQueue.main.async { self.toggleSideMenu(expanded: false) }
     }
 
@@ -136,18 +134,22 @@ extension MainViewController: SideMenuViewControllerDelegate {
 
     func selectedCell(_ row: Int) {
         guard let option = MenuOption(rawValue: row) else { return }
+        guard let currentVC = currentViewController?.children.first else { return }
         switch option {
         case .home:
             // Home
-            let home = HomeViewController.create()
-            let nav = UINavigationController(rootViewController: home)
-            showViewController(viewController: nav)
-
+            guard !(currentVC is HomeViewController) else { break }
+                let home = HomeViewController.create()
+                let nav = UINavigationController(rootViewController: home)
+                showViewController(viewController: nav)
+            
         case .setting:
             // Setting
-            let setting = SettingViewController()
-            let nav = UINavigationController(rootViewController: setting)
-            showViewController(viewController: nav)
+            guard !(currentVC is SettingViewController) else { break }
+                let setting = SettingViewController()
+                let nav = UINavigationController(rootViewController: setting)
+                showViewController(viewController: nav)
+            
         }
         DispatchQueue.main.async { self.toggleSideMenu(expanded: false) }
     }

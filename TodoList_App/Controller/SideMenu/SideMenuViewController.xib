@@ -41,7 +41,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GpZ-Pt-ubQ">
-                    <rect key="frame" x="0.0" y="285" width="393" height="533"/>
+                    <rect key="frame" x="0.0" y="285" width="393" height="458.66666666666674"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avt" translatesAutoresizingMaskIntoConstraints="NO" id="kOW-IP-YFy">
@@ -70,6 +70,15 @@
                         </button>
                     </subviews>
                 </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dG9-PF-1Lx">
+                    <rect key="frame" x="10" y="763.66666666666663" width="113" height="34.333333333333371"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="power" catalog="system" title="Logout" imagePadding="10"/>
+                    <connections>
+                        <action selector="didTapLogoutButton:" destination="-1" eventType="touchUpInside" id="eXd-nz-Yfv"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="RKE-v0-maX"/>
             <color key="backgroundColor" red="0.30196079609999998" green="0.41176474089999998" blue="0.8392156959" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -82,18 +91,21 @@
                 <constraint firstItem="kOW-IP-YFy" firstAttribute="leading" secondItem="xsv-rc-px1" secondAttribute="leading" id="JlH-H0-uxS"/>
                 <constraint firstItem="RKE-v0-maX" firstAttribute="trailing" secondItem="GpZ-Pt-ubQ" secondAttribute="trailing" id="LbK-Ib-ylI"/>
                 <constraint firstItem="dfb-mC-AYY" firstAttribute="top" secondItem="xsv-rc-px1" secondAttribute="bottom" constant="20" id="SQG-5z-hwa"/>
+                <constraint firstItem="dG9-PF-1Lx" firstAttribute="top" secondItem="GpZ-Pt-ubQ" secondAttribute="bottom" constant="20" id="V3F-T5-Lw9"/>
                 <constraint firstItem="GpZ-Pt-ubQ" firstAttribute="top" secondItem="kOW-IP-YFy" secondAttribute="bottom" constant="30" id="fBi-8R-WzW"/>
                 <constraint firstItem="xsv-rc-px1" firstAttribute="top" secondItem="RKE-v0-maX" secondAttribute="top" id="gUq-il-QMS"/>
                 <constraint firstItem="IOy-cP-C2A" firstAttribute="height" secondItem="kOW-IP-YFy" secondAttribute="height" multiplier="0.9" id="jKL-fn-jxD"/>
+                <constraint firstItem="RKE-v0-maX" firstAttribute="bottom" secondItem="dG9-PF-1Lx" secondAttribute="bottom" constant="20" id="kOv-Qn-dj1"/>
                 <constraint firstItem="dfb-mC-AYY" firstAttribute="leading" secondItem="xsv-rc-px1" secondAttribute="leading" id="pPF-Id-Upj"/>
-                <constraint firstItem="RKE-v0-maX" firstAttribute="bottom" secondItem="GpZ-Pt-ubQ" secondAttribute="bottom" id="qju-9F-2yM"/>
                 <constraint firstItem="GpZ-Pt-ubQ" firstAttribute="leading" secondItem="RKE-v0-maX" secondAttribute="leading" id="r9y-mi-7fq"/>
+                <constraint firstItem="dG9-PF-1Lx" firstAttribute="leading" secondItem="GpZ-Pt-ubQ" secondAttribute="leading" constant="10" id="wCq-Y1-JNC"/>
             </constraints>
             <point key="canvasLocation" x="113.74045801526717" y="-11.267605633802818"/>
         </view>
     </objects>
     <resources>
         <image name="avt" width="40" height="40"/>
+        <image name="power" catalog="system" width="127" height="128"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

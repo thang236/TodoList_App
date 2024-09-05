@@ -9,5 +9,5 @@ import Foundation
 
 enum MenuOption: Int {
     case home = 0
-    case setting
+    case setting = 1
 }

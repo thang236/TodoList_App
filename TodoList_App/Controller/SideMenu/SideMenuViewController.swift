@@ -11,6 +11,7 @@ protocol SideMenuViewControllerDelegate {
     func selectedCell(_ row: Int)
     func closeSideMenu()
     func selectedEditProfile()
+    func logout()
 }
 
 class SideMenuViewController: UIViewController {
@@ -18,6 +19,7 @@ class SideMenuViewController: UIViewController {
     @IBOutlet private var headerTitleLabel: UILabel!
     @IBOutlet private var avatarImageView: UIImageView!
     @IBOutlet private var sideMenuTableView: UITableView!
+    
     var account: AccountModel
     init(account: AccountModel) {
         self.account = account
@@ -50,7 +52,14 @@ class SideMenuViewController: UIViewController {
 
         sideMenuTableView.registerCell(cellType: SideTableViewCell.self)
     }
-
+    
+    @IBAction func didTapLogoutButton(_ sender: Any) {
+        guard let delegate = delegate else {
+            return
+        }
+        delegate.logout()
+    }
+    
     @IBAction func didTapCloseButton(_: Any) {
         guard let delegate = delegate else {
             return
