@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -64,7 +65,9 @@
                             <rect key="frame" x="0.0" y="48.333333333333343" width="106" height="34.333333333333343"/>
                             <color key="tintColor" red="0.47450977560000002" green="0.55686277149999996" blue="0.87450981139999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="filled" title="Edit Profile"/>
+                            <buttonConfiguration key="configuration" style="filled" title="Edit Profile">
+                                <color key="baseBackgroundColor" name="buttonColor"/>
+                            </buttonConfiguration>
                             <connections>
                                 <action selector="didTapEditProfileButton:" destination="-1" eventType="touchUpInside" id="seX-BF-xX4"/>
                             </connections>
@@ -82,7 +85,7 @@
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="RKE-v0-maX"/>
-            <color key="backgroundColor" red="0.30196079609999998" green="0.41176474089999998" blue="0.8392156959" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color key="backgroundColor" name="sideMenuBackground"/>
             <constraints>
                 <constraint firstItem="IOy-cP-C2A" firstAttribute="leading" secondItem="kOW-IP-YFy" secondAttribute="trailing" constant="8" symbolic="YES" id="Es0-HW-niM"/>
                 <constraint firstItem="xsv-rc-px1" firstAttribute="leading" secondItem="RKE-v0-maX" secondAttribute="leading" constant="20" id="F3x-9r-UAV"/>
@@ -107,6 +110,12 @@
         <image name="avt" width="40" height="40"/>
         <image name="power" catalog="system" width="127" height="128"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="buttonColor">
+            <color red="0.47450980392156861" green="0.55686274509803924" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="sideMenuBackground">
+            <color red="0.27058823529411763" green="0.41568627450980389" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -4,8 +4,8 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -73,18 +73,6 @@
                         </button>
                     </subviews>
                 </stackView>
-                <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fFa-3u-CIQ">
-                    <rect key="frame" x="308" y="158" width="65" height="30"/>
-                    <menu key="menu" id="r9M-5g-d6w">
-                        <children>
-                            <command title="Item 1" id="S27-ay-M8C"/>
-                            <command title="Item 2" id="0kT-S6-vY7"/>
-                        </children>
-                    </menu>
-                    <state key="normal" title="On Going">
-                        <color key="titleColor" red="0.65882354970000001" green="0.75686275960000005" blue="0.91764706370000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    </state>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nYL-JX-Qjm">
                     <rect key="frame" x="0.0" y="69" width="393" height="1"/>
                     <color key="backgroundColor" red="0.71372550729999995" green="0.64313727620000005" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -104,10 +92,22 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pM8-cl-ssi">
-                    <rect key="frame" x="116.66666666666669" y="763.66666666666663" width="160" height="34.333333333333371"/>
+                    <rect key="frame" x="40" y="744.66666666666663" width="313" height="53.333333333333371"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="pM8-cl-ssi" secondAttribute="height" multiplier="312:53" id="3xj-mD-1Id"/>
+                    </constraints>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="filled" imagePlacement="trailing" title="Add new task" imagePadding="10">
+                    <buttonConfiguration key="configuration" style="filled" imagePlacement="trailing" imagePadding="10">
                         <imageReference key="image" image="plus" catalog="system" variableValue="1"/>
+                        <attributedString key="attributedTitle">
+                            <fragment content="Add new task">
+                                <attributes>
+                                    <font key="NSFont" metaFont="system" size="22"/>
+                                    <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <color key="baseBackgroundColor" name="buttonBottomColor"/>
                     </buttonConfiguration>
                     <connections>
                         <action selector="didTapAddButton:" destination="-1" eventType="touchUpInside" id="jst-LW-pxc"/>
@@ -115,20 +115,20 @@
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" red="0.050980389119999997" green="0.13725490870000001" blue="0.46666666870000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color key="backgroundColor" name="background"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="b93-bR-bXA" secondAttribute="trailing" constant="20" id="0ZN-aZ-baX"/>
                 <constraint firstItem="b93-bR-bXA" firstAttribute="top" secondItem="gwn-th-tQc" secondAttribute="bottom" constant="8" symbolic="YES" id="40R-eF-ecA"/>
                 <constraint firstItem="NFi-ZL-EM2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="6UW-d8-dGy"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fFa-3u-CIQ" secondAttribute="trailing" constant="20" id="9kS-70-x58"/>
                 <constraint firstItem="b93-bR-bXA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="AD7-qu-bxU"/>
                 <constraint firstItem="GVq-uq-Rfn" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Bqr-tU-u5v"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="pM8-cl-ssi" secondAttribute="trailing" constant="40" id="EAN-ia-feU"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="pM8-cl-ssi" secondAttribute="bottom" constant="20" id="F8c-fI-Aok"/>
                 <constraint firstItem="gwn-th-tQc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="H2B-Ko-Z5Y"/>
+                <constraint firstItem="pM8-cl-ssi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="H77-Bl-0gh"/>
                 <constraint firstItem="NFi-ZL-EM2" firstAttribute="top" secondItem="GVq-uq-Rfn" secondAttribute="bottom" id="MWL-tn-Lpt"/>
                 <constraint firstItem="GVq-uq-Rfn" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.9:10" id="NPc-dd-RqX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nYL-JX-Qjm" secondAttribute="trailing" id="NaC-rY-Ksz"/>
-                <constraint firstItem="fFa-3u-CIQ" firstAttribute="centerY" secondItem="gwn-th-tQc" secondAttribute="centerY" id="Okg-Zv-S5l"/>
                 <constraint firstItem="nYL-JX-Qjm" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="UPn-9k-6wc"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="b93-bR-bXA" secondAttribute="bottom" id="VqV-VV-OxS"/>
                 <constraint firstItem="GVq-uq-Rfn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="foa-0i-ayC"/>
@@ -143,5 +143,11 @@
     </objects>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <namedColor name="background">
+            <color red="0.015686274509803921" green="0.14117647058823529" blue="0.48627450980392156" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="buttonBottomColor">
+            <color red="0.27058823529411763" green="0.41568627450980389" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
