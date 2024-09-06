@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 enum UserDefaultsKey: String {
     case isDarkMode
 }
