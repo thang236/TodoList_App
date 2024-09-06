@@ -44,23 +44,24 @@
                     <rect key="frame" x="0.0" y="285" width="393" height="458.66666666666674"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avt" translatesAutoresizingMaskIntoConstraints="NO" id="kOW-IP-YFy">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avt" translatesAutoresizingMaskIntoConstraints="NO" id="kOW-IP-YFy">
                     <rect key="frame" x="20" y="169" width="86" height="86"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="kOW-IP-YFy" secondAttribute="height" multiplier="1:1" id="c8W-b2-c6b"/>
                     </constraints>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="top" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="IOy-cP-C2A">
-                    <rect key="frame" x="114.00000000000001" y="173.33333333333334" width="137.33333333333337" height="77.333333333333343"/>
+                    <rect key="frame" x="114.00000000000001" y="170.66666666666666" width="137.33333333333337" height="82.666666666666657"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="thang@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGw-Um-VdG">
-                            <rect key="frame" x="0.0" y="0.0" width="137.33333333333334" height="15"/>
+                            <rect key="frame" x="0.0" y="0.0" width="137.33333333333334" height="20.333333333333332"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYZ-l5-7Oh">
-                            <rect key="frame" x="0.0" y="43" width="106" height="34.333333333333343"/>
+                            <rect key="frame" x="0.0" y="48.333333333333343" width="106" height="34.333333333333343"/>
                             <color key="tintColor" red="0.47450977560000002" green="0.55686277149999996" blue="0.87450981139999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="filled" title="Edit Profile"/>
@@ -83,7 +84,6 @@
             <viewLayoutGuide key="safeArea" id="RKE-v0-maX"/>
             <color key="backgroundColor" red="0.30196079609999998" green="0.41176474089999998" blue="0.8392156959" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
-                <constraint firstItem="kOW-IP-YFy" firstAttribute="height" secondItem="C7L-yi-73k" secondAttribute="height" multiplier="94:932" id="Ame-yn-VkW"/>
                 <constraint firstItem="IOy-cP-C2A" firstAttribute="leading" secondItem="kOW-IP-YFy" secondAttribute="trailing" constant="8" symbolic="YES" id="Es0-HW-niM"/>
                 <constraint firstItem="xsv-rc-px1" firstAttribute="leading" secondItem="RKE-v0-maX" secondAttribute="leading" constant="20" id="F3x-9r-UAV"/>
                 <constraint firstItem="IOy-cP-C2A" firstAttribute="centerY" secondItem="kOW-IP-YFy" secondAttribute="centerY" id="FdF-cw-1jj"/>
@@ -91,10 +91,10 @@
                 <constraint firstItem="kOW-IP-YFy" firstAttribute="leading" secondItem="xsv-rc-px1" secondAttribute="leading" id="JlH-H0-uxS"/>
                 <constraint firstItem="RKE-v0-maX" firstAttribute="trailing" secondItem="GpZ-Pt-ubQ" secondAttribute="trailing" id="LbK-Ib-ylI"/>
                 <constraint firstItem="dfb-mC-AYY" firstAttribute="top" secondItem="xsv-rc-px1" secondAttribute="bottom" constant="20" id="SQG-5z-hwa"/>
+                <constraint firstItem="kOW-IP-YFy" firstAttribute="height" secondItem="C7L-yi-73k" secondAttribute="height" multiplier="94:932" id="Uu9-UE-9cJ"/>
                 <constraint firstItem="dG9-PF-1Lx" firstAttribute="top" secondItem="GpZ-Pt-ubQ" secondAttribute="bottom" constant="20" id="V3F-T5-Lw9"/>
                 <constraint firstItem="GpZ-Pt-ubQ" firstAttribute="top" secondItem="kOW-IP-YFy" secondAttribute="bottom" constant="30" id="fBi-8R-WzW"/>
                 <constraint firstItem="xsv-rc-px1" firstAttribute="top" secondItem="RKE-v0-maX" secondAttribute="top" id="gUq-il-QMS"/>
-                <constraint firstItem="IOy-cP-C2A" firstAttribute="height" secondItem="kOW-IP-YFy" secondAttribute="height" multiplier="0.9" id="jKL-fn-jxD"/>
                 <constraint firstItem="RKE-v0-maX" firstAttribute="bottom" secondItem="dG9-PF-1Lx" secondAttribute="bottom" constant="20" id="kOv-Qn-dj1"/>
                 <constraint firstItem="dfb-mC-AYY" firstAttribute="leading" secondItem="xsv-rc-px1" secondAttribute="leading" id="pPF-Id-Upj"/>
                 <constraint firstItem="GpZ-Pt-ubQ" firstAttribute="leading" secondItem="RKE-v0-maX" secondAttribute="leading" id="r9y-mi-7fq"/>

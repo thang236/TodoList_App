@@ -6,6 +6,7 @@ target 'TodoList_App' do
   use_frameworks!
   pod 'Alamofire'
   pod 'IQKeyboardManagerSwift', '7.0.0'
+  pod 'Kingfisher', '~> 7.0'
 
   # Pods for TodoList_App
 

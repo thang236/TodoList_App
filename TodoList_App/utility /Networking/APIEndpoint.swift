@@ -14,6 +14,7 @@ enum APIEndpoint {
     case deleteTask(id: String)
     case addTask
     case updateTask(id: String)
+    case editProfile(id: String)
 
     var path: String {
         switch self {
@@ -29,6 +30,8 @@ enum APIEndpoint {
             return "/task"
         case let .updateTask(id):
             return "/task/\(id)"
+        case let .editProfile(id):
+            return "/accounts/\(id)"
         }
     }
 

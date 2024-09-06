@@ -60,7 +60,6 @@ class MainViewController: UIViewController {
         view.insertSubview(sideMenuViewController!.view, at: revealSideMenuOnTop ? 2 : 0)
         addChild(sideMenuViewController!)
         sideMenuViewController!.didMove(toParent: self)
-
         setupSideMenuConstraints()
     }
 
@@ -120,9 +119,10 @@ extension MainViewController: SideMenuViewControllerDelegate {
     func logout() {
         navigationController?.popViewController(animated: true)
     }
-    
+
     func selectedEditProfile() {
-        let edit = EditProfileViewController()
+        let edit = EditProfileViewController.create(account: account)
+        edit.editProfileDelegate = sideMenuViewController
         let nav = UINavigationController(rootViewController: edit)
         showViewController(viewController: nav)
         DispatchQueue.main.async { self.toggleSideMenu(expanded: false) }
@@ -139,17 +139,16 @@ extension MainViewController: SideMenuViewControllerDelegate {
         case .home:
             // Home
             guard !(currentVC is HomeViewController) else { break }
-                let home = HomeViewController.create()
-                let nav = UINavigationController(rootViewController: home)
-                showViewController(viewController: nav)
-            
+            let home = HomeViewController.create()
+            let nav = UINavigationController(rootViewController: home)
+            showViewController(viewController: nav)
+
         case .setting:
             // Setting
             guard !(currentVC is SettingViewController) else { break }
-                let setting = SettingViewController()
-                let nav = UINavigationController(rootViewController: setting)
-                showViewController(viewController: nav)
-            
+            let setting = SettingViewController()
+            let nav = UINavigationController(rootViewController: setting)
+            showViewController(viewController: nav)
         }
         DispatchQueue.main.async { self.toggleSideMenu(expanded: false) }
     }
