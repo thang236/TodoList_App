@@ -23,6 +23,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // LibraryIQKeyboardManager
         IQKeyboardManager.shared.enable = true
+
+        applySavedAppearance()
         return true
+    }
+
+    func applySavedAppearance() {
+        let isDarkMode = UserDefaults.standard.bool(forKey: .isDarkMode)
+        if isDarkMode {
+            window?.overrideUserInterfaceStyle = .dark
+        } else {
+            window?.overrideUserInterfaceStyle = .light
+        }
     }
 }

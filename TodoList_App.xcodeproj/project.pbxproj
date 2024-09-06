@@ -62,6 +62,8 @@
 		BFC9ABC02C6F59DB00DED4F7 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9ABBF2C6F59DB00DED4F7 /* AccountModel.swift */; };
 		BFC9ABC42C6F61F300DED4F7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9ABC22C6F61F300DED4F7 /* HomeViewController.swift */; };
 		BFC9ABC52C6F61F300DED4F7 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFC9ABC32C6F61F300DED4F7 /* HomeViewController.xib */; };
+		BFEF1F672C8AED2A0025A70D /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEF1F662C8AED2A0025A70D /* UserDefaultsKey.swift */; };
+		BFEF1F692C8AEE0E0025A70D /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEF1F682C8AEE0E0025A70D /* UserDefaults+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +148,8 @@
 		BFC9ABBF2C6F59DB00DED4F7 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		BFC9ABC22C6F61F300DED4F7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		BFC9ABC32C6F61F300DED4F7 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		BFEF1F662C8AED2A0025A70D /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
+		BFEF1F682C8AEE0E0025A70D /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		E687F38019F382F212B98F6E /* Pods-TodoList_App-TodoList_AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoList_App-TodoList_AppUITests.release.xcconfig"; path = "Target Support Files/Pods-TodoList_App-TodoList_AppUITests/Pods-TodoList_App-TodoList_AppUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -237,7 +241,6 @@
 			isa = PBXGroup;
 			children = (
 				BF0119122C884A0400E32A66 /* EditProfileViewController.swift */,
-				BF0119132C884A0400E32A66 /* EditProfileViewController.xib */,
 			);
 			path = EditProfile;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				BF01191A2C896B2500E32A66 /* MenuOption.swift */,
+				BFEF1F662C8AED2A0025A70D /* UserDefaultsKey.swift */,
 			);
 			path = enum;
 			sourceTree = "<group>";
@@ -283,6 +287,7 @@
 				BF1388312C7F0EAA00F18DA8 /* ButtonView+Extension.swift */,
 				BF1388332C7F177500F18DA8 /* TextField+Extension.swift */,
 				BF0119062C883D4800E32A66 /* UIViewController+Extension.swift */,
+				BFEF1F682C8AEE0E0025A70D /* UserDefaults+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -368,6 +373,7 @@
 				BFC9ABC32C6F61F300DED4F7 /* HomeViewController.xib */,
 				BF7FFDDD2C73384C00D0539F /* LoginViewController.xib */,
 				BF87F2B22C7DD1A0005B87C0 /* AddTaskViewController.xib */,
+				BF0119132C884A0400E32A66 /* EditProfileViewController.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -691,6 +697,7 @@
 			files = (
 				BF87F2A82C7DB2F0005B87C0 /* TaskService.swift in Sources */,
 				BF87F2B32C7DD1A0005B87C0 /* AddTaskViewController.swift in Sources */,
+				BFEF1F672C8AED2A0025A70D /* UserDefaultsKey.swift in Sources */,
 				BF5D1EDD2C68A1DB00D84AAA /* LoginViewController.swift in Sources */,
 				BF3CCD0D2C7479090082B7AB /* AuthServiceImpl.swift in Sources */,
 				BFC9ABC02C6F59DB00DED4F7 /* AccountModel.swift in Sources */,
@@ -718,6 +725,7 @@
 				BF3CCD032C7352340082B7AB /* APIEndpoint.swift in Sources */,
 				BF0119052C883BBA00E32A66 /* MainViewController.swift in Sources */,
 				BF3CCD052C743FAD0082B7AB /* APIConfig.swift in Sources */,
+				BFEF1F692C8AEE0E0025A70D /* UserDefaults+Extension.swift in Sources */,
 				BFC9ABBD2C6F398D00DED4F7 /* UIView+Extension.swift in Sources */,
 				BFA5B8F32C749B660085F632 /* RegisterViewController.swift in Sources */,
 				BF1388302C7EFEAE00F18DA8 /* HalfSizePresentationController.swift in Sources */,
