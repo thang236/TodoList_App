@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applySavedAppearance() {
-        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
+        let isDarkMode = UserDefaults.standard.bool(forKey: .isDarkMode)
         if isDarkMode {
             window?.overrideUserInterfaceStyle = .dark
         } else {

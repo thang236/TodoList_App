@@ -28,7 +28,7 @@ class SideTableViewCell: UITableViewCell {
             let themeSwitch = UISwitch()
             themeSwitch.backgroundColor = .white
             themeSwitch.layer.cornerRadius = themeSwitch.frame.height / 2
-            themeSwitch.isOn = UserDefaults.standard.bool(forKey: "isDarkMode")
+            themeSwitch.isOn = UserDefaults.standard.bool(forKey: .isDarkMode)
             themeSwitch.addTarget(self, action: #selector(switchThemeToggled(_:)), for: .valueChanged)
             accessoryView = themeSwitch
         } else {
@@ -41,10 +41,10 @@ class SideTableViewCell: UITableViewCell {
               let window = windowScene.windows.first else { return }
         if sender.isOn {
             window.overrideUserInterfaceStyle = .dark
-            UserDefaults.standard.set(true, forKey: "isDarkMode")
+            UserDefaults.standard.set(true, forKey: .isDarkMode)
         } else {
             window.overrideUserInterfaceStyle = .light
-            UserDefaults.standard.set(false, forKey: "isDarkMode")
+            UserDefaults.standard.set(false, forKey: .isDarkMode)
         }
     }
 
