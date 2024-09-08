@@ -145,9 +145,10 @@ extension MainViewController: SideMenuViewControllerDelegate {
 
         case .setting:
             // Setting
-            guard !(currentVC is SettingViewController) else { break }
-            let setting = SettingViewController()
-            let nav = UINavigationController(rootViewController: setting)
+            guard !(currentVC is ChangePasswordViewController) else { break }
+            let changePassword = ChangePasswordViewController.create(account: account)
+            changePassword.delegate = self
+            let nav = UINavigationController(rootViewController: changePassword)
             showViewController(viewController: nav)
         }
         DispatchQueue.main.async { self.toggleSideMenu(expanded: false) }
@@ -162,5 +163,12 @@ extension MainViewController: SideMenuViewControllerDelegate {
                 self.view.subviews[1].frame.origin.x = targetPosition
             }
         }, completion: completion)
+    }
+}
+
+extension MainViewController: ChangePasswordViewControllerDelegate {
+    func changePasswordDone() {
+        navigationController?.popViewController(animated: true)
+        showAlert(title: "Alert", message: "Please login again")
     }
 }

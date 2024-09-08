@@ -57,39 +57,7 @@ class LoginViewController: UIViewController {
     }
 
     private func setupPasswordField() {
-        imageIcon.image = UIImage(systemName: "eye.slash")
-        let contentView = UIView()
-        contentView.addSubview(imageIcon)
-
-        guard let icon = UIImage(systemName: "eye.slash") else {
-            return
-        }
-
-        contentView.frame = CGRect(x: 0, y: 0, width: icon.size.width, height: icon.size.height)
-        imageIcon.frame = CGRect(x: -10, y: 0, width: icon.size.width, height: icon.size.height)
-
-        passwordTextField.rightView = contentView
-        passwordTextField.rightViewMode = .always
-
-        let tapGestureRecongnizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-
-        imageIcon.isUserInteractionEnabled = true
-        imageIcon.addGestureRecognizer(tapGestureRecongnizer)
-    }
-
-    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        guard let tappedImage = tapGestureRecognizer.view as? UIImageView else {
-            return
-        }
-        if isSecure {
-            isSecure = false
-            tappedImage.image = UIImage(systemName: "eye")
-            passwordTextField.isSecureTextEntry = isSecure
-        } else {
-            isSecure = true
-            tappedImage.image = UIImage(systemName: "eye.slash")
-            passwordTextField.isSecureTextEntry = isSecure
-        }
+        passwordTextField.enablePasswordToggle()
     }
 
     func handleLogin(username: String, password: String) {
