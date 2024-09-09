@@ -90,7 +90,7 @@ class SideMenuViewController: UIViewController {
         }
         menu = [
             SideMenuModel(icon: house, title: "Home"),
-            SideMenuModel(icon: gear, title: "Settings"),
+            SideMenuModel(icon: gear, title: "Change Password"),
             SideMenuModel(icon: moon, title: "Is dark mode"),
         ]
     }

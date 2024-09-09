@@ -8,11 +8,10 @@
 import UIKit
 
 class RegisterViewController: UIViewController {
-    @IBOutlet private var confirmPasswordTexField: UITextField!
-    @IBOutlet private var passwordTextField: UITextField!
+    @IBOutlet private var confirmPasswordTexField: PasswordTextView!
+    @IBOutlet private var passwordTextField: PasswordTextView!
     @IBOutlet private var emailTextField: UITextField!
 
-    private var isSecure = true
     private let imageIcon = UIImageView()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,13 +42,15 @@ class RegisterViewController: UIViewController {
 
     @IBAction func didTapSubmit(_: Any) {
         guard let email = emailTextField.text, !email.isEmpty,
-              let password = passwordTextField.text, !password.isEmpty,
-              let confirmPassword = confirmPasswordTexField.text, !confirmPassword.isEmpty
+              let password = passwordTextField.getText(), !password.isEmpty,
+              let confirmPassword = confirmPasswordTexField.getText(), !confirmPassword.isEmpty
         else {
             showAlert(title: "Alert", message: "Please fill all field")
             return
         }
-        if password == confirmPassword {
+        if !email.isValidEmail() {
+            showAlert(title: "Alert", message: "Please fill email")
+        } else if password == confirmPassword {
             registerAccount(email: email, password: password)
         } else {
             showAlert(title: "Alert", message: "Password and confirm password are not the same")
@@ -63,8 +64,8 @@ class RegisterViewController: UIViewController {
             case let .success(account):
                 let mainVC = MainViewController(account: account)
                 self.emailTextField.text = ""
-                self.passwordTextField.text = ""
-                self.confirmPasswordTexField.text = ""
+                self.passwordTextField.setText(text: "")
+                self.confirmPasswordTexField.setText(text: "")
                 self.navigationController?.pushViewController(mainVC, animated: true)
             case let .failure(error):
                 print("Đăng ký thất bại: \(error)")
@@ -75,52 +76,9 @@ class RegisterViewController: UIViewController {
 
     func setupLayout() {
         navigationItem.hidesBackButton = true
-
         view.setBackgroundImageWithGradient(imageName: "background", topHexColor: "#7D39CB", bottomHexColor: "#3A87F3")
-        passwordTextField.tag = 1
-        confirmPasswordTexField.tag = 2
 
-        setupPasswordField(for: passwordTextField)
-        setupPasswordField(for: confirmPasswordTexField)
-    }
-
-    private func setupPasswordField(for textField: UITextField) {
-        let imageIcon = UIImageView()
-        imageIcon.image = UIImage(systemName: "eye.slash")
-        let contentView = UIView()
-        contentView.addSubview(imageIcon)
-
-        guard let icon = UIImage(systemName: "eye.slash") else {
-            return
-        }
-        contentView.frame = CGRect(x: 0, y: 0, width: icon.size.width, height: icon.size.height)
-        imageIcon.frame = CGRect(x: -10, y: 0, width: icon.size.width, height: icon.size.height)
-
-        textField.rightView = contentView
-        textField.rightViewMode = .always
-
-        let tapGestureRecongnizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-
-        imageIcon.isUserInteractionEnabled = true
-        imageIcon.addGestureRecognizer(tapGestureRecongnizer)
-
-        imageIcon.tag = textField.tag
-    }
-
-    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        guard let tappedImage = tapGestureRecognizer.view as? UIImageView,
-              let textField = view.viewWithTag(tappedImage.tag) as? UITextField
-        else {
-            return
-        }
-        if isSecure {
-            isSecure = false
-            tappedImage.image = UIImage(systemName: "eye")
-            textField.isSecureTextEntry = isSecure
-        } else {
-            isSecure = true
-            tappedImage.image = UIImage(systemName: "eye.slash")
-            textField.isSecureTextEntry = isSecure
-        }
+        passwordTextField.setPlaceholder("Enter your password")
+        confirmPasswordTexField.setPlaceholder("Re-Enter your password")
     }
 }

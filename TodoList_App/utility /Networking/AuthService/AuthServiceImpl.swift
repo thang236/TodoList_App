@@ -9,6 +9,16 @@ import Alamofire
 import Foundation
 
 class AuthServiceImpl: AuthService {
+    func changePassword(account: AccountModel, completion: @escaping (Result<AccountModel, Alamofire.AFError>) -> Void) {
+        let parameters: Parameters = [
+            "password": account.password,
+        ]
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+        ]
+        networkManager.request(endpoint: APIEndpoint.changePassword(id: account.id), method: .patch, parameters: parameters, headers: headers, completion: completion)
+    }
+
     func editProfile(account: AccountModel, completion: @escaping (Result<AccountModel, Alamofire.AFError>) -> Void) {
         let parameters: Parameters = [
             "username": account.username,

@@ -17,8 +17,8 @@
 		BF0119032C881E8200E32A66 /* SideTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF0119012C881E8200E32A66 /* SideTableViewCell.xib */; };
 		BF0119052C883BBA00E32A66 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0119042C883BBA00E32A66 /* MainViewController.swift */; };
 		BF0119072C883D4800E32A66 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0119062C883D4800E32A66 /* UIViewController+Extension.swift */; };
-		BF0119102C8849F300E32A66 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01190E2C8849F300E32A66 /* SettingViewController.swift */; };
-		BF0119112C8849F300E32A66 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF01190F2C8849F300E32A66 /* SettingViewController.xib */; };
+		BF0119102C8849F300E32A66 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01190E2C8849F300E32A66 /* ChangePasswordViewController.swift */; };
+		BF0119112C8849F300E32A66 /* ChangePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF01190F2C8849F300E32A66 /* ChangePasswordViewController.xib */; };
 		BF0119142C884A0400E32A66 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0119122C884A0400E32A66 /* EditProfileViewController.swift */; };
 		BF0119152C884A0400E32A66 /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF0119132C884A0400E32A66 /* EditProfileViewController.xib */; };
 		BF01191B2C896B2500E32A66 /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01191A2C896B2500E32A66 /* MenuOption.swift */; };
@@ -34,6 +34,8 @@
 		BF3CCD072C744BB80082B7AB /* AccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3CCD062C744BB80082B7AB /* AccountResponse.swift */; };
 		BF3CCD092C7473470082B7AB /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3CCD082C7473470082B7AB /* AuthService.swift */; };
 		BF3CCD0D2C7479090082B7AB /* AuthServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3CCD0C2C7479090082B7AB /* AuthServiceImpl.swift */; };
+		BF499C142C8ED4DE00E34A14 /* PasswordTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF499C132C8ED4DE00E34A14 /* PasswordTextView.swift */; };
+		BF499C162C8ED60900E34A14 /* PasswordTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF499C152C8ED60900E34A14 /* PasswordTextView.xib */; };
 		BF5D1ED92C68A1DB00D84AAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D1ED82C68A1DB00D84AAA /* AppDelegate.swift */; };
 		BF5D1EDD2C68A1DB00D84AAA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D1EDC2C68A1DB00D84AAA /* LoginViewController.swift */; };
 		BF5D1EE22C68A1DD00D84AAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF5D1EE12C68A1DD00D84AAA /* Assets.xcassets */; };
@@ -98,8 +100,8 @@
 		BF0119012C881E8200E32A66 /* SideTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideTableViewCell.xib; sourceTree = "<group>"; };
 		BF0119042C883BBA00E32A66 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BF0119062C883D4800E32A66 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		BF01190E2C8849F300E32A66 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		BF01190F2C8849F300E32A66 /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		BF01190E2C8849F300E32A66 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		BF01190F2C8849F300E32A66 /* ChangePasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordViewController.xib; sourceTree = "<group>"; };
 		BF0119122C884A0400E32A66 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		BF0119132C884A0400E32A66 /* EditProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
 		BF01191A2C896B2500E32A66 /* MenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
@@ -116,6 +118,8 @@
 		BF3CCD082C7473470082B7AB /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		BF3CCD0C2C7479090082B7AB /* AuthServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceImpl.swift; sourceTree = "<group>"; };
 		BF421C251D4961942BFA35C0 /* Pods-TodoList_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoList_App.debug.xcconfig"; path = "Target Support Files/Pods-TodoList_App/Pods-TodoList_App.debug.xcconfig"; sourceTree = "<group>"; };
+		BF499C132C8ED4DE00E34A14 /* PasswordTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextView.swift; sourceTree = "<group>"; };
+		BF499C152C8ED60900E34A14 /* PasswordTextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordTextView.xib; sourceTree = "<group>"; };
 		BF5D1ED52C68A1DB00D84AAA /* TodoList_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5D1ED82C68A1DB00D84AAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF5D1EDC2C68A1DB00D84AAA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -245,13 +249,13 @@
 			path = EditProfile;
 			sourceTree = "<group>";
 		};
-		BF01190D2C8849D700E32A66 /* Setting */ = {
+		BF01190D2C8849D700E32A66 /* ChangePassword */ = {
 			isa = PBXGroup;
 			children = (
-				BF01190E2C8849F300E32A66 /* SettingViewController.swift */,
-				BF01190F2C8849F300E32A66 /* SettingViewController.xib */,
+				BF01190E2C8849F300E32A66 /* ChangePasswordViewController.swift */,
+				BF01190F2C8849F300E32A66 /* ChangePasswordViewController.xib */,
 			);
-			path = Setting;
+			path = ChangePassword;
 			sourceTree = "<group>";
 		};
 		BF0119192C896B1600E32A66 /* enum */ = {
@@ -290,6 +294,15 @@
 				BFEF1F682C8AEE0E0025A70D /* UserDefaults+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BF499C122C8ED4A400E34A14 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				BF499C132C8ED4DE00E34A14 /* PasswordTextView.swift */,
+				BF499C152C8ED60900E34A14 /* PasswordTextView.xib */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		BF5D1ECC2C68A1DA00D84AAA = {
@@ -367,6 +380,7 @@
 		BFC9ABB82C6F337200DED4F7 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				BF499C122C8ED4A400E34A14 /* CustomView */,
 				BF5DA6942C80C12500056FE5 /* UpdateTaskViewController.xib */,
 				BFCCC9782C77146700BF84D0 /* Cell */,
 				BFA5B8F22C749B660085F632 /* RegisterViewController.xib */,
@@ -404,7 +418,7 @@
 		BFC9ABC12C6F619800DED4F7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				BF01190D2C8849D700E32A66 /* Setting */,
+				BF01190D2C8849D700E32A66 /* ChangePassword */,
 				BF01190C2C8849CC00E32A66 /* EditProfile */,
 				BF01190B2C8849B100E32A66 /* Register */,
 				BF0119092C88498500E32A66 /* Login */,
@@ -561,9 +575,10 @@
 				BF5DA6962C80C12500056FE5 /* UpdateTaskViewController.xib in Resources */,
 				BFA5B8F42C749B660085F632 /* RegisterViewController.xib in Resources */,
 				BF5D1EE52C68A1DD00D84AAA /* LaunchScreen.storyboard in Resources */,
+				BF499C162C8ED60900E34A14 /* PasswordTextView.xib in Resources */,
 				BF5D1EE22C68A1DD00D84AAA /* Assets.xcassets in Resources */,
 				BF0119032C881E8200E32A66 /* SideTableViewCell.xib in Resources */,
-				BF0119112C8849F300E32A66 /* SettingViewController.xib in Resources */,
+				BF0119112C8849F300E32A66 /* ChangePasswordViewController.xib in Resources */,
 				BF0118FB2C881C1600E32A66 /* SideMenuViewController.xib in Resources */,
 				BF87F2B42C7DD1A0005B87C0 /* AddTaskViewController.xib in Resources */,
 				BFC9ABC52C6F61F300DED4F7 /* HomeViewController.xib in Resources */,
@@ -701,7 +716,7 @@
 				BF5D1EDD2C68A1DB00D84AAA /* LoginViewController.swift in Sources */,
 				BF3CCD0D2C7479090082B7AB /* AuthServiceImpl.swift in Sources */,
 				BFC9ABC02C6F59DB00DED4F7 /* AccountModel.swift in Sources */,
-				BF0119102C8849F300E32A66 /* SettingViewController.swift in Sources */,
+				BF0119102C8849F300E32A66 /* ChangePasswordViewController.swift in Sources */,
 				BF87F2A42C7DAC6B005B87C0 /* String+Extension.swift in Sources */,
 				BF3CCD072C744BB80082B7AB /* AccountResponse.swift in Sources */,
 				BF0118FA2C881C1600E32A66 /* SideMenuViewController.swift in Sources */,
@@ -709,6 +724,7 @@
 				BF5D1ED92C68A1DB00D84AAA /* AppDelegate.swift in Sources */,
 				BF87F2AA2C7DB32B005B87C0 /* TaskServiceImpl.swift in Sources */,
 				BF5DA6952C80C12500056FE5 /* UpdateTaskViewController.swift in Sources */,
+				BF499C142C8ED4DE00E34A14 /* PasswordTextView.swift in Sources */,
 				BF01191B2C896B2500E32A66 /* MenuOption.swift in Sources */,
 				BF0119072C883D4800E32A66 /* UIViewController+Extension.swift in Sources */,
 				BF87F29E2C78665D005B87C0 /* TaskResponse.swift in Sources */,
