@@ -47,4 +47,11 @@ extension UIView {
         borderLayer.frame = CGRect(x: 0, y: frame.size.height - thickness, width: frame.size.width, height: thickness)
         layer.addSublayer(borderLayer)
     }
+
+    func loadViewFormNib(nibName: String) -> UIView? {
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: nibName, bundle: bundle)
+        let view = nib.instantiate(withOwner: self, options: nil).first as? UIView
+        return view
+    }
 }

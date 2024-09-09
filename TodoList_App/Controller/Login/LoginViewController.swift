@@ -11,7 +11,7 @@ import UIKit
 class LoginViewController: UIViewController {
     @IBOutlet private var usernameTextField: UITextField!
 
-    @IBOutlet private var passwordTextField: UITextField!
+    @IBOutlet private var passwordTextField: PasswordTextView!
     private var isSecure = true
     private let imageIcon = UIImageView()
 
@@ -48,16 +48,16 @@ class LoginViewController: UIViewController {
 
     @IBAction func didTapLogin(_: Any) {
         guard let username = usernameTextField.text, !username.isEmpty,
-              let password = passwordTextField.text, !password.isEmpty
+              let password = passwordTextField.getText(), !password.isEmpty
         else {
-            showAlert(title: "Alert", message: "Please fill username and passwrod.")
+            showAlert(title: "Alert", message: "Please fill username and password.")
             return
         }
         handleLogin(username: username, password: password)
     }
 
     private func setupPasswordField() {
-        passwordTextField.enablePasswordToggle()
+        passwordTextField.setPlaceholder("Enter your password")
     }
 
     func handleLogin(username: String, password: String) {
@@ -67,7 +67,7 @@ class LoginViewController: UIViewController {
                 if accounts.first(where: { $0.password == password }) != nil {
                     let mainVC = MainViewController(account: accounts[0])
                     self.usernameTextField.text = ""
-                    self.passwordTextField.text = ""
+                    self.passwordTextField.setText(text: "")
                     self.navigationController?.pushViewController(mainVC, animated: true)
                 } else {
                     self.showAlert(title: "Alert", message: "Username or password wrong")

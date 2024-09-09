@@ -167,7 +167,7 @@ extension MainViewController: SideMenuViewControllerDelegate {
 }
 
 extension MainViewController: ChangePasswordViewControllerDelegate {
-    func changePasswordDone() {
+    func onChangePasswordDone() {
         navigationController?.popViewController(animated: true)
         showAlert(title: "Alert", message: "Please login again")
     }

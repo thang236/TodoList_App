@@ -8,14 +8,14 @@
 import UIKit
 
 protocol ChangePasswordViewControllerDelegate {
-    func changePasswordDone()
+    func onChangePasswordDone()
 }
 
 class ChangePasswordViewController: UIViewController {
     @IBOutlet private var emailtextField: UITextField!
-    @IBOutlet private var currentPasswordTextField: UITextField!
-    @IBOutlet private var newPasswordTextField: UITextField!
-    @IBOutlet private var confirmPasswordTextField: UITextField!
+    @IBOutlet private var currentPasswordTextField: PasswordTextView!
+    @IBOutlet private var newPasswordTextField: PasswordTextView!
+    @IBOutlet private var confirmPasswordTextField: PasswordTextView!
 
     var delegate: ChangePasswordViewControllerDelegate?
     private var account: AccountModel
@@ -46,9 +46,9 @@ class ChangePasswordViewController: UIViewController {
 
     private func setupData() {
         emailtextField.text = account.username
-        currentPasswordTextField.enablePasswordToggle()
-        newPasswordTextField.enablePasswordToggle()
-        confirmPasswordTextField.enablePasswordToggle()
+        currentPasswordTextField.setPlaceholder("Enter your password")
+        newPasswordTextField.setPlaceholder("Enter your new password")
+        confirmPasswordTextField.setPlaceholder("Enter your confirm password")
     }
 
     private func setupNavigation() {
@@ -77,9 +77,9 @@ class ChangePasswordViewController: UIViewController {
     }
 
     @objc func didTapSave() {
-        guard let currentPass = currentPasswordTextField.text, !currentPass.isEmpty,
-              let newPass = newPasswordTextField.text, !newPass.isEmpty,
-              let confirmPass = confirmPasswordTextField.text, !confirmPass.isEmpty
+        guard let currentPass = currentPasswordTextField.getText(), !currentPass.isEmpty,
+              let newPass = newPasswordTextField.getText(), !newPass.isEmpty,
+              let confirmPass = confirmPasswordTextField.getText(), !confirmPass.isEmpty
         else {
             showAlert(title: "Warning", message: "Please fill all field")
             return
@@ -106,7 +106,7 @@ class ChangePasswordViewController: UIViewController {
             switch result {
             case .success:
                 print("succes")
-                delegate.changePasswordDone()
+                delegate.onChangePasswordDone()
             case let .failure(error):
                 self.showAlert(title: "Waring", message: "change password error: \(error)")
                 print("change password error: \(error)")

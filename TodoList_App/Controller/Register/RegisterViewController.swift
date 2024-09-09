@@ -8,8 +8,8 @@
 import UIKit
 
 class RegisterViewController: UIViewController {
-    @IBOutlet private var confirmPasswordTexField: UITextField!
-    @IBOutlet private var passwordTextField: UITextField!
+    @IBOutlet private var confirmPasswordTexField: PasswordTextView!
+    @IBOutlet private var passwordTextField: PasswordTextView!
     @IBOutlet private var emailTextField: UITextField!
 
     private let imageIcon = UIImageView()
@@ -42,8 +42,8 @@ class RegisterViewController: UIViewController {
 
     @IBAction func didTapSubmit(_: Any) {
         guard let email = emailTextField.text, !email.isEmpty,
-              let password = passwordTextField.text, !password.isEmpty,
-              let confirmPassword = confirmPasswordTexField.text, !confirmPassword.isEmpty
+              let password = passwordTextField.getText(), !password.isEmpty,
+              let confirmPassword = confirmPasswordTexField.getText(), !confirmPassword.isEmpty
         else {
             showAlert(title: "Alert", message: "Please fill all field")
             return
@@ -64,8 +64,8 @@ class RegisterViewController: UIViewController {
             case let .success(account):
                 let mainVC = MainViewController(account: account)
                 self.emailTextField.text = ""
-                self.passwordTextField.text = ""
-                self.confirmPasswordTexField.text = ""
+                self.passwordTextField.setText(text: "")
+                self.confirmPasswordTexField.setText(text: "")
                 self.navigationController?.pushViewController(mainVC, animated: true)
             case let .failure(error):
                 print("Đăng ký thất bại: \(error)")
@@ -78,7 +78,7 @@ class RegisterViewController: UIViewController {
         navigationItem.hidesBackButton = true
         view.setBackgroundImageWithGradient(imageName: "background", topHexColor: "#7D39CB", bottomHexColor: "#3A87F3")
 
-        passwordTextField.enablePasswordToggle()
-        confirmPasswordTexField.enablePasswordToggle()
+        passwordTextField.setPlaceholder("Enter your password")
+        confirmPasswordTexField.setPlaceholder("Re-Enter your password")
     }
 }
