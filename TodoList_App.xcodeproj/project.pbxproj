@@ -200,7 +200,6 @@
 			children = (
 				BF0118F72C8819D300E32A66 /* TableView */,
 				BF0118F82C881C1600E32A66 /* SideMenuViewController.swift */,
-				BF0118F92C881C1600E32A66 /* SideMenuViewController.xib */,
 			);
 			path = SideMenu;
 			sourceTree = "<group>";
@@ -209,7 +208,6 @@
 			isa = PBXGroup;
 			children = (
 				BF0119002C881E8200E32A66 /* SideTableViewCell.swift */,
-				BF0119012C881E8200E32A66 /* SideTableViewCell.xib */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -253,7 +251,6 @@
 			isa = PBXGroup;
 			children = (
 				BF01190E2C8849F300E32A66 /* ChangePasswordViewController.swift */,
-				BF01190F2C8849F300E32A66 /* ChangePasswordViewController.xib */,
 			);
 			path = ChangePassword;
 			sourceTree = "<group>";
@@ -265,6 +262,80 @@
 				BFEF1F662C8AED2A0025A70D /* UserDefaultsKey.swift */,
 			);
 			path = enum;
+			sourceTree = "<group>";
+		};
+		BF168C932C90503B00386E55 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				BF0118F92C881C1600E32A66 /* SideMenuViewController.xib */,
+				BF168C942C90504400386E55 /* TableView */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		BF168C942C90504400386E55 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				BF0119012C881E8200E32A66 /* SideTableViewCell.xib */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		BF168C952C90506F00386E55 /* UpdateTask */ = {
+			isa = PBXGroup;
+			children = (
+				BF5DA6942C80C12500056FE5 /* UpdateTaskViewController.xib */,
+			);
+			path = UpdateTask;
+			sourceTree = "<group>";
+		};
+		BF168C962C90508C00386E55 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				BFC9ABC32C6F61F300DED4F7 /* HomeViewController.xib */,
+				BFCCC9782C77146700BF84D0 /* Cell */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		BF168C982C9050A300386E55 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				BFA5B8F22C749B660085F632 /* RegisterViewController.xib */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		BF168C992C9050AC00386E55 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				BF7FFDDD2C73384C00D0539F /* LoginViewController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		BF168C9A2C9050B400386E55 /* AddTask */ = {
+			isa = PBXGroup;
+			children = (
+				BF87F2B22C7DD1A0005B87C0 /* AddTaskViewController.xib */,
+			);
+			path = AddTask;
+			sourceTree = "<group>";
+		};
+		BF168C9B2C9050BB00386E55 /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				BF0119132C884A0400E32A66 /* EditProfileViewController.xib */,
+			);
+			path = EditProfile;
+			sourceTree = "<group>";
+		};
+		BF168C9C2C9050C500386E55 /* ChagePassword */ = {
+			isa = PBXGroup;
+			children = (
+				BF01190F2C8849F300E32A66 /* ChangePasswordViewController.xib */,
+			);
+			path = ChagePassword;
 			sourceTree = "<group>";
 		};
 		BF3CCD0A2C74779F0082B7AB /* Networking */ = {
@@ -282,6 +353,7 @@
 		BF3CCD0B2C7477A60082B7AB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BF13882F2C7EFEAE00F18DA8 /* HalfSizePresentationController.swift */,
 				BFC9ABBA2C6F367700DED4F7 /* UIColor+Extension.swift */,
 				BFC9ABBC2C6F398D00DED4F7 /* UIView+Extension.swift */,
 				BF2242892C771C57004E95D8 /* UICollectionView+Extension.swift */,
@@ -380,14 +452,15 @@
 		BFC9ABB82C6F337200DED4F7 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				BF168C9C2C9050C500386E55 /* ChagePassword */,
+				BF168C9B2C9050BB00386E55 /* EditProfile */,
+				BF168C9A2C9050B400386E55 /* AddTask */,
+				BF168C992C9050AC00386E55 /* Login */,
+				BF168C982C9050A300386E55 /* Register */,
+				BF168C962C90508C00386E55 /* Home */,
+				BF168C952C90506F00386E55 /* UpdateTask */,
+				BF168C932C90503B00386E55 /* SideMenu */,
 				BF499C122C8ED4A400E34A14 /* CustomView */,
-				BF5DA6942C80C12500056FE5 /* UpdateTaskViewController.xib */,
-				BFCCC9782C77146700BF84D0 /* Cell */,
-				BFA5B8F22C749B660085F632 /* RegisterViewController.xib */,
-				BFC9ABC32C6F61F300DED4F7 /* HomeViewController.xib */,
-				BF7FFDDD2C73384C00D0539F /* LoginViewController.xib */,
-				BF87F2B22C7DD1A0005B87C0 /* AddTaskViewController.xib */,
-				BF0119132C884A0400E32A66 /* EditProfileViewController.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -397,7 +470,6 @@
 			children = (
 				BF3CCD0B2C7477A60082B7AB /* Extensions */,
 				BF3CCD0A2C74779F0082B7AB /* Networking */,
-				BF13882F2C7EFEAE00F18DA8 /* HalfSizePresentationController.swift */,
 			);
 			path = "utility ";
 			sourceTree = "<group>";
