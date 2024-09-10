@@ -12,7 +12,7 @@ class TaskServiceImpl: TaskService {
     func fetchAllTask(completion: @escaping (Result<[TaskModel], Alamofire.AFError>) -> Void) {
         networkManager.request(endpoint: APIEndpoint.fetchAllTask, completion: completion)
     }
-    
+
     private let networkManager: NetworkManager
     init(networkManager: NetworkManager = NetworkManager()) {
         self.networkManager = networkManager
