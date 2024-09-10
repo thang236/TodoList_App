@@ -8,11 +8,10 @@
 import Foundation
 
 extension Date {
-    static func generateDatesForCurrentMonth() -> [String] {
+    static func generateDatesForCurrentMonth(currentMonth: Int) -> [String] {
         let calendar = Calendar.current
         let currentDate = Date()
         let currentYear = calendar.component(.year, from: currentDate)
-        let currentMonth = calendar.component(.month, from: currentDate)
 
         let dateComponents = DateComponents(year: currentYear, month: currentMonth, day: 1)
         guard let startOfMonth = calendar.date(from: dateComponents) else {

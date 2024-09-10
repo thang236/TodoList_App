@@ -14,11 +14,15 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate, TaskT
     @IBOutlet private var taskTableView: UITableView!
     @IBOutlet private var allButton: UIButton!
 
+    private let datePicker = UIDatePicker()
     private var centerItem = -1
     private let taskService: TaskService
     private var arrayDates = [String]()
     private var isImportant: Bool = false
     private var tasks = [TaskModel]()
+    private var allTask = [TaskModel]()
+    private var currentDate = Date()
+    var searchBar: UISearchBar!
 
     init(taskService: TaskService) {
         self.taskService = taskService
@@ -40,7 +44,9 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate, TaskT
         super.viewDidLoad()
         setupNavigation()
         generateDatesForCurrentMonth()
+        setupCollectionView()
         setupTableView()
+        showDatePicker()
     }
 
     func didCreateTask() {
@@ -49,6 +55,32 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate, TaskT
 
     func didUpdateTask() {
         getTaskFromAPI()
+    }
+
+    private func showDatePicker() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .inline
+        datePicker.frame = CGRect(x: 0, y: 0, width: view.frame.width - 50, height: view.frame.height / 2.8)
+        datePicker.center = view.center
+        datePicker.backgroundColor = .systemGroupedBackground
+        datePicker.layer.cornerRadius = 10
+        datePicker.clipsToBounds = true
+        datePicker.isHidden = true
+        view.addSubview(datePicker)
+        datePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
+    }
+
+    @objc func datePickerValueChanged(_ sender: UIDatePicker) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        print(formatter.string(from: sender.date))
+        currentDate = sender.date
+        generateDatesForCurrentMonth()
+        dateCollectionView.reloadData()
+        centerCurrentItem()
+        datePicker.isHidden = true
     }
 
     func didEditTask(cell: TaskTableViewCell) {
@@ -72,9 +104,18 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate, TaskT
             switch result {
             case let .success(data):
                 self.tasks = data
+                if self.isImportant {
+                    var filterImportance = [TaskModel]()
+                    for task in self.tasks {
+                        if task.important == true {
+                            filterImportance.append(task)
+                        }
+                        self.tasks = filterImportance
+                    }
+                }
                 self.taskTableView.reloadData()
             case let .failure(error):
-                self.showAlert(with: "Error", message: "Failed to fetch tasks: \(error.localizedDescription)")
+                self.showAlert(title: "Error", message: "Failed to fetch tasks: \(error.localizedDescription)")
                 print("error to fetch task : \(error)")
             }
         }
@@ -88,10 +129,9 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate, TaskT
 
     private func generateDatesForCurrentMonth() {
         let calendar = Calendar.current
-        let currentDay = calendar.component(.day, from: Date())
+        let currentDay = calendar.component(.day, from: currentDate)
         centerItem = currentDay - 1
-        arrayDates = Date.generateDatesForCurrentMonth()
-        setupCollectionView()
+        arrayDates = Date.generateDatesForCurrentMonth(currentMonth: calendar.component(.month, from: currentDate))
     }
 
     @IBAction private func didTapAddButton(_: Any) {
@@ -120,7 +160,7 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate, TaskT
         let magnifyingGlassButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(searchButtonTapped))
         magnifyingGlassButton.tintColor = .white
 
-        let calendarButton = UIBarButtonItem(image: UIImage(systemName: "calendar"), style: .plain, target: self, action: #selector(searchButtonTapped))
+        let calendarButton = UIBarButtonItem(image: UIImage(systemName: "calendar"), style: .plain, target: self, action: #selector(calendarButtonTapped))
         calendarButton.tintColor = .white
 
         navigationItem.rightBarButtonItems = [
@@ -184,7 +224,40 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate, TaskT
         button.setAttributedTitle(attributedTitle, for: .normal)
     }
 
-    @objc func searchButtonTapped() {}
+    @objc func searchButtonTapped() {
+        navigationItem.rightBarButtonItems = nil
+        navigationItem.titleView = nil
+
+        searchBar = UISearchBar()
+        searchBar.placeholder = "Tìm kiếm..."
+        searchBar.delegate = self
+        searchBar.showsCancelButton = true
+        searchBar.becomeFirstResponder()
+
+        navigationItem.titleView = searchBar
+        getAllData()
+    }
+
+    func getAllData() {
+        taskService.fetchAllTask { result in
+            switch result {
+            case let .success(data):
+                self.allTask = data
+            case let .failure(error):
+                self.showAlert(title: "Warning", message: "Search is error: \(error)")
+            }
+        }
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+        setupNavigation()
+        getTaskFromAPI()
+    }
+
+    @objc func calendarButtonTapped(_: UIButton) {
+        datePicker.isHidden = false
+    }
 
     private func centerCurrentItem() {
         let centerIndex = IndexPath(item: centerItem, section: 0)
@@ -193,12 +266,6 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate, TaskT
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.updateCellColors(centerIndexPath: centerIndex)
         }
-    }
-
-    private func showAlert(with title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alertController, animated: true)
     }
 }
 
@@ -334,5 +401,18 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 extension HomeViewController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source _: UIViewController) -> UIPresentationController? {
         return HalfSizePresentationController(presentedViewController: presented, presenting: presenting)
+    }
+}
+
+extension HomeViewController: UISearchBarDelegate {
+    func searchBar(_: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            tasks = allTask
+        } else {
+            tasks = allTask.filter { item in
+                item.title.lowercased().contains(searchText.lowercased())
+            }
+        }
+        taskTableView.reloadData()
     }
 }

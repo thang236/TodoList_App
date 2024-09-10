@@ -12,9 +12,10 @@ enum APIEndpoint {
     case register
     case editProfile(id: String)
     case changePassword(id: String)
-    case fetchTask(isImportant: String, dateSearch: String)
+    case fetchTask(dateSearch: String)
     case deleteTask(id: String)
     case addTask
+    case fetchAllTask
     case updateTask(id: String)
 
     var path: String {
@@ -27,14 +28,16 @@ enum APIEndpoint {
             return "/accounts/\(id)"
         case let .changePassword(id):
             return "/accounts/\(id)"
-        case let .fetchTask(isImportant, dateSearch):
-            return"/task?important=\(isImportant)&date=\(dateSearch)"
+        case let .fetchTask(dateSearch):
+            return"/task?date=\(dateSearch)"
         case let .deleteTask(id):
             return "/task/\(id)"
         case .addTask:
             return "/task"
         case let .updateTask(id):
             return "/task/\(id)"
+        case .fetchAllTask:
+            return "/task"
         }
     }
 
