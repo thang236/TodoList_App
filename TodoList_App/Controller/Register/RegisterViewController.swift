@@ -94,7 +94,7 @@ class RegisterViewController: UIViewController {
                 self.confirmPasswordTexField.setText(text: "")
 
                 let idUser = account.id
-                UserDefaults.standard.set(idUser, forKey: "idUser")
+                UserDefaults.standard.set(idUser, forKey: .idUser)
 
                 self.navigationController?.pushViewController(mainVC, animated: true)
             case let .failure(error):

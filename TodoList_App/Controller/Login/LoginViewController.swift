@@ -68,7 +68,7 @@ class LoginViewController: UIViewController {
                     self.usernameTextField.text = ""
                     self.passwordTextField.setText(text: "")
                     let idUser = accounts.first?.id
-                    UserDefaults.standard.set(idUser, forKey: "idUser")
+                    UserDefaults.standard.set(idUser, forKey: .idUser)
 
                     self.navigationController?.pushViewController(mainVC, animated: true)
                 } else {

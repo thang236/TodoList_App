@@ -168,9 +168,7 @@ class AddTaskViewController: UIViewController {
             showAlert(title: "Alert", message: "Please fill all field")
             return
         }
-        guard let idUser = UserDefaults.standard.string(forKey: "idUser") else {
-            return
-        }
+        guard let idUser = UserDefaults.standard.string(forKey: .idUser) else { return }
 
         let newTask = TaskModel(idAccount: idUser, id: "", title: title, description: description, important: isImportant, date: date, time: time, isGroup: isGroup)
         addTask(newTask: newTask)

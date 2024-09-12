@@ -191,7 +191,7 @@ class UpdateTaskViewController: UIViewController {
             return
         }
 
-        guard let idUser = UserDefaults.standard.string(forKey: "idUser") else {
+        guard let idUser = UserDefaults.standard.string(forKey: .idUser) else {
             return
         }
 
