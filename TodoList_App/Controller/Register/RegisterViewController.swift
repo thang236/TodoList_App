@@ -59,12 +59,11 @@ class RegisterViewController: UIViewController {
                     self.showAlert(title: "Alert", message: "your email have register")
                 } else {
                     self.registerAccount(email: email, password: password)
-
                 }
-               
             }
         }
     }
+
     func checkUsername(email: String, completion: @escaping (Bool) -> Void) {
         authService.checkUsername(username: email) { result in
             switch result {
@@ -93,11 +92,10 @@ class RegisterViewController: UIViewController {
                 self.emailTextField.text = ""
                 self.passwordTextField.setText(text: "")
                 self.confirmPasswordTexField.setText(text: "")
-                
+
                 let idUser = account.id
                 UserDefaults.standard.set(idUser, forKey: "idUser")
 
-                
                 self.navigationController?.pushViewController(mainVC, animated: true)
             case let .failure(error):
                 print("Đăng ký thất bại: \(error)")

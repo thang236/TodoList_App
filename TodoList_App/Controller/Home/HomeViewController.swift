@@ -109,12 +109,12 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate, TaskT
                     self.tasks = data
                     var filterDate = [TaskModel]()
                     for task in self.tasks {
-                        if task.date == date{
+                        if task.date == date {
                             filterDate.append(task)
                         }
                     }
                     self.tasks = filterDate
-                    
+
                     if self.isImportant {
                         var filterImportance = [TaskModel]()
                         for task in self.tasks {
@@ -124,7 +124,7 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate, TaskT
                             self.tasks = filterImportance
                         }
                     }
-                    
+
                     self.taskTableView.reloadData()
                 }
             case let .failure(error):
@@ -250,8 +250,6 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate, TaskT
         navigationItem.titleView = searchBar
         getTaskFromAPI(true)
     }
-
-    
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
