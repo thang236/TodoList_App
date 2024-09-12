@@ -13,5 +13,4 @@ protocol TaskService {
     func deleteTask(id: String, completion: @escaping (Result<TaskModel, AFError>) -> Void)
     func addTask(task: TaskModel, completion: @escaping (Result<TaskModel, AFError>) -> Void)
     func updateTask(task: TaskModel, completion: @escaping (Result<TaskModel, AFError>) -> Void)
-    func fetchAllTask(completion: @escaping (Result<[TaskModel], AFError>) -> Void)
 }

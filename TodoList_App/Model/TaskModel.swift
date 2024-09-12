@@ -8,6 +8,7 @@
 import Foundation
 
 struct TaskModel: Codable {
+    let idAccount: String
     let id: String
     var title: String
     var description: String

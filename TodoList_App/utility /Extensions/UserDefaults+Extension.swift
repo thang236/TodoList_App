@@ -15,4 +15,8 @@ extension UserDefaults {
     func bool(forKey key: UserDefaultsKey) -> Bool {
         return bool(forKey: key.rawValue)
     }
+
+    func string(forKey key: UserDefaultsKey) -> String? {
+        return string(forKey: key.rawValue)
+    }
 }

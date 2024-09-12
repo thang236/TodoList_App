@@ -50,10 +50,36 @@ class RegisterViewController: UIViewController {
         }
         if !email.isValidEmail() {
             showAlert(title: "Alert", message: "Please fill email")
-        } else if password == confirmPassword {
-            registerAccount(email: email, password: password)
-        } else {
+        } else if password != confirmPassword {
             showAlert(title: "Alert", message: "Password and confirm password are not the same")
+        } else {
+            checkUsername(email: email) { isAvailable in
+                print(isAvailable)
+                if isAvailable {
+                    self.showAlert(title: "Alert", message: "your email have register")
+                } else {
+                    self.registerAccount(email: email, password: password)
+                }
+            }
+        }
+    }
+
+    func checkUsername(email: String, completion: @escaping (Bool) -> Void) {
+        authService.checkUsername(username: email) { result in
+            switch result {
+            case let .success(accounts):
+                var check = false
+                for account in accounts {
+                    print(account.username)
+                    if account.username == email {
+                        check = true
+                    }
+                }
+                completion(check)
+            case let .failure(err):
+                print("err check account: \(err)")
+                completion(false) // Trả về false trong trường hợp có lỗi
+            }
         }
     }
 
@@ -66,6 +92,10 @@ class RegisterViewController: UIViewController {
                 self.emailTextField.text = ""
                 self.passwordTextField.setText(text: "")
                 self.confirmPasswordTexField.setText(text: "")
+
+                let idUser = account.id
+                UserDefaults.standard.set(idUser, forKey: .idUser)
+
                 self.navigationController?.pushViewController(mainVC, animated: true)
             case let .failure(error):
                 print("Đăng ký thất bại: \(error)")

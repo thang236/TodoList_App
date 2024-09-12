@@ -36,7 +36,6 @@ class LoginViewController: UIViewController {
 
     @IBAction func didTapRegister(_: Any) {
         let vc = RegisterViewController.create()
-
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -68,6 +67,9 @@ class LoginViewController: UIViewController {
                     let mainVC = MainViewController(account: accounts[0])
                     self.usernameTextField.text = ""
                     self.passwordTextField.setText(text: "")
+                    let idUser = accounts.first?.id
+                    UserDefaults.standard.set(idUser, forKey: .idUser)
+
                     self.navigationController?.pushViewController(mainVC, animated: true)
                 } else {
                     self.showAlert(title: "Alert", message: "Username or password wrong")

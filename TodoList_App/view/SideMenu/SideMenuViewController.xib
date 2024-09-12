@@ -53,7 +53,7 @@
                     </constraints>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="top" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="IOy-cP-C2A">
-                    <rect key="frame" x="114.00000000000001" y="170.66666666666666" width="137.33333333333337" height="82.666666666666657"/>
+                    <rect key="frame" x="114" y="170.66666666666666" width="269" height="82.666666666666657"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="thang@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGw-Um-VdG">
                             <rect key="frame" x="0.0" y="0.0" width="137.33333333333334" height="20.333333333333332"/>
@@ -87,6 +87,7 @@
             <viewLayoutGuide key="safeArea" id="RKE-v0-maX"/>
             <color key="backgroundColor" name="sideMenuBackground"/>
             <constraints>
+                <constraint firstItem="RKE-v0-maX" firstAttribute="trailing" secondItem="IOy-cP-C2A" secondAttribute="trailing" constant="10" id="CKR-Ch-NuA"/>
                 <constraint firstItem="IOy-cP-C2A" firstAttribute="leading" secondItem="kOW-IP-YFy" secondAttribute="trailing" constant="8" symbolic="YES" id="Es0-HW-niM"/>
                 <constraint firstItem="xsv-rc-px1" firstAttribute="leading" secondItem="RKE-v0-maX" secondAttribute="leading" constant="20" id="F3x-9r-UAV"/>
                 <constraint firstItem="IOy-cP-C2A" firstAttribute="centerY" secondItem="kOW-IP-YFy" secondAttribute="centerY" id="FdF-cw-1jj"/>
@@ -114,7 +115,7 @@
             <color red="0.47450980392156861" green="0.55686274509803924" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="sideMenuBackground">
-            <color red="0.27058823529411763" green="0.41568627450980389" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.27099999785423279" green="0.41600000858306885" blue="0.86699998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
