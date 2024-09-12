@@ -94,7 +94,7 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate, TaskT
         }
     }
 
-    private func getTaskFromAPI() {
+    private func getTaskFromAPI(_ search: Bool = false) {
         let dateString = arrayDates[centerItem]
         guard let date = dateString.formattedDate() else {
             return
@@ -103,17 +103,30 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate, TaskT
         taskService.fetchTask(isImportant: important, dateSearch: date) { result in
             switch result {
             case let .success(data):
-                self.tasks = data
-                if self.isImportant {
-                    var filterImportance = [TaskModel]()
+                if search {
+                    self.allTask = data
+                } else {
+                    self.tasks = data
+                    var filterDate = [TaskModel]()
                     for task in self.tasks {
-                        if task.important == true {
-                            filterImportance.append(task)
+                        if task.date == date{
+                            filterDate.append(task)
                         }
-                        self.tasks = filterImportance
                     }
+                    self.tasks = filterDate
+                    
+                    if self.isImportant {
+                        var filterImportance = [TaskModel]()
+                        for task in self.tasks {
+                            if task.important == true {
+                                filterImportance.append(task)
+                            }
+                            self.tasks = filterImportance
+                        }
+                    }
+                    
+                    self.taskTableView.reloadData()
                 }
-                self.taskTableView.reloadData()
             case let .failure(error):
                 self.showAlert(title: "Error", message: "Failed to fetch tasks: \(error.localizedDescription)")
                 print("error to fetch task : \(error)")
@@ -235,19 +248,10 @@ class HomeViewController: UIViewController, AddTaskViewControllerDelegate, TaskT
         searchBar.becomeFirstResponder()
 
         navigationItem.titleView = searchBar
-        getAllData()
+        getTaskFromAPI(true)
     }
 
-    func getAllData() {
-        taskService.fetchAllTask { result in
-            switch result {
-            case let .success(data):
-                self.allTask = data
-            case let .failure(error):
-                self.showAlert(title: "Warning", message: "Search is error: \(error)")
-            }
-        }
-    }
+    
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)

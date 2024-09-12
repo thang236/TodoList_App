@@ -190,9 +190,13 @@ class UpdateTaskViewController: UIViewController {
             showAlert(title: "Alert", message: "Please fill all field")
             return
         }
-
+        
+        guard let idUser = UserDefaults.standard.string(forKey: "idUser") else {
+            return
+        }
+        
         if let taskID = dataEdit?.id {
-            let newTask = TaskModel(id: taskID, title: title, description: description, important: isImportant, date: date, time: time, isGroup: isGroup)
+            let newTask = TaskModel(idAccount: idUser ,id: taskID, title: title, description: description, important: isImportant, date: date, time: time, isGroup: isGroup)
             updateTask(newTask: newTask)
         } else {
             showAlert(title: "Alert", message: "Something wrong please try again")

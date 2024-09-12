@@ -9,9 +9,16 @@ import Alamofire
 import Foundation
 
 class TaskServiceImpl: TaskService {
-    func fetchAllTask(completion: @escaping (Result<[TaskModel], Alamofire.AFError>) -> Void) {
-        networkManager.request(endpoint: APIEndpoint.fetchAllTask, completion: completion)
+    func fetchTask(isImportant: String, dateSearch: String, completion: @escaping (Result<[TaskModel], Alamofire.AFError>) -> Void) {
+        guard let idUser = UserDefaults.standard.string(forKey: "idUser") else {
+            return
+        }
+        print("Saved Token: \(idUser)")
+        networkManager.request(endpoint: APIEndpoint.fetchTask(idAccount: idUser), completion: completion)
+        
     }
+    
+    
 
     private let networkManager: NetworkManager
     init(networkManager: NetworkManager = NetworkManager()) {
@@ -22,12 +29,11 @@ class TaskServiceImpl: TaskService {
         networkManager.request(endpoint: APIEndpoint.deleteTask(id: id), method: .delete, completion: completion)
     }
 
-    func fetchTask(isImportant _: String, dateSearch: String, completion: @escaping (Result<[TaskModel], Alamofire.AFError>) -> Void) {
-        networkManager.request(endpoint: APIEndpoint.fetchTask(dateSearch: dateSearch), completion: completion)
-    }
+   
 
     func updateTask(task: TaskModel, completion: @escaping (Result<TaskModel, Alamofire.AFError>) -> Void) {
         let parameters: Parameters = [
+            "idAccount": task.idAccount,
             "title": task.title,
             "description": task.description,
             "important": task.important,
@@ -43,6 +49,7 @@ class TaskServiceImpl: TaskService {
 
     func addTask(task: TaskModel, completion: @escaping (Result<TaskModel, Alamofire.AFError>) -> Void) {
         let parameters: Parameters = [
+            "idAccount": task.idAccount,
             "title": task.title,
             "description": task.description,
             "important": task.important,
