@@ -9,5 +9,5 @@ import Foundation
 
 enum UserDefaultsKey: String {
     case isDarkMode
-    case idUser
+    case userInfo
 }

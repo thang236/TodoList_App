@@ -78,7 +78,7 @@ class RegisterViewController: UIViewController {
                 completion(check)
             case let .failure(err):
                 print("err check account: \(err)")
-                completion(false) // Trả về false trong trường hợp có lỗi
+                completion(false)
             }
         }
     }
@@ -88,13 +88,12 @@ class RegisterViewController: UIViewController {
         authService.register(account: newAccount) { result in
             switch result {
             case let .success(account):
-                let mainVC = MainViewController(account: account)
+                let mainVC = MainViewController()
                 self.emailTextField.text = ""
                 self.passwordTextField.setText(text: "")
                 self.confirmPasswordTexField.setText(text: "")
 
-                let idUser = account.id
-                UserDefaults.standard.set(idUser, forKey: .idUser)
+                UserDefaults.standard.storeCodable(account, key: .userInfo)
 
                 self.navigationController?.pushViewController(mainVC, animated: true)
             case let .failure(error):
@@ -106,7 +105,9 @@ class RegisterViewController: UIViewController {
 
     func setupLayout() {
         navigationItem.hidesBackButton = true
-        view.setBackgroundImageWithGradient(imageName: "background", topHexColor: "#7D39CB", bottomHexColor: "#3A87F3")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.view.setBackgroundImageWithGradient(imageName: "background", topHexColor: "#7D39CB", bottomHexColor: "#3A87F3")
+        }
 
         passwordTextField.setPlaceholder("Enter your password")
         confirmPasswordTexField.setPlaceholder("Re-Enter your password")

@@ -6,6 +6,7 @@
 //
 
 import Alamofire
+import ProgressHUD
 import UIKit
 
 class LoginViewController: UIViewController {
@@ -41,11 +42,14 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.setBackgroundImageWithGradient(imageName: "background", topHexColor: "#7D39CB", bottomHexColor: "#3A87F3")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.view.setBackgroundImageWithGradient(imageName: "background", topHexColor: "#7D39CB", bottomHexColor: "#3A87F3")
+        }
         setupPasswordField()
     }
 
     @IBAction func didTapLogin(_: Any) {
+        ProgressHUD.animate("Please wait...", .ballVerticalBounce)
         guard let username = usernameTextField.text, !username.isEmpty,
               let password = passwordTextField.getText(), !password.isEmpty
         else {
@@ -64,11 +68,12 @@ class LoginViewController: UIViewController {
             switch result {
             case let .success(accounts):
                 if accounts.first(where: { $0.password == password }) != nil {
-                    let mainVC = MainViewController(account: accounts[0])
+                    ProgressHUD.succeed()
+                    let mainVC = MainViewController()
                     self.usernameTextField.text = ""
                     self.passwordTextField.setText(text: "")
-                    let idUser = accounts.first?.id
-                    UserDefaults.standard.set(idUser, forKey: .idUser)
+
+                    UserDefaults.standard.storeCodable(accounts.first, key: .userInfo)
 
                     self.navigationController?.pushViewController(mainVC, animated: true)
                 } else {
