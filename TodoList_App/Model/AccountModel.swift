@@ -13,4 +13,11 @@ struct AccountModel: Codable {
     var password: String
     var name: String
     var image: String
+    init(id: String = "", username: String = "", password: String = "", name: String = "", image: String = "") {
+        self.id = id
+        self.username = username
+        self.password = password
+        self.name = name
+        self.image = image
+    }
 }

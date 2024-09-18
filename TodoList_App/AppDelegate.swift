@@ -5,6 +5,7 @@
 //  Created by Louis Macbook on 11/08/2024.
 //
 
+import FirebaseCore
 import IQKeyboardManagerSwift
 import UIKit
 
@@ -24,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // LibraryIQKeyboardManager
         IQKeyboardManager.shared.enable = true
 
+        FirebaseApp.configure()
         applySavedAppearance()
         return true
     }

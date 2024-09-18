@@ -5,6 +5,9 @@
 //  Created by Louis Macbook on 04/09/2024.
 //
 
+import FirebaseStorage
+import Kingfisher
+import ProgressHUD
 import UIKit
 
 protocol EditProfileViewControllerDelegate {
@@ -14,7 +17,9 @@ protocol EditProfileViewControllerDelegate {
 class EditProfileViewController: UIViewController {
     private var account: AccountModel
     var editProfileDelegate: EditProfileViewControllerDelegate?
-    @IBOutlet private var urlTextField: UITextField!
+    private var avatarNew: UIImage?
+
+    @IBOutlet var avatarImageView: UIImageView!
     @IBOutlet private var nameTextField: UITextField!
     @IBOutlet private var emailTextField: UITextField!
 
@@ -36,19 +41,39 @@ class EditProfileViewController: UIViewController {
         let editProfileVC = EditProfileViewController(account: account, authService: authService)
         return editProfileVC
     }
+    private lazy var imagePicker: UIImagePickerController = {
+           let picker = UIImagePickerController()
+           picker.sourceType = .photoLibrary
+           picker.allowsEditing = true
+           picker.delegate = self
+           return picker
+       }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupNavigation()
         setupDataToTextField()
+        setupImage()
         // Do any additional setup after loading the view.
+    }
+
+    private func setupImage() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        avatarImageView.isUserInteractionEnabled = true
+        avatarImageView.addGestureRecognizer(tapGesture)
+    }
+
+    @objc func imageTapped() {
+        present(imagePicker, animated: true, completion: nil)
     }
 
     private func setupDataToTextField() {
         emailTextField.text = account.username
         nameTextField.text = account.name
-        urlTextField.text = account.image
+        if account.image != "" {
+            let url = URL(string: account.image)
+            avatarImageView.kf.setImage(with: url)
+        }
     }
 
     private func setupNavigation() {
@@ -78,28 +103,84 @@ class EditProfileViewController: UIViewController {
 
     @objc func searchButtonTapped() {}
     @objc func didTapSave() {
-        guard let name = nameTextField.text, !name.isEmpty,
-              let url = urlTextField.text, !url.isEmpty
+        guard let name = nameTextField.text, !name.isEmpty
         else {
             showAlert(title: "Alert", message: "Please fill all field")
             return
         }
         account.name = name
-        account.image = url
         guard let delegate = editProfileDelegate else { return }
-        handleEditProfile(account: account, delegate: delegate)
+        ProgressHUD.animate("Please wait...", interaction: false)
+        if let avatarNew = avatarNew {
+            uploadImageToFirebase(image: avatarNew)
+        } else {
+            handleEditProfile(account: account, delegate: delegate)
+        }
     }
 
     func handleEditProfile(account: AccountModel, delegate: EditProfileViewControllerDelegate) {
         authService.editProfile(account: account) { result in
             switch result {
             case let .success(accountResponse):
-                self.showAlert(title: "Alert", message: "update account complete")
+                ProgressHUD.succeed("Upload complete")
+//                self.showAlert(title: "Alert", message: "update account complete")
+
                 delegate.onClickSubmit(accountNew: accountResponse)
             case let .failure(err):
                 print(err)
+                ProgressHUD.failed("Upload fail...")
+
                 self.showAlert(title: "Warning", message: "update account fail: \(err)")
             }
         }
+    }
+
+    func uploadImageToFirebase(image: UIImage) {
+        guard let imageData = image.jpegData(compressionQuality: 0.8) else {
+            print("convert to jpeg fail")
+            return
+        }
+
+        let storageRef = Storage.storage().reference()
+
+        let imageRef = storageRef.child("avartars/\(UUID().uuidString).jpeg")
+
+        let uploadTask = imageRef.putData(imageData, metadata: nil) { _, error in
+            if let error = error {
+                print("Fail to upload image: \(error.localizedDescription)")
+                return
+            }
+            imageRef.downloadURL { url, error in
+                if let error = error {
+                    print("Fail to get image url: \(error)")
+                }
+                if let downloadURL = url {
+                    self.avatarNew = nil
+                    print("URL is update: \(downloadURL)")
+                    guard let delegate = self.editProfileDelegate else { return }
+                    self.account.image = downloadURL.absoluteString
+                    self.handleEditProfile(account: self.account, delegate: delegate)
+                }
+            }
+        }
+        uploadTask.observe(.progress) { snapshot in
+            let percentComplete = Double(snapshot.progress!.completedUnitCount) / Double(snapshot.progress!.totalUnitCount) * 100
+            print("Loading \(percentComplete)")
+        }
+    }
+}
+
+extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        guard let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage else {
+            return
+        }
+        avatarNew = image
+        avatarImageView.image = image
+        picker.dismiss(animated: true)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
     }
 }
