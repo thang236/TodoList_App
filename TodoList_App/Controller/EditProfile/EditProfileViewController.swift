@@ -41,6 +41,13 @@ class EditProfileViewController: UIViewController {
         let editProfileVC = EditProfileViewController(account: account, authService: authService)
         return editProfileVC
     }
+    private lazy var imagePicker: UIImagePickerController = {
+           let picker = UIImagePickerController()
+           picker.sourceType = .photoLibrary
+           picker.allowsEditing = true
+           picker.delegate = self
+           return picker
+       }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,11 +64,7 @@ class EditProfileViewController: UIViewController {
     }
 
     @objc func imageTapped() {
-        let imagePiker = UIImagePickerController()
-        imagePiker.sourceType = .photoLibrary
-        imagePiker.delegate = self
-        imagePiker.allowsEditing = true
-        present(imagePiker, animated: true)
+        present(imagePicker, animated: true, completion: nil)
     }
 
     private func setupDataToTextField() {
