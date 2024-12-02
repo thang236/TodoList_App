@@ -126,7 +126,7 @@ extension SideMenuViewController: UITableViewDelegate {
 extension SideMenuViewController: EditProfileViewControllerDelegate {
     func onClickSubmit(accountNew: AccountModel) {
         account = accountNew
-        print("setuptomenu")
+        UserDefaults.standard.storeCodable(accountNew, key: .userInfo)
         setupMenu()
     }
 }

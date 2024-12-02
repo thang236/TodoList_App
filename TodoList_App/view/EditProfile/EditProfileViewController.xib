@@ -11,9 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditProfileViewController" customModule="TodoList_App" customModuleProvider="target">
             <connections>
+                <outlet property="avatarImageView" destination="aLE-Ce-V82" id="6bz-jn-rVo"/>
                 <outlet property="emailTextField" destination="uqJ-Y5-vhh" id="NRN-hV-OG7"/>
                 <outlet property="nameTextField" destination="x5E-hL-CHq" id="9pd-gh-6zD"/>
-                <outlet property="urlTextField" destination="rqi-yj-Za7" id="Ges-hH-fmk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -69,53 +69,48 @@
                         <constraint firstItem="x5E-hL-CHq" firstAttribute="leading" secondItem="Wtg-td-HO4" secondAttribute="leading" id="LPz-s0-WhM"/>
                     </constraints>
                 </stackView>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tbJ-v7-TEP">
-                    <rect key="frame" x="20" y="483" width="353" height="74"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URL Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2W-Px-Tho">
-                            <rect key="frame" x="0.0" y="0.0" width="353" height="20.333333333333332"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your url image" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rqi-yj-Za7">
-                            <rect key="frame" x="0.0" y="28.333333333333311" width="353" height="45.666666666666657"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
-                    </subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avt" translatesAutoresizingMaskIntoConstraints="NO" id="aLE-Ce-V82">
+                    <rect key="frame" x="132.66666666666666" y="511.33333333333326" width="127.99999999999997" height="128"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="rqi-yj-Za7" secondAttribute="trailing" id="af8-3v-7TG"/>
-                        <constraint firstItem="rqi-yj-Za7" firstAttribute="leading" secondItem="tbJ-v7-TEP" secondAttribute="leading" id="fZs-c4-aaI"/>
+                        <constraint firstAttribute="width" secondItem="aLE-Ce-V82" secondAttribute="height" multiplier="1:1" id="CGE-e5-jZX"/>
+                        <constraint firstAttribute="height" constant="128" id="Cza-gR-nvj"/>
                     </constraints>
-                </stackView>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click image to change avatar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4AX-K6-uKQ">
+                    <rect key="frame" x="20" y="483" width="353" height="20.333333333333314"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="background"/>
             <constraints>
                 <constraint firstItem="qsf-Pa-uTh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="4F4-cU-cST"/>
-                <constraint firstItem="tbJ-v7-TEP" firstAttribute="top" secondItem="Wtg-td-HO4" secondAttribute="bottom" constant="20" id="5DG-kW-Z8W"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xzk-rY-GJE" secondAttribute="trailing" id="705-jQ-QnN"/>
-                <constraint firstItem="rqi-yj-Za7" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="50:932" id="83C-at-eh2"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qsf-Pa-uTh" secondAttribute="trailing" constant="20" id="9C1-SG-bj2"/>
                 <constraint firstItem="Wtg-td-HO4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="BDa-XR-8CW"/>
+                <constraint firstItem="4AX-K6-uKQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="DSj-7g-mBG"/>
                 <constraint firstItem="xzk-rY-GJE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Hvp-LH-QLW"/>
                 <constraint firstItem="Wtg-td-HO4" firstAttribute="trailing" secondItem="qsf-Pa-uTh" secondAttribute="trailing" id="KhE-dP-vUz"/>
-                <constraint firstItem="tbJ-v7-TEP" firstAttribute="trailing" secondItem="Wtg-td-HO4" secondAttribute="trailing" id="LbQ-5y-yqv"/>
+                <constraint firstItem="4AX-K6-uKQ" firstAttribute="top" secondItem="Wtg-td-HO4" secondAttribute="bottom" constant="20" id="Obd-w1-ifr"/>
                 <constraint firstItem="x5E-hL-CHq" firstAttribute="height" secondItem="uqJ-Y5-vhh" secondAttribute="height" id="Rze-L1-NQw"/>
+                <constraint firstItem="aLE-Ce-V82" firstAttribute="top" secondItem="4AX-K6-uKQ" secondAttribute="bottom" constant="8" symbolic="YES" id="SAk-uy-S0q"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4AX-K6-uKQ" secondAttribute="trailing" constant="20" id="Sv7-ww-9Tw"/>
                 <constraint firstItem="Wtg-td-HO4" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="WNu-XJ-v71"/>
-                <constraint firstItem="tbJ-v7-TEP" firstAttribute="leading" secondItem="Wtg-td-HO4" secondAttribute="leading" id="fnx-8B-LiR"/>
                 <constraint firstItem="xzk-rY-GJE" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="ihn-4k-L4r"/>
                 <constraint firstItem="Wtg-td-HO4" firstAttribute="leading" secondItem="qsf-Pa-uTh" secondAttribute="leading" id="jJJ-bk-7Mr"/>
-                <constraint firstItem="rqi-yj-Za7" firstAttribute="height" secondItem="x5E-hL-CHq" secondAttribute="height" id="nsV-ou-Cq5"/>
+                <constraint firstItem="aLE-Ce-V82" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="n1D-wc-oxL"/>
+                <constraint firstItem="uqJ-Y5-vhh" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="50:932" id="ra9-62-RO5"/>
                 <constraint firstItem="Wtg-td-HO4" firstAttribute="top" secondItem="qsf-Pa-uTh" secondAttribute="bottom" constant="20" id="wp5-kk-MM2"/>
             </constraints>
             <point key="canvasLocation" x="96.946564885496173" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>
+        <image name="avt" width="40" height="40"/>
         <namedColor name="background">
-            <color red="0.015686274509803921" green="0.14117647058823529" blue="0.48627450980392156" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.016000000759959221" green="0.14100000262260437" blue="0.48600000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

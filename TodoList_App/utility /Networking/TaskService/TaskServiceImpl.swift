@@ -10,9 +10,14 @@ import Foundation
 
 class TaskServiceImpl: TaskService {
     func fetchTask(isImportant _: String, dateSearch _: String, completion: @escaping (Result<[TaskModel], Alamofire.AFError>) -> Void) {
-        guard let idUser = UserDefaults.standard.string(forKey: .idUser) else {
+//        guard let idUser = UserDefaults.standard.string(forKey: .idUser) else {
+//            return
+//        }
+        guard let userInfo: AccountModel = UserDefaults.standard.retrieveCodable(for: .userInfo) else {
             return
         }
+        let idUser = userInfo.id
+
         networkManager.request(endpoint: APIEndpoint.fetchTask(idAccount: idUser), completion: completion)
     }
 

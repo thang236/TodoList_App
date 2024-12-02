@@ -16,10 +16,9 @@ class MainViewController: UIViewController {
     private var revealSideMenuOnTop: Bool = true
     private var currentViewController: UIViewController?
     private var sideMenuShadowView: UIView!
-    private var account: AccountModel
+    private var account: AccountModel = .init()
 
-    init(account: AccountModel) {
-        self.account = account
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -34,10 +33,16 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        getUserData()
         setupNavigationBar()
         setupSideMenuShadowView()
         setupSideMenu()
         setupInitialViewController()
+    }
+
+    func getUserData() {
+        guard let userInfo: AccountModel = UserDefaults.standard.retrieveCodable(for: .userInfo) else { return }
+        account = userInfo
     }
 
     private func setupNavigationBar() {
@@ -121,6 +126,7 @@ extension MainViewController: SideMenuViewControllerDelegate {
     }
 
     func selectedEditProfile() {
+        getUserData()
         let edit = EditProfileViewController.create(account: account)
         edit.editProfileDelegate = sideMenuViewController
         let nav = UINavigationController(rootViewController: edit)
